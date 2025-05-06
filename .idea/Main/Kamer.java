@@ -1,9 +1,17 @@
 public class Kamer {
-    private String naam;
-    private int kamer;
+    private int nummer;
+    private String beschrijving;
 
-    public Kamer(String naam, int kamer) {
-        this.naam = naam;
-        this.kamer = kamer;
+    public Kamer(int nummer, String beschrijving) {
+        this.nummer = nummer;
+        this.beschrijving = beschrijving;
+    }
+
+    public int getNummer() {
+        return nummer;
+    }
+
+    public String getBeschrijving() {
+        return beschrijving;
     }
 }
