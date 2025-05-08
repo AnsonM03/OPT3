@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -58,9 +57,5 @@ public class ScrumSpel {
         Kamer kamer = kamers.get(speler.getHuidigeKamer());
         System.out.println("\nJe bent nu in kamer " + kamer.getNummer() + ":");
         System.out.println(kamer.getBeschrijving());
-    }
-
-    public static void main(String[] args) {
-        new ScrumSpel().startSpel();
     }
 }
