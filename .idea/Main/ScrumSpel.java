@@ -8,8 +8,8 @@ public class ScrumSpel {
     private Speler speler;
 
     public ScrumSpel() {
-        kamers.put(0, new Kamer(0, "Je staat in de startkamer"));
-        kamers.put(1, new Kamer(1, "Kamer 1"));
+        kamers.put(0, new StandaardKamer(0, "Je staat in de startkamer"));
+        kamers.put(1, new StandaardKamer(1, "Kamer 1"));
     }
 
     public void startSpel() {
