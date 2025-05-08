@@ -7,8 +7,8 @@ public class ScrumSpel {
     private Speler speler;
 
     public ScrumSpel() {
-        kamers.put(0, new StandaardKamer(0, "Je staat in de startkamer"));
-        kamers.put(1, new StandaardKamer(1, "Kamer 1"));
+        kamers.put(0, new StandaardKamer(0, "Je staat in de startkamer", "Wat is de hoofdrol van de Product Owner in Scrum?", "Het beheren van de Product Backlog en zorgen dat het team waarde levert."));
+        kamers.put(1, new StandaardKamer(1, "Kamer 1", "Hoe heet de dagelijkse bijeenkomst waar het team synchroniseert?", "De Daily Scrum (of Stand-up)."));
     }
 
     public void startSpel() {
@@ -57,5 +57,19 @@ public class ScrumSpel {
         Kamer kamer = kamers.get(speler.getHuidigeKamer());
         System.out.println("\nJe bent nu in kamer " + kamer.getNummer() + ":");
         System.out.println(kamer.getBeschrijving());
+
+        if (kamer instanceof StandaardKamer) {
+            StandaardKamer standaardKamer = (StandaardKamer) kamer;
+            System.out.println("Vraag: " + standaardKamer.getVraag());
+
+            Scanner scanner = new Scanner(System.in);
+            String antwoord = scanner.nextLine();
+
+            if (standaardKamer.controleerAntwoord(antwoord)) {
+                System.out.println("✅ Goed! Je mag verder.");
+            } else {
+                System.out.println("❌ Fout! Het juiste antwoord is: " + standaardKamer.getAntwoord());
+            }
+        }
     }
 }
