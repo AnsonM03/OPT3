@@ -32,6 +32,12 @@ public class StandaardKamer implements Kamer {
     }
 
     public boolean controleerAntwoord(String gebruikersAntwoord) {
-        return gebruikersAntwoord.equalsIgnoreCase(antwoord);
+        String normalizedGebruikersAntwoord = normalizeAntwoord(gebruikersAntwoord);
+        String normalizedCorrectAntwoord = normalizeAntwoord(this.antwoord);
+        return normalizedGebruikersAntwoord.equals(normalizedCorrectAntwoord);
+    }
+
+    private String normalizeAntwoord(String antwoord){
+        return antwoord.toLowerCase().replaceAll("[.,!?]", "").trim();
     }
 }

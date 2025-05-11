@@ -9,6 +9,13 @@ public class Speler {
         this.huidigeKamer = 0;
     }
 
+    public void neemSchade(int schade){
+        this.hp -= schade;
+        if(this.hp < 0){
+            this.hp = 0;
+        }
+    }
+
     public void toonStatus() {
         System.out.println("Speler: " + naam);
         System.out.println("Huidige kamer: " + huidigeKamer);

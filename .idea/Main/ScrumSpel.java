@@ -5,10 +5,16 @@ import java.util.Scanner;
 public class ScrumSpel {
     private Map<Integer, Kamer> kamers = new HashMap<>();
     private Speler speler;
+    private Monster monster;
 
     public ScrumSpel() {
         kamers.put(0, new StandaardKamer(0, "Je staat in de startkamer", "Wat is de hoofdrol van de Product Owner in Scrum?", "Het beheren van de Product Backlog en zorgen dat het team waarde levert."));
         kamers.put(1, new StandaardKamer(1, "Kamer 1", "Hoe heet de dagelijkse bijeenkomst waar het team synchroniseert?", "De Daily Scrum (of Stand-up)."));
+        kamers.put(2, new StandaardKamer(2, "Kamer 2", "Wat is een 'Sprint' in Scrum?", "Een vaste periode (meestal 2-4 weken) waarin een werkbaar product wordt opgeleverd."));
+        kamers.put(3, new StandaardKamer(3, "Kamer 3","Noem de drie artefacten in Scrum.","Product Backlog, Sprint Backlog en Increment."));
+        kamers.put(4, new StandaardKamer(4, "Kamer 4", "Wat is het doel van een Retrospective?", "Het team verbetert zijn proces door reflectie."));
+        monster = new Monster(20);
+
     }
 
     public void startSpel() {
@@ -68,7 +74,9 @@ public class ScrumSpel {
             if (standaardKamer.controleerAntwoord(antwoord)) {
                 System.out.println("✅ Goed! Je mag verder.");
             } else {
+                monster.valAan(speler);  // Monster attacks when wrong answer
                 System.out.println("❌ Fout! Het juiste antwoord is: " + standaardKamer.getAntwoord());
+                System.out.println("Je huidige HP: " + speler.getHp());  // Show updated HP
             }
         }
     }
