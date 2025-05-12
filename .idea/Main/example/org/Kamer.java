@@ -1,9 +1,8 @@
 package example.org;
 
 public interface Kamer {
-    int getNummer();
-    String getBeschrijving();
-
-    String getVraag();
-    String getAntwoord();
+    public int getNummer();
+    public String getBeschrijving();
+    public String getVraag();
+    public String getAntwoord();
 }

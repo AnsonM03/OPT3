@@ -3,7 +3,6 @@ package example.org;
 public class StandaardKamer implements Kamer {
     private int nummer;
     private String beschrijving;
-
     private String vraag;
     private String antwoord;
     private boolean beantwoordCorrect;
