@@ -85,4 +85,5 @@ public void loadFromDatabase() {
     } catch (SQLException e) {
         System.out.println("Fout bij laden speler: " + e.getMessage());
     }
+    }
 }
