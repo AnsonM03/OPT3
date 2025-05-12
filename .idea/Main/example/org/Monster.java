@@ -1,3 +1,5 @@
+package example.org;
+
 public class Monster {
     private int schade;
 

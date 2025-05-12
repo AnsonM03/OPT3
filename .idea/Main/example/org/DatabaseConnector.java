@@ -1,7 +1,6 @@
-package org.example;
+package example.org;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class DatabaseConnector {
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/scrumspel";

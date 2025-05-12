@@ -1,3 +1,5 @@
+package example.org;
+
 public class StandaardKamer implements Kamer {
     private int nummer;
     private String beschrijving;
