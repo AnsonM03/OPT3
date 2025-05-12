@@ -25,6 +25,8 @@ public class ScrumSpel {
         String naam = scanner.nextLine();
         speler = new Speler(naam, 100);
 
+        speler.loadFromDatabase();
+
         System.out.println("\nWelkom bij het ScrumSpel, " + naam + "!");
         commmando();
         toonHuidigeKamer();
@@ -32,8 +34,9 @@ public class ScrumSpel {
         scanner.close();
     }
 
-    public void commmando(){
+    public void commmando() {
         Scanner scanner = new Scanner(System.in);
+
         while (true) {
             System.out.print("\n> ");
             String input = scanner.nextLine().toLowerCase();
@@ -43,24 +46,27 @@ public class ScrumSpel {
                     int kamernummer = Integer.parseInt(input.replace("ga naar kamer ", ""));
                     veranderKamer(kamernummer);
                 } catch (NumberFormatException e) {
-                    System.out.println("Ongeldige kamernummer.");
+                    System.out.println("Ongeldig kamernummer.");
                 }
             } else if (input.equals("status")) {
                 speler.toonStatus();
             } else if (input.equals("stop")) {
+                speler.saveToDatabase(); // ✅ opslaan voor afsluiten
                 System.out.println("Spel afgesloten.");
                 break;
             } else {
-                System.out.println(" onbekend commando. Probeer: 'ga naar kamer X', 'status' of 'stop'.");
+                System.out.println("Onbekend commando. Probeer: 'ga naar kamer X', 'status' of 'stop'.");
             }
         }
 
         scanner.close();
     }
 
+
     private void veranderKamer(int kamerId) {
         if (kamers.containsKey(kamerId)) {
             speler.setHuidigeKamer(kamerId);
+            speler.saveToDatabase();
             toonHuidigeKamer();
         } else {
             System.out.println("kamer " + kamerId + " bestaat niet.");

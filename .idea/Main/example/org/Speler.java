@@ -44,6 +44,7 @@ public class Speler {
     public void setHuidigeKamer(int kamer) {
         this.huidigeKamer = kamer;
     }
+
 public void saveToDatabase() {
     String query = """
             INSERT INTO speler (naam, hp, kamer) 
@@ -84,6 +85,6 @@ public void loadFromDatabase() {
         }
     } catch (SQLException e) {
         System.out.println("Fout bij laden speler: " + e.getMessage());
-    }
+        }
     }
 }
