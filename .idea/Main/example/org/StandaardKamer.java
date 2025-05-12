@@ -6,6 +6,7 @@ public class StandaardKamer implements Kamer {
 
     private String vraag;
     private String antwoord;
+    private boolean beantwoordCorrect;
 
     public StandaardKamer(int nummer, String beschrijving, String vraag, String antwoord) {
         this.nummer = nummer;
@@ -33,10 +34,22 @@ public class StandaardKamer implements Kamer {
         return antwoord;
     }
 
+    public boolean isBeantwoordCorrect() {
+        return beantwoordCorrect;
+    }
+
+    public void setBeantwoordCorrect(boolean beantwoordCorrect) {
+        this.beantwoordCorrect = beantwoordCorrect;
+    }
+
     public boolean controleerAntwoord(String gebruikersAntwoord) {
         String normalizedGebruikersAntwoord = normalizeAntwoord(gebruikersAntwoord);
         String normalizedCorrectAntwoord = normalizeAntwoord(this.antwoord);
-        return normalizedGebruikersAntwoord.equals(normalizedCorrectAntwoord);
+        boolean correct = normalizedGebruikersAntwoord.equals(normalizedCorrectAntwoord);
+        if (correct) {
+            this.beantwoordCorrect = true;
+        }
+        return correct;
     }
 
     private String normalizeAntwoord(String antwoord){

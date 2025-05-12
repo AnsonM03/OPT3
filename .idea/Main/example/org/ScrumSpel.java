@@ -10,60 +10,150 @@ public class ScrumSpel {
     private Monster monster;
 
     public ScrumSpel() {
+        initializeKamers();
+        monster = new Monster(40);
+    }
+
+    private void initializeKamers() {
         kamers.put(0, new StandaardKamer(0, "Je staat in de startkamer", "Wat is de hoofdrol van de Product Owner in Scrum?", "Het beheren van de Product Backlog en zorgen dat het team waarde levert."));
         kamers.put(1, new StandaardKamer(1, "Kamer 1", "Hoe heet de dagelijkse bijeenkomst waar het team synchroniseert?", "De Daily Scrum (of Stand-up)."));
         kamers.put(2, new StandaardKamer(2, "Kamer 2", "Wat is een 'Sprint' in Scrum?", "Een vaste periode (meestal 2-4 weken) waarin een werkbaar product wordt opgeleverd."));
-        kamers.put(3, new StandaardKamer(3, "Kamer 3","Noem de drie artefacten in Scrum.","Product Backlog, Sprint Backlog en Increment."));
+        kamers.put(3, new StandaardKamer(3, "Kamer 3", "Noem de drie artefacten in Scrum.", "Product Backlog, Sprint Backlog en Increment."));
         kamers.put(4, new StandaardKamer(4, "Kamer 4", "Wat is het doel van een Retrospective?", "Het team verbetert zijn proces door reflectie."));
-        monster = new Monster(20);
-
     }
 
     public void startSpel() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Voer je naam in: ");
         String naam = scanner.nextLine();
+
         speler = new Speler(naam, 100);
+        speler.loadFromDatabase();
 
         System.out.println("\nWelkom bij het ScrumSpel, " + naam + "!");
-        commmando();
-        toonHuidigeKamer();
+        System.out.println("Je begint in kamer " + speler.getHuidigeKamer() + " met " + speler.getHp() + " HP.");
+
+        hoofdSpelLoop();
 
         scanner.close();
     }
 
-    public void commmando(){
+    private void hoofdSpelLoop() {
         Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.print("\n> ");
-            String input = scanner.nextLine().toLowerCase();
+        boolean spelActief = true;
 
-            if (input.startsWith("ga naar kamer ")) {
-                try {
-                    int kamernummer = Integer.parseInt(input.replace("ga naar kamer ", ""));
-                    veranderKamer(kamernummer);
-                } catch (NumberFormatException e) {
-                    System.out.println("Ongeldige kamernummer.");
-                }
-            } else if (input.equals("status")) {
-                speler.toonStatus();
-            } else if (input.equals("stop")) {
-                System.out.println("Spel afgesloten.");
-                break;
-            } else {
-                System.out.println(" onbekend commando. Probeer: 'ga naar kamer X', 'status' of 'stop'.");
+        while (spelActief) {
+            // Check for game over condition
+            if (speler.getHp() <= 0) {
+                handleGameOver();
+                continue; // Skip the rest of the loop and start fresh
+            }
+
+            toonHuidigeKamer();
+
+            System.out.print("\n> ");
+            String input = scanner.nextLine().toLowerCase().trim();
+
+            switch (input) {
+                case "status":
+                    speler.toonStatus();
+                    break;
+
+                case "stop":
+                    System.out.println("Spel opslaan en afsluiten...");
+                    speler.saveToDatabase();
+                    spelActief = false;
+                    break;
+
+                case "beantwoord":
+                    toonVraagEnControleerAntwoord();
+                    break;
+
+                default:
+                    if (input.startsWith("ga naar kamer ")) {
+                        verwerkKamerVerandering(input);
+                    } else {
+                        System.out.println("Onbekend commando. Beschikbare commando's:");
+                        System.out.println("- 'beantwoord' : Probeer de vraag te beantwoorden");
+                        System.out.println("- 'ga naar kamer X' : Ga naar kamer X (als unlocked)");
+                        System.out.println("- 'status' : Toon je huidige status");
+                        System.out.println("- 'stop' : Sla op en stop het spel");
+                    }
+            }
+        }
+        scanner.close();
+    }
+
+    private void handleGameOver() {
+        System.out.println("\nGame over! Je hebt geen HP meer.");
+        System.out.println("Je wordt teruggebracht naar kamer 0 met volle HP...");
+
+        // Reset player state
+        speler.setHp(100);
+        speler.setHuidigeKamer(0);
+
+        // Reset all rooms (mark questions as unanswered)
+        for (Kamer kamer : kamers.values()) {
+            if (kamer instanceof StandaardKamer) {
+                ((StandaardKamer) kamer).setBeantwoordCorrect(false);
             }
         }
 
-        scanner.close();
+        speler.saveToDatabase();
+    }
+
+    private void verwerkKamerVerandering(String input) {
+        try {
+            int kamernummer = Integer.parseInt(input.replace("ga naar kamer ", ""));
+            int huidigeKamerNr = speler.getHuidigeKamer();
+
+            // Check if trying to move to current room
+            if (kamernummer == huidigeKamerNr) {
+                System.out.println("Je bent al in kamer " + kamernummer + "!");
+                return;
+            }
+
+            // Check if trying to move to a non-existent room
+            if (!kamers.containsKey(kamernummer)) {
+                System.out.println("Kamer " + kamernummer + " bestaat niet!");
+                return;
+            }
+
+            // Check if trying to move forward without answering
+            if (kamernummer > huidigeKamerNr + 1) {
+                System.out.println("Je kunt alleen naar de volgende kamer gaan (kamer " +
+                        (huidigeKamerNr + 1) + ")");
+                return;
+            }
+
+            // Check if trying to move to next room without answering
+            if (kamernummer == huidigeKamerNr + 1) {
+                Kamer huidigeKamer = kamers.get(huidigeKamerNr);
+                if (huidigeKamer instanceof StandaardKamer) {
+                    StandaardKamer standaardKamer = (StandaardKamer) huidigeKamer;
+                    if (!standaardKamer.isBeantwoordCorrect()) {
+                        System.out.println("Je moet eerst de vraag in deze kamer correct beantwoorden!");
+                        System.out.println("Typ 'beantwoord' om de vraag te beantwoorden.");
+                        return;
+                    }
+                }
+            }
+
+            // All checks passed, move to the room
+            veranderKamer(kamernummer);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Ongeldig kamernummer. Gebruik: 'ga naar kamer X' waar X een getal is.");
+        }
     }
 
     private void veranderKamer(int kamerId) {
         if (kamers.containsKey(kamerId)) {
             speler.setHuidigeKamer(kamerId);
-            toonHuidigeKamer();
+            System.out.println("Je bent nu in kamer " + kamerId + ".");
+            speler.saveToDatabase();
         } else {
-            System.out.println("kamer " + kamerId + " bestaat niet.");
+            System.out.println("Kamer " + kamerId + " bestaat niet.");
         }
     }
 
@@ -74,17 +164,44 @@ public class ScrumSpel {
 
         if (kamer instanceof StandaardKamer) {
             StandaardKamer standaardKamer = (StandaardKamer) kamer;
-            System.out.println("Vraag: " + standaardKamer.getVraag());
+            if (!standaardKamer.isBeantwoordCorrect()) {
+                System.out.println("\nVraag: " + standaardKamer.getVraag());
+                System.out.println("Typ 'beantwoord' om te proberen de vraag te beantwoorden.");
+            } else {
+                System.out.println("Je hebt de vraag in deze kamer al correct beantwoord!");
+                System.out.println("Vraag: " + standaardKamer.getVraag());
+                System.out.println("Antwoord: " + standaardKamer.getAntwoord());
+            }
+        }
+    }
 
+    private void toonVraagEnControleerAntwoord() {
+        Kamer kamer = kamers.get(speler.getHuidigeKamer());
+        if (kamer instanceof StandaardKamer) {
+            StandaardKamer standaardKamer = (StandaardKamer) kamer;
+
+            if (standaardKamer.isBeantwoordCorrect()) {
+                System.out.println("Je hebt deze vraag al correct beantwoord!");
+                return;
+            }
+
+            System.out.print(standaardKamer.getVraag() + "\nJe antwoord: ");
             Scanner scanner = new Scanner(System.in);
             String antwoord = scanner.nextLine();
 
             if (standaardKamer.controleerAntwoord(antwoord)) {
-                System.out.println("✅ Goed! Je mag verder.");
+                System.out.println("✅ Goed! Je mag nu naar de volgende kamer.");
+                speler.saveToDatabase();
             } else {
-                monster.valAan(speler);  // Monster attacks when wrong answer
+                speler.neemSchade(monster.getSchade());
                 System.out.println("❌ Fout! Het juiste antwoord is: " + standaardKamer.getAntwoord());
-                System.out.println("Je huidige HP: " + speler.getHp());  // Show updated HP
+                System.out.println("Het monster valt aan en doet " + monster.getSchade() + " schade!");
+                System.out.println("Je huidige HP: " + speler.getHp());
+
+                if (speler.getHp() <= 0) {
+                    System.out.println("Je hebt geen HP meer! Game over.");
+                }
+                speler.saveToDatabase();
             }
         }
     }

@@ -11,4 +11,8 @@ public class Monster {
         System.out.println("Je heef fout beantwoord, het monster heeft " + schade + "HP van je afgepakt!");
         speler.neemSchade(schade);
     }
+
+    public int getSchade(){
+        return schade;
+    }
 }
