@@ -26,8 +26,14 @@ public class ScrumSpel {
         speler = new Speler(naam, 100);
 
         System.out.println("\nWelkom bij het ScrumSpel, " + naam + "!");
+        commmando();
         toonHuidigeKamer();
 
+        scanner.close();
+    }
+
+    public void commmando(){
+        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print("\n> ");
             String input = scanner.nextLine().toLowerCase();
