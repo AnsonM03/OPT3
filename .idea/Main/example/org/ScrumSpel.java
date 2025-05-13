@@ -15,11 +15,11 @@ public class ScrumSpel {
     }
 
     private void initializeKamers() {
-        kamers.put(0, new StandaardKamer(0, "Je staat in de startkamer", opdracht1);
-        kamers.put(1, new StandaardKamer(1, "Kamer 1", opdracht2);
-        kamers.put(2, new StandaardKamer(2, "Kamer 2", opdracht3);
-        kamers.put(3, new StandaardKamer(3, "Kamer 3", opdracht4);
-        kamers.put(4, new StandaardKamer(4, "Kamer 4", opdracht5);
+        kamers.put(0, new StandaardKamer(0, "Je staat in de startkamer", opdracht1));
+        kamers.put(1, new StandaardKamer(1, "Kamer 1", opdracht2));
+        kamers.put(2, new StandaardKamer(2, "Kamer 2", opdracht3));
+        kamers.put(3, new StandaardKamer(3, "Kamer 3", opdracht4));
+        kamers.put(4, new StandaardKamer(4, "Kamer 4", opdracht5));
     }
 
     public Opdracht opdracht1 = new OpenOpdracht("Wat is de hoofdrol van de Product Owner in Scrum?","Het beheren van de Product Backlog en zorgen dat het team waarde levert.");
