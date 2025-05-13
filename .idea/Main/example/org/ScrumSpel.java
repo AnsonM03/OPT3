@@ -15,12 +15,18 @@ public class ScrumSpel {
     }
 
     private void initializeKamers() {
-        kamers.put(0, new StandaardKamer(0, "Je staat in de startkamer", "Wat is de hoofdrol van de Product Owner in Scrum?", "Het beheren van de Product Backlog en zorgen dat het team waarde levert."));
-        kamers.put(1, new StandaardKamer(1, "Kamer 1", "Hoe heet de dagelijkse bijeenkomst waar het team synchroniseert?", "De Daily Scrum (of Stand-up)."));
-        kamers.put(2, new StandaardKamer(2, "Kamer 2", "Wat is een 'Sprint' in Scrum?", "Een vaste periode (meestal 2-4 weken) waarin een werkbaar product wordt opgeleverd."));
-        kamers.put(3, new StandaardKamer(3, "Kamer 3", "Noem de drie artefacten in Scrum.", "Product Backlog, Sprint Backlog en Increment."));
-        kamers.put(4, new StandaardKamer(4, "Kamer 4", "Wat is het doel van een Retrospective?", "Het team verbetert zijn proces door reflectie."));
+        kamers.put(0, new StandaardKamer(0, "Je staat in de startkamer", opdracht1);
+        kamers.put(1, new StandaardKamer(1, "Kamer 1", opdracht2);
+        kamers.put(2, new StandaardKamer(2, "Kamer 2", opdracht3);
+        kamers.put(3, new StandaardKamer(3, "Kamer 3", opdracht4);
+        kamers.put(4, new StandaardKamer(4, "Kamer 4", opdracht5);
     }
+
+    public Opdracht opdracht1 = new OpenOpdracht("Wat is de hoofdrol van de Product Owner in Scrum?","Het beheren van de Product Backlog en zorgen dat het team waarde levert.");
+    public Opdracht opdracht2 = new OpenOpdracht("Hoe heet de dagelijkse bijeenkomst waar het team synchroniseert?", "De Daily Scrum (of Stand-up).");
+    public Opdracht opdracht3 = new OpenOpdracht("Wat is een 'Sprint' in Scrum?", "Een vaste periode (meestal 2-4 weken) waarin een werkbaar product wordt opgeleverd.");
+    public Opdracht opdracht4 = new OpenOpdracht("Noem de drie artefacten in Scrum.", "Product Backlog, Sprint Backlog en Increment.");
+    public Opdracht opdracht5 = new OpenOpdracht("Wat is het doel van een Retrospective?", "Het team verbetert zijn proces door reflectie.");
 
     public void startSpel() {
         Scanner scanner = new Scanner(System.in);
