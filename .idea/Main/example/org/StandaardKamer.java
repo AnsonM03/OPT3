@@ -1,6 +1,6 @@
 package example.org;
 
-public class StandaardKamer implements Kamer {
+public class StandaardKamer extends Kamer {
     private int nummer;
     private String beschrijving;
     private Opdracht opdracht;

@@ -1,7 +1,7 @@
 package example.org;
 
-public interface Kamer {
-    int getNummer();
-    String getBeschrijving();
-    Opdracht getOpdracht();
+abstract class Kamer {
+    abstract int getNummer();
+    abstract String getBeschrijving();
+    abstract Opdracht getOpdracht();
 }
