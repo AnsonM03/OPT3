@@ -3,15 +3,13 @@ package example.org;
 public class StandaardKamer implements Kamer {
     private int nummer;
     private String beschrijving;
-    private String vraag;
-    private String antwoord;
-    private boolean beantwoordCorrect;
+    private Opdracht opdracht;
 
-    public StandaardKamer(int nummer, String beschrijving, String vraag, String antwoord) {
+
+    public StandaardKamer(int nummer, String beschrijving, Opdracht opdracht) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
-        this.vraag = vraag;
-        this.antwoord = antwoord;
+        this.opdracht = opdracht;
     }
 
     @Override
@@ -25,30 +23,8 @@ public class StandaardKamer implements Kamer {
     }
 
     @Override
-    public String getVraag() {
-        return vraag;
-    }
-    @Override
-    public String getAntwoord() {
-        return antwoord;
-    }
-
-    public boolean isBeantwoordCorrect() {
-        return beantwoordCorrect;
-    }
-
-    public void setBeantwoordCorrect(boolean beantwoordCorrect) {
-        this.beantwoordCorrect = beantwoordCorrect;
-    }
-
-    public boolean controleerAntwoord(String gebruikersAntwoord) {
-        String normalizedGebruikersAntwoord = normalizeAntwoord(gebruikersAntwoord);
-        String normalizedCorrectAntwoord = normalizeAntwoord(this.antwoord);
-        boolean correct = normalizedGebruikersAntwoord.equals(normalizedCorrectAntwoord);
-        if (correct) {
-            this.beantwoordCorrect = true;
-        }
-        return correct;
+    public Opdracht getOpdracht() {
+        return opdracht;
     }
 
     private String normalizeAntwoord(String antwoord){
