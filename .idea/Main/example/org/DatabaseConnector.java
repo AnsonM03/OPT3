@@ -3,7 +3,7 @@ package example.org;
 import java.sql.*;
 
 public class DatabaseConnector {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/scrumspel";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/ScrumSpel";
     private static final String USER = "root";
     private static final String PASSWORD = "Root1234";
 

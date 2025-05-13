@@ -5,8 +5,6 @@ public class StandaardKamer implements Kamer {
     private String beschrijving;
     private Opdracht opdracht;
 
-//    private String vraag;
-//    private String antwoord;
 
     public StandaardKamer(int nummer, String beschrijving, Opdracht opdracht) {
         this.nummer = nummer;
@@ -24,25 +22,10 @@ public class StandaardKamer implements Kamer {
         return beschrijving;
     }
 
-//    @Override
-//    public String getVraag() {
-//        return vraag;
-//    }
-//    @Override
-//    public String getAntwoord() {
-//        return antwoord;
-//    }
-
     @Override
     public Opdracht getOpdracht() {
         return opdracht;
     }
-
-//    public boolean controleerAntwoord(String gebruikersAntwoord) {
-//        String normalizedGebruikersAntwoord = normalizeAntwoord(gebruikersAntwoord);
-//        String normalizedCorrectAntwoord = normalizeAntwoord(this.antwoord);
-//        return normalizedGebruikersAntwoord.equals(normalizedCorrectAntwoord);
-//    }
 
     private String normalizeAntwoord(String antwoord){
         return antwoord.toLowerCase().replaceAll("[.,!?]", "").trim();
