@@ -19,4 +19,8 @@ public class OpenOpdracht implements Opdracht{
         return this.antwoord.equalsIgnoreCase(antwoord.trim());
     }
 
+    public String getAntwoord(){
+        return this.antwoord;
+    }
+
 }

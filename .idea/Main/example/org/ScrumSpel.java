@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ScrumSpel {
-    private Map<Integer, Kamer> kamers = new HashMap<>();
+    public Map<Integer, Kamer> kamers = new HashMap<>();
     private Speler speler;
     private Monster monster;
 
