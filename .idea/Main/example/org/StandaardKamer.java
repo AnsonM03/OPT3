@@ -3,7 +3,7 @@ package example.org;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StandaardKamer implements Kamer {
+public class StandaardKamer extends Kamer{
     private int nummer;
     private String beschrijving;
     private Opdracht opdracht;
