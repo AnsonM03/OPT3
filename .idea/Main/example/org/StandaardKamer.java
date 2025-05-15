@@ -1,15 +1,21 @@
 package example.org;
 
-public class StandaardKamer extends Kamer {
+import java.util.ArrayList;
+import java.util.List;
+
+public class StandaardKamer implements Kamer {
     private int nummer;
     private String beschrijving;
     private Opdracht opdracht;
     private boolean beantwoordCorrect = false;
+    private Deur deur;
+    private List<Observer> observers = new ArrayList<>();
 
     public StandaardKamer(int nummer, String beschrijving, Opdracht opdracht) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
+        this.deur = new Deur();
     }
 
     @Override
@@ -30,11 +36,26 @@ public class StandaardKamer extends Kamer {
     public String getVraag() {
         return opdracht.getVraag();
     }
+    public Deur getDeur() {
+        return deur;
+    }
+
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    private void notifyObservers(boolean antwoordCorrect) {
+        for (Observer observer : observers) {
+            observer.update(antwoordCorrect);
+        }
+    }
 
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
+        notifyObservers(correct);
         if (correct) {
             beantwoordCorrect = true;
+            deur.open();
         }
         return correct;
     }
@@ -45,6 +66,9 @@ public class StandaardKamer extends Kamer {
 
     public void setBeantwoordCorrect(boolean beantwoordCorrect) {
         this.beantwoordCorrect = beantwoordCorrect;
+        if (beantwoordCorrect) {
+            deur.open();
+        }
     }
 
     public String getAntwoord() {
