@@ -16,17 +16,41 @@ public class ScrumSpel {
 
     private void initializeKamers() {
         kamers.put(0, new StandaardKamer(0, "Je staat in de startkamer", opdracht1));
-        kamers.put(1, new StandaardKamer(1, "Kamer 1", opdracht2));
-        kamers.put(2, new StandaardKamer(2, "Kamer 2", opdracht3));
-        kamers.put(3, new StandaardKamer(3, "Kamer 3", opdracht4));
-        kamers.put(4, new StandaardKamer(4, "Kamer 4", opdracht5));
+        kamers.put(1, new SprintPlanningKamer(1, "Je staat in Kamer 1 (Sprint Planning Kamer)", sprintOpdracht));
+        kamers.put(2, new DailyScrumKamer(2, "Je staat in Kamer 2 (Daily Scrum Kamer). Elke teamgenoot moet een status-update geven. Vergeet je iemand? Dan roept dat het monster 'Vertraging' op.", dailyScrumOpdracht));
+        kamers.put(3, new ScrumBoardKamer(3, "Je staat in Kamer 3 voor het Scrum Board. Orden de epics, user stories en taken correct, anders verschijnt het monster 'Chaos'.", scrumBoardOpdracht));
+        kamers.put(4, new SprintReviewKamer(4, "Je staat in Kamer 4 (Sprint Review Kamer): Stakeholders geven feedback. Interpreteer hun opmerkingen correct, anders verschijnt het monster 'Miscommunicatie'.", sprintReviewOpdracht));
+        kamers.put(5, new SprintRetrospectiveKamer(5, "Sprint Retrospective: Reflecteer op het teamproces. Leer je niet van fouten, dan verschijnt het monster 'Herhaalfouten'.", sprintRetrospectiveOpdracht));
+        kamers.put(6, new FinaleTIAKamer(6, "Finale TIA Kamer – Waarom Scrum? Dit is het eindspel! Begrijp je TIA, dan ben je een echte Scrumheld.", finaleTIAOpdracht));
     }
 
     public Opdracht opdracht1 = new OpenOpdracht("Wat is de hoofdrol van de Product Owner in Scrum?","Het beheren van de Product Backlog en zorgen dat het team waarde levert.");
-    public Opdracht opdracht2 = new OpenOpdracht("Hoe heet de dagelijkse bijeenkomst waar het team synchroniseert?", "De Daily Scrum (of Stand-up).");
-    public Opdracht opdracht3 = new OpenOpdracht("Wat is een 'Sprint' in Scrum?", "Een vaste periode (meestal 2-4 weken) waarin een werkbaar product wordt opgeleverd.");
-    public Opdracht opdracht4 = new OpenOpdracht("Noem de drie artefacten in Scrum.", "Product Backlog, Sprint Backlog en Increment.");
-    public Opdracht opdracht5 = new OpenOpdracht("Wat is het doel van een Retrospective?", "Het team verbetert zijn proces door reflectie.");
+    public Opdracht sprintOpdracht = new OpenOpdracht("Welke taken neem je op in de sprint planning?",
+            "Alleen taken die het team denkt af te krijgen binnen de sprint."
+    );
+    public Opdracht dailyScrumOpdracht = new OpenOpdracht(
+            "Je teamleden zijn: Lisa (developer), Bram (tester), en Noor (Scrum Master). " +
+                    "Wie geeft welke update tijdens de Daily Scrum?",
+            "Lisa over voortgang development, Bram over testresultaten, Noor over belemmeringen"
+    );
+    public Opdracht scrumBoardOpdracht = new OpenOpdracht(
+            "Hoe richt je een Scrum Board correct in met epics, user stories en taken?",
+            "Epics bevatten user stories, user stories bevatten taken. Taken staan in kolommen zoals To Do, In Progress, Done."
+    );
+    public Opdracht sprintReviewOpdracht = new OpenOpdracht(
+            "Stakeholders geven aan dat een opgeleverd onderdeel niet voldoet aan hun verwachtingen. Wat doe je tijdens de Sprint Review?",
+            "Je bespreekt de feedback openlijk, past eventueel de Product Backlog aan, en leert voor toekomstige sprints."
+    );
+    public Opdracht sprintRetrospectiveOpdracht = new OpenOpdracht(
+            "Tijdens de sprint waren er veel onderbrekingen door onverwachte verzoeken van buitenaf. Wat kan het team hiervan leren?",
+            "Het team moet de sprint beter afbakenen en storingen beperken door duidelijke afspraken met stakeholders te maken."
+    );
+    public Opdracht finaleTIAOpdracht = new OpenOpdracht(
+            "Wat betekent TIA en waarom is Scrum hier een goede aanpak voor?",
+            "TIA betekent Things In Action. Scrum is geschikt omdat het snel feedback oplevert, wendbaar is en teamwork bevordert om iteratief tot resultaat te komen."
+    );
+
+
 
     public void startSpel() {
         Scanner scanner = new Scanner(System.in);
