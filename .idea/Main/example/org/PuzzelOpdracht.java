@@ -26,4 +26,8 @@ public class PuzzelOpdracht implements Opdracht{
                         .orElse("")
         );
     }
+
+    public Map<String, String> getJuisteKoppels(){
+        return juisteKoppels;
+    }
 }

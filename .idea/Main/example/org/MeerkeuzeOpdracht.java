@@ -24,4 +24,8 @@ public class MeerkeuzeOpdracht implements Opdracht{
         return this.juistAntwoord.equalsIgnoreCase(antwoord.trim());
     }
 
+    public String getJuistAntwoord(){
+        return juistAntwoord;
+    }
+
 }
