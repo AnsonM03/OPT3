@@ -47,6 +47,12 @@ public class ScrumSpel {
             }
         }
 
+        for (Kamer kamer : kamers.values()) {
+            if (kamer instanceof StandaardKamer standaardKamer) {
+                standaardKamer.addObserver(standaardKamer.getDeur());
+            }
+        }
+
         System.out.println("\nWelkom bij het ScrumSpel, " + naam + "!");
         System.out.println("Je begint in kamer " + speler.getHuidigeKamer() + " met " + speler.getHp() + " HP.");
 
@@ -127,6 +133,18 @@ public class ScrumSpel {
             if (kamernummer > huidigeKamerNr + 1) {
                 System.out.println("Je kunt alleen naar de volgende kamer gaan (kamer " + (huidigeKamerNr + 1) + ")");
                 return;
+            }
+
+            // 💡 Check if the deur is open
+            if (kamernummer == huidigeKamerNr + 1) {
+                Kamer huidigeKamer = kamers.get(huidigeKamerNr);
+                if (huidigeKamer instanceof StandaardKamer standaardKamer) {
+                    Deur deur = standaardKamer.getDeur();
+                    if (!deur.isOpen()) {
+                        // 🚫 Deur is gesloten, don't change kamers
+                        return;
+                    }
+                }
             }
 
             veranderKamer(kamernummer);
