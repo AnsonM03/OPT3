@@ -1,7 +1,7 @@
 package example.org;
 
 abstract class Kamer {
-    abstract int getNummer();
-    abstract String getBeschrijving();
-    abstract Opdracht getOpdracht();
+    public abstract int getNummer();
+    public abstract String getBeschrijving();
+    public abstract Opdracht getOpdracht();
 }
