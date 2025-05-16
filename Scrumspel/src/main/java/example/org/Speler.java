@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
-public class Speler {
+public class Speler implements SQLSavable{
     private String naam;
     private int huidigeKamer;
     private int hp;
@@ -16,12 +18,6 @@ public class Speler {
         this.huidigeKamer = 0;
     }
 
-    public void neemSchade(int schade){
-        this.hp -= schade;
-        if(this.hp < 0){
-            this.hp = 0;
-        }
-    }
 
     public void toonStatus() {
         System.out.println("Speler: " + naam);
@@ -45,46 +41,23 @@ public class Speler {
         this.huidigeKamer = kamer;
     }
 
-public void saveToDatabase() {
-    String query = """
-            INSERT INTO speler (naam, hp, kamer) 
-            VALUES (?, ?, ?)
-            ON DUPLICATE KEY UPDATE
-            hp = VALUES(hp),
-            kamer = VALUES(kamer);
-            """;
-
-    try (Connection conn = DatabaseConnector.getConnection();
-         PreparedStatement stmt = conn.prepareStatement(query)) {
-
-        stmt.setString(1, naam);
-        stmt.setInt(2, hp);
-        stmt.setInt(3, huidigeKamer);
-        stmt.executeUpdate();
-        System.out.println("Speler opgeslagen in de database");
-    } catch (SQLException e) {
-        System.out.println("Fout bij het opslaan speler: " + e.getMessage());
+    @Override
+    public String getTableName() {
+        return "speler";
     }
-}
 
-public void loadFromDatabase() {
-    String query = "SELECT hp, kamer FROM speler WHERE naam = ?";
+    @Override
+    public List<String> getColumnNames() {
+        return Arrays.asList("naam", "hp", "kamer");
+    }
 
-    try (Connection conn = DatabaseConnector.getConnection();
-         PreparedStatement stmt = conn.prepareStatement(query)) {
+    @Override
+    public List<Object> getValues() {
+        return Arrays.asList(naam, hp, huidigeKamer);
+    }
 
-        stmt.setString(1, naam);
-        ResultSet rs = stmt.executeQuery();
-
-        if (rs.next()) {
-            this.hp = rs.getInt("hp");
-            this.huidigeKamer = rs.getInt("kamer");
-            System.out.println("Speler voortgang geladen");
-        } else {
-            System.out.println("Geen bestaande voortgang gevonden");
-        }
-    } catch (SQLException e) {
-        System.out.println("Fout bij laden speler: " + e.getMessage());
-        }
+    @Override
+    public String toString() {
+        return "Speler{naam='" + naam + "', hp= "+ hp + ", kamer= " + huidigeKamer + "}";
     }
 }

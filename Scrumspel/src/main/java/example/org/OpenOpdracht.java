@@ -1,6 +1,9 @@
 package example.org;
 
-public class OpenOpdracht implements Opdracht{
+import java.util.Arrays;
+import java.util.List;
+
+public class OpenOpdracht implements Opdracht, SQLSavable{
     private String vraag;
     private String antwoord;
 
@@ -22,5 +25,26 @@ public class OpenOpdracht implements Opdracht{
     public String getAntwoord(){
         return this.antwoord;
     }
+
+    @Override
+    public String getTableName() {
+        return "open_opdrachten";
+    }
+
+    @Override
+    public List<String> getColumnNames() {
+        return Arrays.asList("vraag", "antwoord");
+    }
+
+    @Override
+    public List<Object> getValues() {
+        return Arrays.asList(vraag, antwoord);
+    }
+
+    @Override
+    public String toString() {
+        return "OpenOpdracht{vraag='" + vraag + "', antwoord='" + antwoord + "'}";
+    }
+
 
 }
