@@ -1,13 +1,12 @@
 package example.org;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class ScrumSpel {
     public Map<Integer, Kamer> kamers = new HashMap<>();
     private Speler speler;
     private Monster monster;
+
 
     public ScrumSpel() {
         initializeKamers();
@@ -28,13 +27,16 @@ public class ScrumSpel {
     public Opdracht opdracht4 = new OpenOpdracht("Noem de drie artefacten in Scrum.", "Product Backlog, Sprint Backlog en Increment.");
     public Opdracht opdracht5 = new OpenOpdracht("Wat is het doel van een Retrospective?", "Het team verbetert zijn proces door reflectie.");
 
+
     public void startSpel() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Voer je naam in: ");
         String naam = scanner.nextLine();
 
         speler = new Speler(naam, 100);
-        speler.loadFromDatabase();
+//        SQLSaver.saveToDatabase((SQLSavable) speler);
+//        SQLLoader.loadFromDatabase("speler");
+
 
         System.out.println("\nWelkom bij het ScrumSpel, " + naam + "!");
         System.out.println("Je begint in kamer " + speler.getHuidigeKamer() + " met " + speler.getHp() + " HP.");
@@ -67,7 +69,7 @@ public class ScrumSpel {
 
                 case "stop":
                     System.out.println("Spel opslaan en afsluiten...");
-                    speler.saveToDatabase();
+                    SQLSaver.saveToDatabase((SQLSavable) speler);
                     spelActief = false;
                     break;
 
@@ -105,7 +107,7 @@ public class ScrumSpel {
             }
         }
 
-        speler.saveToDatabase();
+        SQLSaver.saveToDatabase((SQLSavable) speler);
     }
 
     private void verwerkKamerVerandering(String input) {
@@ -157,7 +159,7 @@ public class ScrumSpel {
         if (kamers.containsKey(kamerId)) {
             speler.setHuidigeKamer(kamerId);
             System.out.println("Je bent nu in kamer " + kamerId + ".");
-            speler.saveToDatabase();
+            SQLSaver.saveToDatabase((SQLSavable) speler);
         } else {
             System.out.println("Kamer " + kamerId + " bestaat niet.");
         }
@@ -197,9 +199,10 @@ public class ScrumSpel {
 
             if (standaardKamer.controleerAntwoord(antwoord)) {
                 System.out.println("✅ Goed! Je mag nu naar de volgende kamer.");
-                speler.saveToDatabase();
+                SQLSaver.saveToDatabase((SQLSavable) speler);
             } else {
-                speler.neemSchade(monster.getSchade());
+//                speler.neemSchade(monster.getSchade());
+                monster.valAan(speler);
                 System.out.println("❌ Fout! Het juiste antwoord is: " + standaardKamer.getAntwoord());
                 System.out.println("Het monster valt aan en doet " + monster.getSchade() + " schade!");
                 System.out.println("Je huidige HP: " + speler.getHp());
@@ -207,7 +210,7 @@ public class ScrumSpel {
                 if (speler.getHp() <= 0) {
                     System.out.println("Je hebt geen HP meer! Game over.");
                 }
-                speler.saveToDatabase();
+                SQLSaver.saveToDatabase((SQLSavable) speler);
             }
         }
     }

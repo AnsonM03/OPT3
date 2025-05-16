@@ -9,7 +9,12 @@ public class Monster {
 
     public void valAan(Speler speler){
         System.out.println("Je heef fout beantwoord, het monster heeft " + schade + "HP van je afgepakt!");
-        speler.neemSchade(schade);
+        int hp = speler.getHp();
+        int hpNaSchade = hp -= schade;
+        speler.setHp(hpNaSchade);
+        if(hp < 0){
+            hp = 0;
+        }
     }
 
     public int getSchade(){
