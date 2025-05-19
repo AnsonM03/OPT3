@@ -1,4 +1,4 @@
-package example.org;
+package example.org.Templates;
 
 public interface Observable {
     void addObserver(Observer o);

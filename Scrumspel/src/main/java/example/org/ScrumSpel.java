@@ -1,5 +1,12 @@
 package example.org;
 
+import example.org.Templates.Opdracht;
+import example.org.opdrachten.OpenOpdracht;
+import example.org.players.Monster;
+import example.org.players.Speler;
+import example.org.utils.SQLLoader;
+import example.org.utils.SQLSaver;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -54,7 +61,7 @@ public class ScrumSpel {
         String naam = scanner.nextLine();
 
         speler = new Speler(naam, 100);
-        speler.loadFromDatabase();
+        SQLLoader.loadFromDatabase("speler");
 
         // Monster is now an observer, needs speler reference
         monster = new Monster(40, speler);
@@ -99,7 +106,7 @@ public class ScrumSpel {
                     break;
                 case "stop":
                     System.out.println("Spel opslaan en afsluiten...");
-                    speler.saveToDatabase();
+                    SQLSaver.saveToDatabase(speler);
                     spelActief = false;
                     break;
                 case "beantwoord":
@@ -132,7 +139,7 @@ public class ScrumSpel {
             }
         }
 
-        speler.saveToDatabase();
+        SQLSaver.saveToDatabase(speler);
     }
     private void verwerkKamerVerandering(String input) {
         try {
@@ -176,7 +183,7 @@ public class ScrumSpel {
         if (kamers.containsKey(kamerId)) {
             speler.setHuidigeKamer(kamerId);
             System.out.println("Je bent nu in kamer " + kamerId + ".");
-            speler.saveToDatabase();
+            SQLSaver.saveToDatabase(speler);
         } else {
             System.out.println("Kamer " + kamerId + " bestaat niet.");
         }
@@ -213,7 +220,7 @@ public class ScrumSpel {
                 System.out.println("✅ Goed!");
             }
 
-            speler.saveToDatabase();
+            SQLSaver.saveToDatabase(speler);
         }
     }
 }

@@ -1,4 +1,4 @@
-package example.org;
+package example.org.Templates;
 
 public interface Opdracht {
     String getVraag();

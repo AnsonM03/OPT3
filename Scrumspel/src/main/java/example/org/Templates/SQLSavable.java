@@ -1,4 +1,4 @@
-package example.org;
+package example.org.Templates;
 
 import java.util.List;
 

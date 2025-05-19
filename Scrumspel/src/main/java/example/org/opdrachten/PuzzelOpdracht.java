@@ -1,8 +1,10 @@
-package example.org;
+package example.org.opdrachten;
+
+import example.org.Templates.Opdracht;
 
 import java.util.Map;
 
-public class PuzzelOpdracht implements Opdracht{
+public class PuzzelOpdracht implements Opdracht {
     private String vraag;
     private Map<String, String> juisteKoppels;
 

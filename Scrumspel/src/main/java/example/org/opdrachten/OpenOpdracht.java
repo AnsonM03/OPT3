@@ -1,9 +1,12 @@
-package example.org;
+package example.org.opdrachten;
+
+import example.org.Templates.Opdracht;
+import example.org.Templates.SQLSavable;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class OpenOpdracht implements Opdracht, SQLSavable{
+public class OpenOpdracht implements Opdracht, SQLSavable {
     private String vraag;
     private String antwoord;
 

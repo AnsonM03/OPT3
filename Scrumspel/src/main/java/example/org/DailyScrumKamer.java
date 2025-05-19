@@ -1,5 +1,7 @@
 package example.org;
 
+import example.org.Templates.Opdracht;
+
 public class DailyScrumKamer extends Kamer {
     private int nummer;
     private String beschrijving;

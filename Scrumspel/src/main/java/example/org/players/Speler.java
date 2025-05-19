@@ -1,13 +1,11 @@
-package example.org;
+package example.org.players;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import example.org.Templates.SQLSavable;
+
 import java.util.Arrays;
 import java.util.List;
 
-public class Speler implements SQLSavable{
+public class Speler implements SQLSavable {
     private String naam;
     private int huidigeKamer;
     private int hp;

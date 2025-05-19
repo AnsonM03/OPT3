@@ -1,6 +1,8 @@
-package example.org;
+package example.org.players;
 
-public class Monster implements Observer{
+import example.org.Templates.Observer;
+
+public class Monster implements Observer {
     private int schade;
     private Speler speler;
 

@@ -1,5 +1,7 @@
 package example.org;
 
+import example.org.Templates.Observer;
+
 public class Deur implements Observer {
     private boolean isOpen;
 

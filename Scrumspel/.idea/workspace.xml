@@ -5,37 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81a37218-2e0c-46e4-bf03-9d65438747c7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/DailyScrumKamer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/DatabaseConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/Deur.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/FinaleTIAKamer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/Kamer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/MeerkeuzeOpdracht.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/Monster.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/Observable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/Observer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/Opdracht.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/OpenOpdracht.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/PuzzelOpdracht.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/ScrumBoardKamer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/ScrumSpel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/Speler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/SprintPlanningKamer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/SprintRetrospectiveKamer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/SprintReviewKamer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Main/example/org/StandaardKamer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/OPT3.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/DailyScrumKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/DailyScrumKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/DatabaseConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Deur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Deur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/FinaleTIAKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/FinaleTIAKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Kamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Kamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Mapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/MeerkeuzeOpdracht.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/opdrachten/MeerkeuzeOpdracht.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/players/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Observable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Observable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Opdracht.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Opdracht.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/OpenOpdracht.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/opdrachten/OpenOpdracht.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/OpenOpdrachtMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/opdrachten/OpenOpdrachtMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/PuzzelOpdracht.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/opdrachten/PuzzelOpdracht.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SQLLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/SQLLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SQLSavable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/SQLSavable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SQLSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/SQLSaver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumBoardKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/ScrumBoardKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Speler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/players/Speler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintPlanningKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/SprintPlanningKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintRetrospectiveKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/SprintRetrospectiveKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintReviewKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/SprintReviewKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/StandaardKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/StandaardKamer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,22 +46,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "damikastaneer23172355"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;damikastaneer23172355&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/AnsonM03/OPT3.git",
-    "accountId": "27d675ae-ef89-49b8-b2c6-22c021ffe36d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AnsonM03/OPT3.git&quot;,
+    &quot;accountId&quot;: &quot;27d675ae-ef89-49b8-b2c6-22c021ffe36d&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2xAkLKrlnuadWlmMuBb2GNO4U2f" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -78,7 +72,7 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "US__19__OCP",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/Users/Dami/Desktop/OPT3/Scrumspel/src/main/java/example/org/Main.java",
     "project.structure.last.edited": "Modules",
