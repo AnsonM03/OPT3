@@ -5,31 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81a37218-2e0c-46e4-bf03-9d65438747c7" name="Changes" comment="">
+
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/DailyScrumKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/DailyScrumKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/DatabaseConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Deur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Deur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/FinaleTIAKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/FinaleTIAKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Kamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Kamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Mapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/MeerkeuzeOpdracht.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/opdrachten/MeerkeuzeOpdracht.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/players/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Observable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Observable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Observer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Opdracht.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Opdracht.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/OpenOpdracht.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/opdrachten/OpenOpdracht.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/OpenOpdrachtMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/opdrachten/OpenOpdrachtMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/PuzzelOpdracht.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/opdrachten/PuzzelOpdracht.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SQLLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/SQLLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SQLSavable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/SQLSavable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SQLSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/SQLSaver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumBoardKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/ScrumBoardKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Speler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/players/Speler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintPlanningKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/SprintPlanningKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintRetrospectiveKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/SprintRetrospectiveKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintReviewKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/SprintReviewKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/StandaardKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/StandaardKamer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="Anson" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -55,7 +39,8 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/AnsonM03/OPT3.git&quot;,
-    &quot;accountId&quot;: &quot;27d675ae-ef89-49b8-b2c6-22c021ffe36d&quot;
+
+    &quot;accountId&quot;: &quot;e0aaaa26-053a-4181-800c-c24d54871c49&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -71,15 +56,36 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "US__19__OCP",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/ansonmok/IdeaProjects/OPT3/Scrumspel",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/Dami/Desktop/OPT3/Scrumspel/src/main/java/example/org/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.." />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -88,7 +94,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1747388210479</updated>
+      <workItem from="1747390785554" duration="51000" />
+      <workItem from="1747390845719" duration="485000" />
+      <workItem from="1747391342544" duration="354000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

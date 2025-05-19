@@ -27,4 +27,15 @@ public class SprintRetrospectiveKamer extends Kamer {
     public Opdracht getOpdracht() {
         return opdracht;
     }
+
+    public static SprintRetrospectiveKamer maakKamer() {
+        return new SprintRetrospectiveKamer(
+                5,
+                "Sprint Retrospective: Reflecteer op het teamproces. Leer je niet van fouten, dan verschijnt het monster 'Herhaalfouten'.",
+                new OpenOpdracht(
+                        "Tijdens de sprint waren er veel onderbrekingen door onverwachte verzoeken van buitenaf. Wat kan het team hiervan leren?",
+                        "Het team moet de sprint beter afbakenen en storingen beperken door duidelijke afspraken met stakeholders te maken."
+                )
+        );
+    }
 }

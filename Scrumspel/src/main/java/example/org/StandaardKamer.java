@@ -9,7 +9,7 @@ import example.org.opdrachten.PuzzelOpdracht;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StandaardKamer extends Kamer{
+public class StandaardKamer extends Kamer {
     private int nummer;
     private String beschrijving;
     private Opdracht opdracht;
@@ -42,6 +42,7 @@ public class StandaardKamer extends Kamer{
     public String getVraag() {
         return opdracht.getVraag();
     }
+
     public Deur getDeur() {
         return deur;
     }
@@ -91,5 +92,16 @@ public class StandaardKamer extends Kamer{
 
     private String normalizeAntwoord(String antwoord) {
         return antwoord.toLowerCase().replaceAll("[.,!?]", "").trim();
+    }
+
+    public static StandaardKamer maakKamer() {
+        return new StandaardKamer(
+                0,
+                "Je staat in de startkamer",
+                new OpenOpdracht(
+                        "Wat is de hoofdrol van de Product Owner in Scrum?",
+                        "Het beheren van de Product Backlog en zorgen dat het team waarde levert."
+                )
+        );
     }
 }
