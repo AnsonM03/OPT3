@@ -1,6 +1,7 @@
 package example.org;
 
 import example.org.Templates.Opdracht;
+import example.org.opdrachten.OpenOpdracht;
 
 public class SprintRetrospectiveKamer extends Kamer {
     private int nummer;
