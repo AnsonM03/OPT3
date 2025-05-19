@@ -10,7 +10,6 @@ public class SprintPlanningKamer extends Kamer {
     private Opdracht opdracht;
 
     public SprintPlanningKamer(int nummer, String beschrijving, Opdracht opdracht) {
-        super(nummer, beschrijving, opdracht);
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;

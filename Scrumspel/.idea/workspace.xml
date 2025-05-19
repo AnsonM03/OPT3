@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81a37218-2e0c-46e4-bf03-9d65438747c7" name="Changes" comment="">
-
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/RoomChanger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintPlanningKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/SprintPlanningKamer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,13 +20,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="Anson" />
+        <entry key="$PROJECT_DIR$/.." value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -58,7 +60,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "US__19__OCP",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "nathan",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/ansonmok/IdeaProjects/OPT3/Scrumspel",
     "node.js.detected.package.eslint": "true",
