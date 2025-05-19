@@ -1,4 +1,7 @@
-package example.org;
+package example.org.utils;
+
+import example.org.DatabaseConnector;
+import example.org.Templates.Mapper;
 
 import java.util.*;
 import java.sql.*;

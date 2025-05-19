@@ -1,8 +1,10 @@
-package example.org;
+package example.org.opdrachten;
+
+import example.org.Templates.Opdracht;
 
 import java.util.List;
 
-public class MeerkeuzeOpdracht implements Opdracht{
+public class MeerkeuzeOpdracht implements Opdracht {
     private String vraag;
     private List<String> opties;
     private String juistAntwoord;

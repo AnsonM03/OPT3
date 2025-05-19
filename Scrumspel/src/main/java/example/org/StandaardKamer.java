@@ -1,5 +1,11 @@
 package example.org;
 
+import example.org.Templates.Observer;
+import example.org.Templates.Opdracht;
+import example.org.opdrachten.MeerkeuzeOpdracht;
+import example.org.opdrachten.OpenOpdracht;
+import example.org.opdrachten.PuzzelOpdracht;
+
 import java.util.ArrayList;
 import java.util.List;
 

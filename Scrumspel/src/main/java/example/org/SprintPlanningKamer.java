@@ -1,6 +1,9 @@
 package example.org;
 
-public class SprintPlanningKamer extends StandaardKamer {
+import example.org.Templates.Opdracht;
+
+public class SprintPlanningKamer extends Kamer {
+
     private int nummer;
     private String beschrijving;
     private Opdracht opdracht;

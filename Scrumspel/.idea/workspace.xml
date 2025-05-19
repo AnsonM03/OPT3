@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81a37218-2e0c-46e4-bf03-9d65438747c7" name="Changes" comment="">
+
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" afterDir="false" />
@@ -38,6 +39,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/AnsonM03/OPT3.git&quot;,
+
     &quot;accountId&quot;: &quot;e0aaaa26-053a-4181-800c-c24d54871c49&quot;
   }
 }</component>
@@ -56,7 +58,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "US__19__OCP",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/ansonmok/IdeaProjects/OPT3/Scrumspel",
     "node.js.detected.package.eslint": "true",
