@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81a37218-2e0c-46e4-bf03-9d65438747c7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/MessageProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/RewardGiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Wapen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/Beloning.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/Kamerinfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/Zwaard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/RoomChanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/RoomChanger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/players/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/players/Monster.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +71,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "Anson",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/ansonmok/IdeaProjects/OPT3/Scrumspel",
     "node.js.detected.package.eslint": "true",

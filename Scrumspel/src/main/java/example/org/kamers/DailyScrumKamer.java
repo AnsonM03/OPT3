@@ -4,6 +4,7 @@ import example.org.Deur;
 import example.org.Templates.Kamer;
 import example.org.Templates.Observer;
 import example.org.Templates.Opdracht;
+import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
 
@@ -17,6 +18,7 @@ public class DailyScrumKamer extends Kamer {
     private Deur deur;
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
+    private RewardGiver beloning;
 
     public DailyScrumKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
         this.nummer = nummer;
@@ -50,13 +52,6 @@ public class DailyScrumKamer extends Kamer {
         return beantwoordCorrect;
     }
 
-
-    public void notifyObserver(boolean antwoordCorrect) {
-        for (Observer observer : observers) {
-            observer.update(antwoordCorrect);
-        }
-    }
-
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
         this.beantwoordCorrect = beantwoord;
@@ -70,12 +65,30 @@ public class DailyScrumKamer extends Kamer {
 
     @Override
     public boolean controleerAntwoord(String antwoord) {
-        return opdracht.controleerAntwoord(antwoord);
+        boolean correct = opdracht.controleerAntwoord(antwoord);
+        if (correct) {
+            setBeantwoordCorrect(true);
+            deur.isOpen();
+            beloning.grantReward();
+        }
+        return correct;
     }
 
     @Override
     public boolean addObserver(Deur deur, Monster monster) {
-        return false;
+        if (deur != null) {
+            observers.add(deur);
+        }
+        if (monster != null) {
+            observers.add(monster);
+        }
+        return true;
+    }
+
+    public void notifyObserver(boolean antwoordCorrect) {
+        for (Observer observer : observers) {
+            observer.update(antwoordCorrect);
+        }
     }
 
     public static DailyScrumKamer maakKamer() {

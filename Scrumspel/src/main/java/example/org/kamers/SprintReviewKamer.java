@@ -65,7 +65,13 @@ public class SprintReviewKamer extends Kamer {
 
     @Override
     public boolean addObserver(Deur deur, Monster monster) {
-        return false;
+        if (deur != null) {
+            observers.add(deur);
+        }
+        if (monster != null) {
+            observers.add(monster);
+        }
+        return true;
     }
 
     public void notifyObserver(boolean antwoordCorrect) {

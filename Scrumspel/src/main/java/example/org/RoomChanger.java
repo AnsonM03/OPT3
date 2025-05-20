@@ -51,7 +51,7 @@ public class RoomChanger {
                 Kamer huidigeKamer = kamers.get(huidigeKamerNr);
                 Deur deur = huidigeKamer.getDeur();
                 if (deur != null && !deur.isOpen()) {
-                    System.out.println("De deur is nog gesloten!");
+                    System.out.println("🔒 De deur is nog gesloten!");
                     return;
                 }
             }

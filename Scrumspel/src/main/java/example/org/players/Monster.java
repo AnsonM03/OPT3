@@ -23,7 +23,6 @@ public class Monster implements Observer {
 
         if (!antwoordCorrect) {
             HintProvider funnyHint = hintFactory.getHint("funny");
-            System.out.println("❌ Het antwoord is fout!");
             System.out.println("👹 Het monster valt aan en doet " + schade + " schade!");
             int hp = speler.getHp();
             int hpNaSchade = hp -= schade;
