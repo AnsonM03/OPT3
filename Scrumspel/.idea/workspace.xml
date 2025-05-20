@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81a37218-2e0c-46e4-bf03-9d65438747c7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/MessageProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/RewardGiver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Wapen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/Beloning.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/Kamerinfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/Zwaard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/DailyScrumKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Deur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Deur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/FinaleTIAKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Kamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Kamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/RoomChanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/RoomChanger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumBoardKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintPlanningKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintRetrospectiveKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintReviewKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/StandaardKamer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Templates/Observable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Observable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/players/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/players/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/players/Speler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/players/Speler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -63,32 +58,35 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2xAkLKrlnuadWlmMuBb2GNO4U2f" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;nathan&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ansonmok/IdeaProjects/OPT3/Scrumspel&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Dami/Desktop/OPT3/Scrumspel/src/main/java/example/org/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "Anson",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/ansonmok/IdeaProjects/OPT3/Scrumspel",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/Dami/Desktop/OPT3/Scrumspel/src/main/java/example/org/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/.." />

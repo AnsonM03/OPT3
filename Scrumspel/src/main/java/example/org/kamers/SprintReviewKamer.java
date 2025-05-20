@@ -4,8 +4,11 @@ import example.org.Deur;
 import example.org.Templates.Kamer;
 import example.org.Templates.Observer;
 import example.org.Templates.Opdracht;
+import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
+import example.org.utils.Beloning;
+import example.org.utils.Kamerinfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,12 @@ public class SprintReviewKamer extends Kamer {
     private Deur deur;
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
+    private RewardGiver beloning;
+    private transient Kamerinfo infoBoek = new Kamerinfo("Welkom in de Sprint Review Kamer. Hier leer je omgaan met feedback van stakeholders.");
+
+    public void toonIntro() {
+        infoBoek.showMessage();
+    }
 
     public SprintReviewKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
         this.nummer = nummer;
@@ -24,6 +33,9 @@ public class SprintReviewKamer extends Kamer {
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect = false;
+        this.beloning = new Beloning();
+        this.infoBoek = new Kamerinfo("Welkom in de Sprint Review Kamer. Hier leer je omgaan met feedback van stakeholders.");
+        toonIntro();
     }
 
     @Override
@@ -79,6 +91,7 @@ public class SprintReviewKamer extends Kamer {
         if (correct) {
             setBeantwoordCorrect(true);
             deur.isOpen();
+            beloning.grantReward();
         }
         return correct;
     }

@@ -4,8 +4,10 @@ import example.org.Deur;
 import example.org.Templates.Kamer;
 import example.org.Templates.Observer;
 import example.org.Templates.Opdracht;
+import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
+import example.org.utils.Beloning;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,7 @@ public class SprintPlanningKamer extends Kamer {
     private Deur deur;
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
+    private RewardGiver beloning;
 
 
     public SprintPlanningKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
@@ -26,6 +29,7 @@ public class SprintPlanningKamer extends Kamer {
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect  = false;
+        this.beloning = new Beloning();
     }
 
     @Override
@@ -71,6 +75,7 @@ public class SprintPlanningKamer extends Kamer {
         if (correct) {
             setBeantwoordCorrect(true);
             deur.isOpen();
+            beloning.grantReward();
         }
         return correct;
     }
