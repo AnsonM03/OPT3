@@ -46,6 +46,7 @@ public class ScrumSpel {
 
         // Register observers for all rooms
         for (Kamer kamer : kamers.values()) {
+            // Add both door and monster as observers
             kamer.addObserver(kamer.getDeur(), monster);
         }
 
@@ -81,7 +82,11 @@ public class ScrumSpel {
                     spelActief = false;
                     break;
                 case "beantwoord":
-                    toonVraagEnControleerAntwoord();
+                    Kamer huidigeKamer = kamers.get(speler.getHuidigeKamer());
+                    boolean correct = huidigeKamer.handlePlayerAnswer();
+                    if (correct) {
+                        SQLSaver.saveToDatabase(speler);
+                    }
                     break;
                 default:
                     if (input.startsWith("ga naar kamer ")) {
@@ -104,28 +109,6 @@ public class ScrumSpel {
         speler.setHp(100);
         speler.setHuidigeKamer(0);
 
-        SQLSaver.saveToDatabase(speler);
-    }
-
-    private void toonVraagEnControleerAntwoord() {
-        Kamer kamer = kamers.get(speler.getHuidigeKamer());
-        if (kamer.isBeantwoordCorrect()) {
-            System.out.println("Je hebt deze vraag al correct beantwoord!");
-            return;
-        }
-
-        System.out.print(kamer.getVraag() + "\nJe antwoord: ");
-        Scanner scanner = new Scanner(System.in);
-        String antwoord = scanner.nextLine();
-
-        boolean correct = kamer.controleerAntwoord(antwoord);
-
-        if (correct) {
-            System.out.println("✅ Goed!");
-            // Notify observers that the question was answered correctly
-            kamer.setBeantwoordCorrect(true);
-            kamer.notifyObserver(true); // This should trigger the door to open
-        }
         SQLSaver.saveToDatabase(speler);
     }
 }

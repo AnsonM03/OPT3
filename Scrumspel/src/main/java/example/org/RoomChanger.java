@@ -73,7 +73,7 @@ public class RoomChanger {
         } else {
             Deur deur = kamer.getDeur();
             if (deur != null) {
-                deur.displayStatus();
+                deur.update(false);
             }
         }
     }
