@@ -2,7 +2,7 @@ package example.org.players;
 
 import example.org.Templates.Observer;
 
-public class Monster implements Observer {
+public class Monster implements Observer{
     private int schade;
     private Speler speler;
 

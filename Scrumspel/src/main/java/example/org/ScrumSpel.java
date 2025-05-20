@@ -1,7 +1,7 @@
 package example.org;
 
-import example.org.Templates.Opdracht;
-import example.org.opdrachten.OpenOpdracht;
+import example.org.Templates.Kamer;
+import example.org.kamers.*;
 import example.org.players.Monster;
 import example.org.players.Speler;
 import example.org.utils.SQLLoader;
@@ -22,7 +22,6 @@ public class ScrumSpel {
     }
 
     private void initializeKamers() {
-        kamers.put(0, StandaardKamer.maakKamer());
         kamers.put(1, SprintPlanningKamer.maakKamer());
         kamers.put(2, DailyScrumKamer.maakKamer());
         kamers.put(3, ScrumBoardKamer.maakKamer());
@@ -37,6 +36,7 @@ public class ScrumSpel {
         String naam = scanner.nextLine();
 
         speler = new Speler(naam, 100);
+        speler.setHuidigeKamer(1);
         SQLLoader.loadFromDatabase("speler");
 
         roomChanger = new RoomChanger(speler, kamers);
@@ -44,18 +44,11 @@ public class ScrumSpel {
         // Monster is now an observer, needs speler reference
         monster = new Monster(40, speler);
 
-        // Register the monster as observer to all standaardkamers
+        // Register observers for all rooms
         for (Kamer kamer : kamers.values()) {
-            if (kamer instanceof StandaardKamer) {
-                ((StandaardKamer) kamer).addObserver(monster);
-            }
+            kamer.addObserver(kamer.getDeur(), monster);
         }
 
-        for (Kamer kamer : kamers.values()) {
-            if (kamer instanceof StandaardKamer standaardKamer) {
-                standaardKamer.addObserver(standaardKamer.getDeur());
-            }
-        }
 
         System.out.println("\nWelkom bij het ScrumSpel, " + naam + "!");
         System.out.println("Je begint in kamer " + speler.getHuidigeKamer() + " met " + speler.getHp() + " HP.");
@@ -111,36 +104,28 @@ public class ScrumSpel {
         speler.setHp(100);
         speler.setHuidigeKamer(0);
 
-        for (Kamer kamer : kamers.values()) {
-            if (kamer instanceof StandaardKamer) {
-                ((StandaardKamer) kamer).setBeantwoordCorrect(false);
-            }
-        }
-
         SQLSaver.saveToDatabase(speler);
     }
 
-
-
     private void toonVraagEnControleerAntwoord() {
         Kamer kamer = kamers.get(speler.getHuidigeKamer());
-        if (kamer instanceof StandaardKamer standaardKamer) {
-            if (standaardKamer.isBeantwoordCorrect()) {
-                System.out.println("Je hebt deze vraag al correct beantwoord!");
-                return;
-            }
-
-            System.out.print(standaardKamer.getVraag() + "\nJe antwoord: ");
-            Scanner scanner = new Scanner(System.in);
-            String antwoord = scanner.nextLine();
-
-            boolean correct = standaardKamer.controleerAntwoord(antwoord);
-
-            if (correct) {
-                System.out.println("✅ Goed!");
-            }
-
-            SQLSaver.saveToDatabase(speler);
+        if (kamer.isBeantwoordCorrect()) {
+            System.out.println("Je hebt deze vraag al correct beantwoord!");
+            return;
         }
+
+        System.out.print(kamer.getVraag() + "\nJe antwoord: ");
+        Scanner scanner = new Scanner(System.in);
+        String antwoord = scanner.nextLine();
+
+        boolean correct = kamer.controleerAntwoord(antwoord);
+
+        if (correct) {
+            System.out.println("✅ Goed!");
+            // Notify observers that the question was answered correctly
+            kamer.setBeantwoordCorrect(true);
+            kamer.notifyObserver(true); // This should trigger the door to open
+        }
+        SQLSaver.saveToDatabase(speler);
     }
 }

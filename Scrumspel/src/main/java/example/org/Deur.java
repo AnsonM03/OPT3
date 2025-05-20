@@ -3,33 +3,30 @@ package example.org;
 import example.org.Templates.Observer;
 
 public class Deur implements Observer {
-    private boolean isOpen;
+    private boolean open;
 
-    public Deur() {
-        this.isOpen = false;
+    public Deur(boolean open) {
+        this.open = open;
+    }
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
     }
 
     @Override
     public void update(boolean antwoordCorrect) {
         if (antwoordCorrect) {
-            open();
+            setOpen(true);
         }
-    }
-
-    public void open() {
-        isOpen = true;
-    }
-
-    public boolean isOpen() {
-        if (!isOpen) {
-            System.out.println("🚪 De deur is gesloten. Beantwoord eerst de vraag.");
-        }
-        return isOpen;
     }
 
 
     public void displayStatus() {
-        if (isOpen) {
+        if (open) {
             System.out.println("🟢 De deur is open.");
         } else {
             System.out.println("🔴 De deur is gesloten.");

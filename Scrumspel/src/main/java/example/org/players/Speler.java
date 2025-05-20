@@ -13,7 +13,7 @@ public class Speler implements SQLSavable {
     public Speler(String naam, int hp) {
         this.naam = naam;
         this.hp = hp;
-        this.huidigeKamer = 0;
+        this.huidigeKamer = 1;
     }
 
 
