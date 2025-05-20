@@ -17,19 +17,11 @@ public class Deur implements Observer {
         this.open = open;
     }
 
-    @Override
     public void update(boolean antwoordCorrect) {
         if (antwoordCorrect) {
             setOpen(true);
+            System.out.println("🔓 De deur gaat open!");
         }
     }
 
-
-    public void displayStatus() {
-        if (open) {
-            System.out.println("🟢 De deur is open.");
-        } else {
-            System.out.println("🔴 De deur is gesloten.");
-        }
-    }
 }

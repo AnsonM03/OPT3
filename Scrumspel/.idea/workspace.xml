@@ -6,20 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="81a37218-2e0c-46e4-bf03-9d65438747c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/DailyScrumKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Deur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Deur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/FinaleTIAKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Kamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Kamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/RoomChanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/RoomChanger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumBoardKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintPlanningKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintRetrospectiveKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/SprintReviewKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/StandaardKamer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Templates/Observable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Observable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Templates/Kamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Kamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/players/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/players/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/players/Speler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/players/Speler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -61,7 +61,7 @@ public class FinaleTIAKamer extends Kamer {
 
     @Override
     public boolean controleerAntwoord(String antwoord) {
-        return false;
+        return opdracht.controleerAntwoord(antwoord);
     }
 
     @Override

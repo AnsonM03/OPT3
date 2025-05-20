@@ -14,14 +14,13 @@ public class Monster implements Observer{
     @Override
     public void update(boolean antwoordCorrect) {
         if (!antwoordCorrect) {
-            System.out.println("❌ Het antwoord is fout!");
             System.out.println("👹 Het monster valt aan en doet " + schade + " schade!");
-            int hp = speler.getHp();
-            int hpNaSchade = hp -= schade;
-            speler.setHp(hpNaSchade);
-            if(hp < 0){
-                hp = 0;
+            int hpNaSchade = speler.getHp() - schade;
+            if (hpNaSchade < 0) {
+                hpNaSchade = 0;
             }
+            speler.setHp(hpNaSchade);
+            System.out.println("Je hebt nu " + hpNaSchade + " HP over.");
         } else {
             System.out.println("✅ Het monster verdwijnt...");
         }

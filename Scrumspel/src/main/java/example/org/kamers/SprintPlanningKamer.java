@@ -56,8 +56,9 @@ public class SprintPlanningKamer extends Kamer {
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
         this.beantwoordCorrect = beantwoord;
-        deur.isOpen();
-        notifyObserver(true);
+        if (beantwoord) {
+            deur.setOpen(true);
+        }
     }
 
     @Override
@@ -67,30 +68,34 @@ public class SprintPlanningKamer extends Kamer {
 
     @Override
     public boolean controleerAntwoord(String antwoord) {
-        boolean correct = opdracht.controleerAntwoord(antwoord);
-        if (correct) {
-            setBeantwoordCorrect(true);
-            deur.isOpen();
-        }
-        return correct;
+        return opdracht.controleerAntwoord(antwoord);
     }
 
     public static SprintPlanningKamer maakKamer() {
-        return new SprintPlanningKamer(
+        Deur deur = new Deur(false);
+        SprintPlanningKamer kamer =  new SprintPlanningKamer(
                 1,
                 "Je staat in Kamer 1 (Sprint Planning Kamer)",
                 new OpenOpdracht(
                         "Welke taken neem je op in de sprint planning?",
                         "Alleen taken die het team denkt af te krijgen binnen de sprint."
-                ), new Deur(true)
+                ), deur
         );
+        return kamer;
     }
 
     @Override
     public boolean addObserver(Deur deur, Monster monster) {
-        return false;
+        if (deur != null) {
+            observers.add(deur);
+        }
+        if (monster != null) {
+            observers.add(monster);
+        }
+        return true;
     }
 
+    @Override
     public void notifyObserver(boolean antwoordCorrect) {
         for (Observer observer : observers) {
             observer.update(antwoordCorrect);
