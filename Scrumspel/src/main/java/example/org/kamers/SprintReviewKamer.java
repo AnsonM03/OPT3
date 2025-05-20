@@ -75,7 +75,12 @@ public class SprintReviewKamer extends Kamer {
 
     @Override
     public boolean controleerAntwoord(String antwoord) {
-        return opdracht.controleerAntwoord(antwoord);
+        boolean correct = opdracht.controleerAntwoord(antwoord);
+        if (correct) {
+            setBeantwoordCorrect(true);
+            deur.isOpen();
+        }
+        return correct;
     }
 
     public static SprintReviewKamer maakKamer() {
