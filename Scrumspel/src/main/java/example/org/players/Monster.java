@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Monster implements Observer {
+
     private int schade;
     private Speler speler;
 

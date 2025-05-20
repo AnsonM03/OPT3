@@ -1,5 +1,6 @@
 package example.org;
 
+import example.org.Templates.Kamer;
 import example.org.players.Speler;
 import example.org.utils.SQLSaver;
 
@@ -15,6 +16,15 @@ public class RoomChanger {
         this.kamers = kamers;
     }
 
+    public void veranderKamer(int kamerId) {
+        if (kamers.containsKey(kamerId)) {
+            speler.setHuidigeKamer(kamerId);
+            System.out.println("Je bent nu in kamer " + kamerId + ".");
+            SQLSaver.saveToDatabase(speler);
+        } else {
+            System.out.println("Kamer " + kamerId + " bestaat niet.");
+        }
+    }
 
     public void verwerkKamerVerandering(String input) {
         try {
@@ -36,31 +46,19 @@ public class RoomChanger {
                 return;
             }
 
-            // 💡 Check if the deur is open
+            // Check if the door is open
             if (kamernummer == huidigeKamerNr + 1) {
                 Kamer huidigeKamer = kamers.get(huidigeKamerNr);
-                if (huidigeKamer instanceof StandaardKamer standaardKamer) {
-                    Deur deur = standaardKamer.getDeur();
-                    if (!deur.isOpen()) {
-                        // 🚫 Deur is gesloten, don't change kamers
-                        return;
-                    }
+                Deur deur = huidigeKamer.getDeur();
+                if (deur != null && !deur.isOpen()) {
+                    System.out.println("De deur is nog gesloten!");
+                    return;
                 }
             }
 
             veranderKamer(kamernummer);
-
         } catch (NumberFormatException e) {
             System.out.println("Ongeldig kamernummer. Gebruik: 'ga naar kamer X' waar X een getal is.");
-        }
-    }
-    public void veranderKamer(int kamerId) {
-        if (kamers.containsKey(kamerId)) {
-            speler.setHuidigeKamer(kamerId);
-            System.out.println("Je bent nu in kamer " + kamerId + ".");
-            SQLSaver.saveToDatabase(speler);
-        } else {
-            System.out.println("Kamer " + kamerId + " bestaat niet.");
         }
     }
 
@@ -69,12 +67,13 @@ public class RoomChanger {
         System.out.println("\nJe bent nu in kamer " + kamer.getNummer() + ":");
         System.out.println(kamer.getBeschrijving());
 
-        if (kamer instanceof StandaardKamer standaardKamer) {
-            if (!standaardKamer.isBeantwoordCorrect()) {
-                System.out.println("\nVraag: " + standaardKamer.getVraag());
-                System.out.println("Typ 'beantwoord' om te proberen de vraag te beantwoorden.");
-            } else {
-                standaardKamer.getDeur().displayStatus();  // ❗ Laat dit zeker staan zoals je vroeg
+        if (!kamer.isBeantwoordCorrect()) {
+            System.out.println("\nVraag: " + kamer.getVraag());
+            System.out.println("Typ 'beantwoord' om te proberen de vraag te beantwoorden.");
+        } else {
+            Deur deur = kamer.getDeur();
+            if (deur != null) {
+                deur.displayStatus();
             }
         }
     }

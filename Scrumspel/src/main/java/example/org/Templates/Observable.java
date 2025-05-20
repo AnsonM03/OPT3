@@ -1,7 +1,6 @@
 package example.org.Templates;
 
 public interface Observable {
-    void addObserver(Observer o);
-    void removeObserver(Observer o);
+    void addObserver(Observer observer);
     void notifyObservers(boolean antwoordCorrect);
 }
