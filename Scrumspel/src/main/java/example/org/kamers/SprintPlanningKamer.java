@@ -7,6 +7,7 @@ import example.org.Templates.Opdracht;
 import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
+import example.org.players.Speler;
 import example.org.utils.Beloning;
 
 import java.util.ArrayList;
