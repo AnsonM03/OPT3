@@ -6,10 +6,13 @@ import example.org.Templates.Observer;
 import example.org.Templates.Opdracht;
 import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
+import example.org.opdrachten.PuzzelOpdracht;
 import example.org.players.Monster;
+import example.org.utils.Beloning;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FinaleTIAKamer extends Kamer {
     private int nummer;
@@ -17,7 +20,6 @@ public class FinaleTIAKamer extends Kamer {
     private Opdracht opdracht;
     private Deur deur;
     private List<Observer> observers = new ArrayList<>();
-    private boolean beantwoordCorrect;
     private RewardGiver beloning;
 
     public FinaleTIAKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
@@ -25,7 +27,7 @@ public class FinaleTIAKamer extends Kamer {
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
-        this.beantwoordCorrect = false;
+        this.beloning = new Beloning();
     }
 
     @Override
@@ -50,25 +52,26 @@ public class FinaleTIAKamer extends Kamer {
 
     @Override
     public boolean isBeantwoordCorrect() {
-        return beantwoordCorrect;
+        return false;
     }
 
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
-        this.beantwoordCorrect = beantwoord;
+
     }
+
     @Override
     public String getVraag() {
-        return "";
+        return opdracht.getVraag();
     }
 
     @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
-        if (correct && !beantwoordCorrect) {
+        if (correct) {
             setBeantwoordCorrect(true);
+            deur.isOpen();
             beloning.grantReward();
-            notifyObserver(true);
         }
         return correct;
     }
@@ -94,10 +97,18 @@ public class FinaleTIAKamer extends Kamer {
         return new FinaleTIAKamer(
                 6,
                 "Finale TIA Kamer – Waarom Scrum? Dit is het eindspel! Begrijp je TIA, dan ben je een echte Scrumheld.",
-                new OpenOpdracht(
-                        "Wat betekent TIA en waarom is Scrum hier een goede aanpak voor?",
-                        "TIA betekent Things In Action. Scrum is geschikt omdat het snel feedback oplevert, wendbaar is en teamwork bevordert om iteratief tot resultaat te komen."
-                ),  new Deur(true)
+                new PuzzelOpdracht(
+                        "Koppel elke Scrum-rol aan de juiste verantwoordelijkheid:\n" +
+                                "- Beheert de product backlog\n" +
+                                "- Faciliteert Scrum-evenementen\n" +
+                                "- Levert werkende software op",
+
+                        Map.of(
+                                "Product Owner", "Beheert de product backlog",
+                                "Scrum Master", "Faciliteert Scrum-evenementen",
+                                "Ontwikkelteam", "Levert werkende software op"
+                        )
+                ), new Deur(true)
         );
     }
 }

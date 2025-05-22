@@ -6,10 +6,13 @@ import example.org.Templates.Observer;
 import example.org.Templates.Opdracht;
 import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
+import example.org.opdrachten.PuzzelOpdracht;
 import example.org.players.Monster;
+import example.org.utils.Beloning;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ScrumBoardKamer extends Kamer {
     private int nummer;
@@ -26,6 +29,7 @@ public class ScrumBoardKamer extends Kamer {
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect = false;
+        this.beloning = new Beloning();
     }
 
     @Override
@@ -95,10 +99,18 @@ public class ScrumBoardKamer extends Kamer {
         return new ScrumBoardKamer(
                 3,
                 "Je staat in Kamer 3 voor het Scrum Board. Orden de epics, user stories en taken correct, anders verschijnt het monster 'Chaos'.",
-                new OpenOpdracht(
-                        "Hoe richt je een Scrum Board correct in met epics, user stories en taken?",
-                        "Epics bevatten user stories, user stories bevatten taken. Taken staan in kolommen zoals To Do, In Progress, Done."
+                new PuzzelOpdracht(
+                        "Koppel de items aan het juiste type:\n" +
+                                "- Inlogfunctionaliteit\n" +
+                                "- Inloggen met Google\n" +
+                                "- Bouw login-knop\n",
+                        Map.of(
+                                "Inlogfunctionaliteit", "Epic",
+                                "Inloggen met Google", "User Story",
+                                "Bouw login-knop", "Taak"
+                        )
                 ), new Deur(true)
+
         );
     }
 }
