@@ -34,7 +34,6 @@ public class SprintReviewKamer extends Kamer {
         this.deur = deur;
         this.beantwoordCorrect = false;
         this.beloning = new Beloning();
-        this.infoBoek = new Kamerinfo("Welkom in de Sprint Review Kamer. Hier leer je omgaan met feedback van stakeholders.");
         toonIntro();
     }
 
@@ -83,7 +82,6 @@ public class SprintReviewKamer extends Kamer {
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
         this.beantwoordCorrect = beantwoord;
-        notifyObserver(true);
     }
 
     @Override
@@ -94,10 +92,10 @@ public class SprintReviewKamer extends Kamer {
     @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
-        if (correct) {
+        if (correct && !beantwoordCorrect) {
             setBeantwoordCorrect(true);
-            deur.isOpen();
             beloning.grantReward();
+            notifyObserver(true);
         }
         return correct;
     }

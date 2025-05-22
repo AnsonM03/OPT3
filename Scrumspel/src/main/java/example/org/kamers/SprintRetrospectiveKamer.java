@@ -69,10 +69,10 @@ public class SprintRetrospectiveKamer extends Kamer {
             observer.update(antwoordCorrect);
         }
     }
+
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
         this.beantwoordCorrect = beantwoord;
-        notifyObserver(true);
     }
 
     @Override
@@ -83,10 +83,10 @@ public class SprintRetrospectiveKamer extends Kamer {
     @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
-        if (correct) {
+        if (correct && !beantwoordCorrect) {
             setBeantwoordCorrect(true);
-            deur.isOpen();
             beloning.grantReward();
+            notifyObserver(true);
         }
         return correct;
     }

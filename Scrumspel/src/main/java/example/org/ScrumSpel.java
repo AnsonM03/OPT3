@@ -76,6 +76,9 @@ public class ScrumSpel {
                 case "status":
                     speler.toonStatus();
                     break;
+                case "inventory":
+                    speler.getInventory().toonInventory();
+                    break;
                 case "stop":
                     System.out.println("Spel opslaan en afsluiten...");
                     SQLSaver.saveToDatabase(speler);

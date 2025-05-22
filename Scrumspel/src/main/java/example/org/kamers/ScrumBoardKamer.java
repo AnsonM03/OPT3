@@ -56,8 +56,6 @@ public class ScrumBoardKamer extends Kamer {
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
         this.beantwoordCorrect = beantwoord;
-        deur.isOpen();
-        notifyObserver(true);
     }
 
     @Override
@@ -68,10 +66,10 @@ public class ScrumBoardKamer extends Kamer {
     @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
-        if (correct) {
+        if (correct && !beantwoordCorrect) {
             setBeantwoordCorrect(true);
-            deur.isOpen();
             beloning.grantReward();
+            notifyObserver(true);
         }
         return correct;
     }

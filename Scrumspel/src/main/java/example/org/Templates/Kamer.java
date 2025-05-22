@@ -19,9 +19,8 @@ public abstract class Kamer {
         controleerAntwoord("");
         handlePlayerAnswer();
         addObserver(new Deur(false), new Monster(40, speler));
-        notifyObserver(true);
-
     }
+
     public abstract int getNummer();
     public abstract String getBeschrijving();
     public abstract Opdracht getOpdracht();
@@ -45,8 +44,6 @@ public abstract class Kamer {
         boolean correct = controleerAntwoord(antwoord);
         if (correct) {
             System.out.println("✅ Goed!");
-            setBeantwoordCorrect(true);
-            notifyObserver(true); // Notify observers with success
         } else {
             System.out.println("❌ Fout!");
             notifyObserver(false); // Notify observers with failure
