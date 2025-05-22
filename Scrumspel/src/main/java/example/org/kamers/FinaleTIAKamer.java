@@ -7,6 +7,7 @@ import example.org.Templates.Opdracht;
 import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
+import example.org.utils.Beloning;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class FinaleTIAKamer extends Kamer {
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
+        this.beloning = new Beloning();
     }
 
     @Override
