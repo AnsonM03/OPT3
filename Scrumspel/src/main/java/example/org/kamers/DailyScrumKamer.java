@@ -54,6 +54,13 @@ public class DailyScrumKamer extends Kamer {
         return beantwoordCorrect;
     }
 
+
+    public void notifyObserver(boolean antwoordCorrect) {
+        for (Observer observer : observers) {
+            observer.update(antwoordCorrect);
+        }
+    }
+
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
         this.beantwoordCorrect = beantwoord;
@@ -78,19 +85,7 @@ public class DailyScrumKamer extends Kamer {
 
     @Override
     public boolean addObserver(Deur deur, Monster monster) {
-        if (deur != null) {
-            observers.add(deur);
-        }
-        if (monster != null) {
-            observers.add(monster);
-        }
-        return true;
-    }
-
-    public void notifyObserver(boolean antwoordCorrect) {
-        for (Observer observer : observers) {
-            observer.update(antwoordCorrect);
-        }
+        return false;
     }
 
     public static DailyScrumKamer maakKamer() {
