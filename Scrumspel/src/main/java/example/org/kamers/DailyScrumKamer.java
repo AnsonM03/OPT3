@@ -5,11 +5,13 @@ import example.org.Templates.Kamer;
 import example.org.Templates.Observer;
 import example.org.Templates.Opdracht;
 import example.org.Templates.RewardGiver;
+import example.org.opdrachten.MeerkeuzeOpdracht;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
 import example.org.utils.Beloning;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DailyScrumKamer extends Kamer {
@@ -85,17 +87,33 @@ public class DailyScrumKamer extends Kamer {
 
     @Override
     public boolean addObserver(Deur deur, Monster monster) {
-        return false;
+        if (deur != null) {
+            observers.add(deur);
+        }
+        if (monster != null) {
+            observers.add(monster);
+        }
+        return true;
     }
 
     public static DailyScrumKamer maakKamer() {
         return new DailyScrumKamer(
                 2,
                 "Je staat in Kamer 2 (Daily Scrum Kamer). Elke teamgenoot moet een status-update geven. Vergeet je iemand? Dan roept dat het monster 'Vertraging' op.",
-                new OpenOpdracht(
-                        "Je teamleden zijn: Lisa (developer), Bram (tester), en Noor (Scrum Master). " +
-                                "Wie geeft welke update tijdens de Daily Scrum?",
-                        "Lisa over voortgang development, Bram over testresultaten, Noor over belemmeringen"
+                new MeerkeuzeOpdracht(
+                        "Tijdens de Daily Scrum staan vier teamleden klaar om hun update te geven. Wie is waarschijnlijk vergeten zijn update te delen, waardoor het monster “Vertraging” opduikt?\n\n" +
+                                "Teamleden:\n\n" +
+                                "A) Lisa – meldt dat haar taak bijna af is\n" +
+                                "B) Ahmed – vraagt hulp bij een blokkade\n" +
+                                "C) Sophie – geeft geen update, kijkt op haar telefoon\n" +
+                                "D) Tom – deelt zijn voortgang en planning",
+                        Arrays.asList(
+                                "A) Lisa",
+                                "B) Ahmed",
+                                "C) Sophie",
+                                "D) Tom"
+                        ),
+                        "C"
                 ), new Deur(true)
         );
     }

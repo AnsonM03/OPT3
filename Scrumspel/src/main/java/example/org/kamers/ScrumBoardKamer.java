@@ -112,6 +112,7 @@ public class ScrumBoardKamer extends Kamer {
                                 "Bouw login-knop", "Taak"
                         )
                 ), new Deur(true)
+
         );
     }
 }

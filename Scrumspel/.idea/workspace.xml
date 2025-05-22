@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81a37218-2e0c-46e4-bf03-9d65438747c7" name="Changes" comment="">
+    <list default="true" id="81a37218-2e0c-46e4-bf03-9d65438747c7" name="Changes" comment="Adapted the changes to all kamers.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/opdrachten/PuzzelOpdracht.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/opdrachten/PuzzelOpdracht.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,12 +40,12 @@
     &quot;assignee&quot;: &quot;damikastaneer23172355&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/AnsonM03/OPT3.git",
-    "accountId": "7e0c9d94-03fc-42d6-a4fc-128def49e078"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AnsonM03/OPT3.git&quot;,
+    &quot;accountId&quot;: &quot;7e0c9d94-03fc-42d6-a4fc-128def49e078&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
@@ -59,28 +61,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "nathan",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/ansonmok/IdeaProjects/OPT3/Scrumspel",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/Dami/Desktop/OPT3/Scrumspel/src/main/java/example/org/Main.java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;nathan&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ansonmok/IdeaProjects/OPT3/Scrumspel&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Dami/Desktop/OPT3/Scrumspel/src/main/java/example/org/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/.." />
@@ -106,7 +108,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747647353709</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Adapted the changes to all kamers.">
+      <option name="closed" value="true" />
+      <created>1747906415565</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747906415565</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Adapted the changes to all kamers.">
+      <option name="closed" value="true" />
+      <created>1747906610104</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747906610104</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +155,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made a new class that adds all methods to change rooms." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made a new class that adds all methods to change rooms." />
+    <MESSAGE value="Adapted the changes to all kamers." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adapted the changes to all kamers." />
   </component>
 </project>
