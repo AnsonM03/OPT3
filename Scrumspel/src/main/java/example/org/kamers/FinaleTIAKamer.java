@@ -21,6 +21,7 @@ public class FinaleTIAKamer extends Kamer {
     private Deur deur;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
+    private boolean beantwoordCorrect;
 
     public FinaleTIAKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
         this.nummer = nummer;
@@ -57,7 +58,7 @@ public class FinaleTIAKamer extends Kamer {
 
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
-
+        this.beantwoordCorrect = beantwoord;
     }
 
     @Override
@@ -68,14 +69,13 @@ public class FinaleTIAKamer extends Kamer {
     @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
-        if (correct) {
+        if (correct && !beantwoordCorrect) {
             setBeantwoordCorrect(true);
-            deur.isOpen();
             beloning.grantReward();
+            notifyObserver(true);
         }
         return correct;
     }
-
     @Override
     public boolean addObserver(Deur deur, Monster monster) {
         if (deur != null) {
