@@ -8,7 +8,8 @@ import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
 import example.org.players.Speler;
-import example.org.utils.Beloning;
+import example.org.utils.SpelerInventory;
+import example.org.utils.ZwaardBeloning;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +25,13 @@ public class SprintPlanningKamer extends Kamer {
     private RewardGiver beloning;
 
 
-    public SprintPlanningKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
+    public SprintPlanningKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect  = false;
-        this.beloning = new Beloning();
+        this.beloning = new ZwaardBeloning(inventory);
     }
 
     @Override
@@ -79,14 +80,15 @@ public class SprintPlanningKamer extends Kamer {
         return correct;
     }
 
-    public static SprintPlanningKamer maakKamer() {
+    public static SprintPlanningKamer maakKamer(SpelerInventory inventory) {
         return new SprintPlanningKamer(
                 1,
                 "Je staat in Kamer 1 (Sprint Planning Kamer)",
                 new OpenOpdracht(
                         "Welke taken neem je op in de sprint planning?",
                         "Alleen taken die het team denkt af te krijgen binnen de sprint."
-                ), new Deur(true)
+                ), new Deur(true),
+                inventory
         );
     }
 
