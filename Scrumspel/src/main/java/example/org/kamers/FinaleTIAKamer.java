@@ -8,7 +8,8 @@ import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.opdrachten.PuzzelOpdracht;
 import example.org.players.Monster;
-import example.org.utils.Beloning;
+import example.org.utils.SpelerInventory;
+import example.org.utils.StaffBeloning;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +24,12 @@ public class FinaleTIAKamer extends Kamer {
     private RewardGiver beloning;
     private boolean beantwoordCorrect;
 
-    public FinaleTIAKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
+    public FinaleTIAKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
-        this.beloning = new Beloning();
+        this.beloning = new StaffBeloning(inventory);
     }
 
     @Override
@@ -93,7 +94,7 @@ public class FinaleTIAKamer extends Kamer {
         }
     }
 
-    public static FinaleTIAKamer maakKamer() {
+    public static FinaleTIAKamer maakKamer(SpelerInventory inventory) {
         return new FinaleTIAKamer(
                 6,
                 "Finale TIA Kamer – Waarom Scrum? Dit is het eindspel! Begrijp je TIA, dan ben je een echte Scrumheld.",
@@ -108,7 +109,8 @@ public class FinaleTIAKamer extends Kamer {
                                 "Scrum Master", "Faciliteert Scrum-evenementen",
                                 "Ontwikkelteam", "Levert werkende software op"
                         )
-                ), new Deur(true)
+                ), new Deur(true),
+                inventory
         );
     }
 }

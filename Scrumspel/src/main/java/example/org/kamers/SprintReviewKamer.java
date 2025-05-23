@@ -7,8 +7,8 @@ import example.org.Templates.Opdracht;
 import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
-import example.org.utils.Beloning;
-import example.org.utils.Kamerinfo;
+import example.org.utils.PotionBeloning;
+import example.org.utils.SpelerInventory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,20 +21,16 @@ public class SprintReviewKamer extends Kamer {
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
-    private transient Kamerinfo infoBoek = new Kamerinfo("Welkom in de Sprint Review Kamer. Hier leer je omgaan met feedback van stakeholders.");
 
-    public void toonIntro() {
-        infoBoek.showMessage();
-    }
 
-    public SprintReviewKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
+
+    public SprintReviewKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect = false;
-        this.beloning = new Beloning();
-        toonIntro();
+        this.beloning = new PotionBeloning(inventory);
     }
 
     @Override
@@ -100,14 +96,15 @@ public class SprintReviewKamer extends Kamer {
         return correct;
     }
 
-    public static SprintReviewKamer maakKamer() {
+    public static SprintReviewKamer maakKamer(SpelerInventory inventory) {
         return new SprintReviewKamer(
                 4,
                 "Je staat in Kamer 4 (Sprint Review Kamer): Stakeholders geven feedback. Interpreteer hun opmerkingen correct, anders verschijnt het monster 'Miscommunicatie'.",
                 new OpenOpdracht(
                         "Stakeholders geven aan dat een opgeleverd onderdeel niet voldoet aan hun verwachtingen. Wat doe je tijdens de Sprint Review?",
                         "Je bespreekt de feedback openlijk, past eventueel de Product Backlog aan, en leert voor toekomstige sprints."
-                ), new Deur(true)
+                ), new Deur(true),
+                inventory
         );
     }
 }

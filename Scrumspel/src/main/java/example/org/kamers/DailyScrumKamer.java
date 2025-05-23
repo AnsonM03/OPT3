@@ -8,7 +8,9 @@ import example.org.Templates.RewardGiver;
 import example.org.opdrachten.MeerkeuzeOpdracht;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
-import example.org.utils.Beloning;
+import example.org.players.Speler;
+import example.org.utils.BoogBeloning;
+import example.org.utils.SpelerInventory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,13 +25,13 @@ public class DailyScrumKamer extends Kamer {
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
 
-    public DailyScrumKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
+    public DailyScrumKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect = false;
-        this.beloning = new Beloning();
+        this.beloning = new BoogBeloning(inventory);
     }
 
     @Override
@@ -95,7 +97,7 @@ public class DailyScrumKamer extends Kamer {
         return true;
     }
 
-    public static DailyScrumKamer maakKamer() {
+    public static DailyScrumKamer maakKamer(SpelerInventory inventory) {
         return new DailyScrumKamer(
                 2,
                 "Je staat in Kamer 2 (Daily Scrum Kamer). Elke teamgenoot moet een status-update geven. Vergeet je iemand? Dan roept dat het monster 'Vertraging' op.",
@@ -113,7 +115,9 @@ public class DailyScrumKamer extends Kamer {
                                 "D) Tom"
                         ),
                         "C"
-                ), new Deur(true)
+                ),
+                new Deur(true),
+                inventory
         );
     }
 }

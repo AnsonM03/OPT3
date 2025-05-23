@@ -6,9 +6,9 @@ import example.org.Templates.Observer;
 import example.org.Templates.Opdracht;
 import example.org.Templates.RewardGiver;
 import example.org.opdrachten.MeerkeuzeOpdracht;
-import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
-import example.org.utils.Beloning;
+import example.org.utils.SchildBeloning;
+import example.org.utils.SpelerInventory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +23,13 @@ public class SprintRetrospectiveKamer extends Kamer {
     private RewardGiver beloning;
 
 
-    public SprintRetrospectiveKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
+    public SprintRetrospectiveKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect = false;
-        this.beloning = new Beloning();
+        this.beloning = new SchildBeloning(inventory);
     }
 
     @Override
@@ -94,7 +94,7 @@ public class SprintRetrospectiveKamer extends Kamer {
         return correct;
     }
 
-    public static SprintRetrospectiveKamer maakKamer() {
+    public static SprintRetrospectiveKamer maakKamer(SpelerInventory inventory) {
         return new SprintRetrospectiveKamer(
                 5,
                 "Sprint Retrospective: Reflecteer op het teamproces. Leer je niet van fouten, dan verschijnt het monster 'Herhaalfouten'.",
@@ -113,7 +113,8 @@ public class SprintRetrospectiveKamer extends Kamer {
 
                         // Juiste antwoord (letter only)
                         "C"
-                ), new Deur(true)
+                ), new Deur(true),
+                inventory
         );
     }
 }
