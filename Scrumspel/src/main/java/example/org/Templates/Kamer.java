@@ -19,6 +19,7 @@ public abstract class Kamer {
         controleerAntwoord("");
         handlePlayerAnswer();
         addObserver(new Deur(false), new Monster(40, speler));
+        notifyObserver(false);
     }
 
     public abstract int getNummer();
