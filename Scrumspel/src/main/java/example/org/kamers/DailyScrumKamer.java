@@ -1,20 +1,12 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
-import example.org.opdrachten.MeerkeuzeOpdracht;
+import example.org.Templates.*;
+import example.org.logic.Deur;
+import example.org.logic.KeyJoker;
 import example.org.opdrachten.OpenOpdracht;
-import example.org.players.Monster;
-import example.org.players.Speler;
-import example.org.utils.BoogBeloning;
-import example.org.utils.Kamerinfo;
-import example.org.utils.SpelerInventory;
+import example.org.logic.Monster;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DailyScrumKamer extends Kamer {
@@ -25,16 +17,13 @@ public class DailyScrumKamer extends Kamer {
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
-    private Kamerinfo kamerinfo;
 
-    public DailyScrumKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
+    public DailyScrumKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect = false;
-        this.beloning = new BoogBeloning(inventory);
-        this.kamerinfo = new Kamerinfo("De Daily Scrum is een kort, dagelijks overleg van maximaal 15 minuten. Elk teamlid beantwoordt: wat heb ik gedaan, wat ga ik doen, en loop ik ergens tegenaan?");
     }
 
     @Override
@@ -61,21 +50,10 @@ public class DailyScrumKamer extends Kamer {
         return beantwoordCorrect;
     }
 
-
-    public void notifyObserver(boolean antwoordCorrect) {
-        for (Observer observer : observers) {
-            observer.update(antwoordCorrect);
-        }
-    }
-
-    @Override
-    public void toonKamerinfo() {
-        kamerinfo.showMessage();
-    }
-
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
         this.beantwoordCorrect = beantwoord;
+        notifyObserver(true);
     }
 
     @Override
@@ -86,10 +64,10 @@ public class DailyScrumKamer extends Kamer {
     @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
-        if (correct && !beantwoordCorrect) {
+        if (correct) {
             setBeantwoordCorrect(true);
+            deur.isOpen();
             beloning.grantReward();
-            notifyObserver(true);
         }
         return correct;
     }
@@ -105,27 +83,31 @@ public class DailyScrumKamer extends Kamer {
         return true;
     }
 
-    public static DailyScrumKamer maakKamer(SpelerInventory inventory) {
+    public void notifyObserver(boolean antwoordCorrect) {
+        for (Observer observer : observers) {
+            observer.update(antwoordCorrect);
+        }
+    }
+
+    public static DailyScrumKamer maakKamer() {
         return new DailyScrumKamer(
                 2,
                 "Je staat in Kamer 2 (Daily Scrum Kamer). Elke teamgenoot moet een status-update geven. Vergeet je iemand? Dan roept dat het monster 'Vertraging' op.",
-                new MeerkeuzeOpdracht(
-                        "Tijdens de Daily Scrum staan vier teamleden klaar om hun update te geven. Wie is waarschijnlijk vergeten zijn update te delen, waardoor het monster “Vertraging” opduikt?\n\n" +
-                                "Teamleden:\n\n" +
-                                "A) Lisa – meldt dat haar taak bijna af is\n" +
-                                "B) Ahmed – vraagt hulp bij een blokkade\n" +
-                                "C) Sophie – geeft geen update, kijkt op haar telefoon\n" +
-                                "D) Tom – deelt zijn voortgang en planning",
-                        Arrays.asList(
-                                "A) Lisa",
-                                "B) Ahmed",
-                                "C) Sophie",
-                                "D) Tom"
-                        ),
-                        "C"
-                ),
-                new Deur(true),
-                inventory
+                new OpenOpdracht(
+                        "Je teamleden zijn: Lisa (developer), Bram (tester), en Noor (Scrum Master). " +
+                                "Wie geeft welke update tijdens de Daily Scrum?",
+                        "Lisa over voortgang development, Bram over testresultaten, Noor over belemmeringen"
+                ), new Deur(true)
         );
+    }
+
+    @Override
+    public void accepteer(Joker joker) {
+        if (joker instanceof KeyJoker) {
+            System.out.println("🔑 Je ontvangt een extra sleutel in de DailyScrum kamer!");
+        } else {
+            joker.useIn(this);
+
+        }
     }
 }

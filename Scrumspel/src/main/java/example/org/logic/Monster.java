@@ -1,8 +1,8 @@
-package example.org.players;
+package example.org.logic;
 
-import example.org.HintFactory;
 import example.org.Templates.HintProvider;
 import example.org.Templates.Observer;
+import example.org.players.Speler;
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;

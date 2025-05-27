@@ -1,6 +1,6 @@
 package example.org;
 
-import example.org.players.Speler;
+import example.org.logic.ScrumSpel;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,16 +1,10 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
+import example.org.Templates.*;
+import example.org.logic.Deur;
 import example.org.opdrachten.OpenOpdracht;
-import example.org.players.Monster;
-import example.org.players.Speler;
-import example.org.utils.Kamerinfo;
-import example.org.utils.SpelerInventory;
-import example.org.utils.ZwaardBeloning;
+import example.org.logic.Monster;
+import example.org.utils.Beloning;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,17 +18,15 @@ public class SprintPlanningKamer extends Kamer {
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
-    private Kamerinfo kamerinfo;
 
 
-    public SprintPlanningKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
+    public SprintPlanningKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect  = false;
-        this.beloning = new ZwaardBeloning(inventory);
-        this.kamerinfo = new Kamerinfo("Tijdens sprint planning selecteert het team werk voor de komende sprint op basis van prioriteit en capaciteit.");
+        this.beloning = new Beloning();
     }
 
     @Override
@@ -65,6 +57,8 @@ public class SprintPlanningKamer extends Kamer {
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
         this.beantwoordCorrect = beantwoord;
+        deur.isOpen();
+        notifyObserver(true);
     }
 
     @Override
@@ -75,28 +69,22 @@ public class SprintPlanningKamer extends Kamer {
     @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
-        if (correct && !beantwoordCorrect) {
+        if (correct) {
             setBeantwoordCorrect(true);
+            deur.isOpen();
             beloning.grantReward();
-            notifyObserver(true);
         }
         return correct;
     }
 
-    @Override
-    public void toonKamerinfo() {
-        kamerinfo.showMessage();
-    }
-
-    public static SprintPlanningKamer maakKamer(SpelerInventory inventory) {
+    public static SprintPlanningKamer maakKamer() {
         return new SprintPlanningKamer(
                 1,
                 "Je staat in Kamer 1 (Sprint Planning Kamer)",
                 new OpenOpdracht(
                         "Welke taken neem je op in de sprint planning?",
                         "Alleen taken die het team denkt af te krijgen binnen de sprint."
-                ), new Deur(true),
-                inventory
+                ), new Deur(true)
         );
     }
 
@@ -115,5 +103,10 @@ public class SprintPlanningKamer extends Kamer {
         for (Observer observer : observers) {
             observer.update(antwoordCorrect);
         }
+    }
+
+    @Override
+    public void accepteer(Joker joker) {
+        joker.useIn(this); // Alleen HintJoker heeft effect
     }
 }

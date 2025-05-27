@@ -1,20 +1,12 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
+import example.org.Templates.*;
+import example.org.logic.Deur;
 import example.org.opdrachten.OpenOpdracht;
-import example.org.opdrachten.PuzzelOpdracht;
-import example.org.players.Monster;
-import example.org.utils.Kamerinfo;
-import example.org.utils.MapBeloning;
-import example.org.utils.SpelerInventory;
+import example.org.logic.Monster;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ScrumBoardKamer extends Kamer {
     private int nummer;
@@ -24,16 +16,13 @@ public class ScrumBoardKamer extends Kamer {
     private List<Observer> observers = new ArrayList<>();
     private boolean beantwoordCorrect;
     private RewardGiver beloning;
-    private Kamerinfo kamerinfo;
 
-    public ScrumBoardKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
+    public ScrumBoardKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect = false;
-        this.beloning = new MapBeloning(inventory);
-        this.kamerinfo = new Kamerinfo("Het Scrum Board helpt het team visueel bijhouden welke taken 'To Do', 'In Progress' of 'Done' zijn. Zo behoudt iedereen overzicht.");
     }
 
     @Override
@@ -64,6 +53,8 @@ public class ScrumBoardKamer extends Kamer {
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
         this.beantwoordCorrect = beantwoord;
+        deur.isOpen();
+        notifyObserver(true);
     }
 
     @Override
@@ -72,17 +63,12 @@ public class ScrumBoardKamer extends Kamer {
     }
 
     @Override
-    public void toonKamerinfo() {
-        kamerinfo.showMessage();
-    }
-
-    @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
-        if (correct && !beantwoordCorrect) {
+        if (correct) {
             setBeantwoordCorrect(true);
+            deur.isOpen();
             beloning.grantReward();
-            notifyObserver(true);
         }
         return correct;
     }
@@ -104,22 +90,19 @@ public class ScrumBoardKamer extends Kamer {
         }
     }
 
-    public static ScrumBoardKamer maakKamer(SpelerInventory inventory) {
+    public static ScrumBoardKamer maakKamer() {
         return new ScrumBoardKamer(
                 3,
                 "Je staat in Kamer 3 voor het Scrum Board. Orden de epics, user stories en taken correct, anders verschijnt het monster 'Chaos'.",
-                new PuzzelOpdracht(
-                        "Koppel de items aan het juiste type:\n" +
-                                "- Inlogfunctionaliteit\n" +
-                                "- Inloggen met Google\n" +
-                                "- Bouw login-knop\n",
-                        Map.of(
-                                "Inlogfunctionaliteit", "Epic",
-                                "Inloggen met Google", "User Story",
-                                "Bouw login-knop", "Taak"
-                        )
-                ), new Deur(true),
-                inventory
+                new OpenOpdracht(
+                        "Hoe richt je een Scrum Board correct in met epics, user stories en taken?",
+                        "Epics bevatten user stories, user stories bevatten taken. Taken staan in kolommen zoals To Do, In Progress, Done."
+                ), new Deur(true)
         );
+    }
+
+    @Override
+    public void accepteer(Joker joker) {
+        joker.useIn(this); // Alleen HintJoker heeft effect
     }
 }

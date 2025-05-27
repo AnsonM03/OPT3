@@ -1,17 +1,19 @@
 package example.org.players;
 
-import example.org.Templates.Inventory;
+import example.org.Templates.Joker;
+import example.org.Templates.Kamer;
 import example.org.Templates.SQLSavable;
-import example.org.utils.SpelerInventory;
+import example.org.logic.HintJoker;
+import example.org.logic.KeyJoker;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Speler implements SQLSavable {
     private String naam;
     private int huidigeKamer;
     private int hp;
-    private SpelerInventory inventory = new SpelerInventory();
 
     public Speler(String naam, int hp) {
         this.naam = naam;
@@ -24,10 +26,6 @@ public class Speler implements SQLSavable {
         System.out.println("Speler: " + naam);
         System.out.println("Huidige kamer: " + huidigeKamer);
         System.out.println("HP: " + hp);
-    }
-
-    public SpelerInventory getInventory() {
-        return inventory;
     }
 
     public int getHp() {
@@ -45,6 +43,23 @@ public class Speler implements SQLSavable {
     public void setHuidigeKamer(int kamer) {
         this.huidigeKamer = kamer;
     }
+
+    public Joker kiesJoker() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welke joker wil je gebruiken? (hint / key): ");
+        String keuze = scanner.nextLine().toLowerCase();
+
+        switch (keuze) {
+            case "hint":
+                return new HintJoker();
+            case "key":
+                return new KeyJoker();
+            default:
+                System.out.println("Ongeldige keuze, standaard HintJoker wordt gebruikt.");
+                return new HintJoker(); // Fallback
+        }
+    }
+
 
     @Override
     public String getTableName() {

@@ -1,7 +1,8 @@
-package example.org.opdrachten;
+package example.org.logic;
 
 import example.org.Templates.Mapper;
 import example.org.Templates.Opdracht;
+import example.org.opdrachten.OpenOpdracht;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -30,4 +30,9 @@ public class MeerkeuzeOpdracht implements Opdracht {
         return juistAntwoord;
     }
 
+    @Override
+    public String getAntwoord() {
+        return juistAntwoord;
+    }
+
 }

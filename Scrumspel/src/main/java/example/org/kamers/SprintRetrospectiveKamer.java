@@ -1,15 +1,9 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
-import example.org.opdrachten.MeerkeuzeOpdracht;
-import example.org.players.Monster;
-import example.org.utils.Kamerinfo;
-import example.org.utils.SchildBeloning;
-import example.org.utils.SpelerInventory;
+import example.org.Templates.*;
+import example.org.logic.Deur;
+import example.org.opdrachten.OpenOpdracht;
+import example.org.logic.Monster;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,17 +16,14 @@ public class SprintRetrospectiveKamer extends Kamer {
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
-    private Kamerinfo kamerinfo;
 
 
-    public SprintRetrospectiveKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
+    public SprintRetrospectiveKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect = false;
-        this.beloning = new SchildBeloning(inventory);
-        this.kamerinfo = new Kamerinfo("In de Sprint Retrospective reflecteert het team op de samenwerking en processen. Wat ging goed? Wat kan beter?");
     }
 
     @Override
@@ -60,11 +51,6 @@ public class SprintRetrospectiveKamer extends Kamer {
     }
 
     @Override
-    public void toonKamerinfo() {
-        kamerinfo.showMessage();
-    }
-
-    @Override
     public boolean addObserver(Deur deur, Monster monster) {
         if (deur != null) {
             observers.add(deur);
@@ -80,10 +66,10 @@ public class SprintRetrospectiveKamer extends Kamer {
             observer.update(antwoordCorrect);
         }
     }
-
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
         this.beantwoordCorrect = beantwoord;
+        notifyObserver(true);
     }
 
     @Override
@@ -94,35 +80,27 @@ public class SprintRetrospectiveKamer extends Kamer {
     @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
-        if (correct && !beantwoordCorrect) {
+        if (correct) {
             setBeantwoordCorrect(true);
+            deur.isOpen();
             beloning.grantReward();
-            notifyObserver(true);
         }
         return correct;
     }
 
-    public static SprintRetrospectiveKamer maakKamer(SpelerInventory inventory) {
+    public static SprintRetrospectiveKamer maakKamer() {
         return new SprintRetrospectiveKamer(
                 5,
                 "Sprint Retrospective: Reflecteer op het teamproces. Leer je niet van fouten, dan verschijnt het monster 'Herhaalfouten'.",
-                new MeerkeuzeOpdracht(
-                        "Situatie: Tijdens een sprint blijkt dat een belangrijke taak niet af is omdat twee teamleden " +
-                                "onafhankelijk van elkaar aan dezelfde feature werkten, zonder afstemming. " +
-                                "Wat kan het team hieruit leren?",
-
-                        // Opties
-                        List.of(
-                                "A) Taken moeten altijd door één persoon worden uitgevoerd",
-                                "B) Dagelijkse stand-ups zijn nutteloos en kunnen worden overgeslagen",
-                                "C) Betere communicatie tijdens stand-ups had dit kunnen voorkomen",
-                                "D) Het team moet stoppen met agile werken"
-                        ),
-
-                        // Juiste antwoord (letter only)
-                        "C"
-                ), new Deur(true),
-                inventory
+                new OpenOpdracht(
+                        "Tijdens de sprint waren er veel onderbrekingen door onverwachte verzoeken van buitenaf. Wat kan het team hiervan leren?",
+                        "Het team moet de sprint beter afbakenen en storingen beperken door duidelijke afspraken met stakeholders te maken."
+                ), new Deur(true)
         );
+    }
+
+    @Override
+    public void accepteer(Joker joker) {
+        joker.useIn(this);
     }
 }
