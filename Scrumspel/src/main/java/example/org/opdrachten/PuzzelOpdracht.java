@@ -20,13 +20,15 @@ public class PuzzelOpdracht implements Opdracht {
 
     @Override
     public boolean controleerAntwoord(String antwoord) {
-        // Simpele controle: exact gelijk (je kan dit uitbreiden)
-        return antwoord.replaceAll("\\s+", "").equalsIgnoreCase(
-                juisteKoppels.entrySet().stream()
-                        .map(e -> e.getKey() + "=" + e.getValue())
-                        .reduce((a, b) -> a + "," + b)
-                        .orElse("")
-        );
+        String normalizedInput = antwoord.replaceAll("\\s*=\\s*", "=")  // Remove spaces around =
+                .replaceAll("\\s*,\\s*", ","); // Remove spaces around ,
+
+        String expected = juisteKoppels.entrySet().stream()
+                .map(e -> e.getKey() + "=" + e.getValue())
+                .reduce((a, b) -> a + "," + b)
+                .orElse("");
+
+        return normalizedInput.equalsIgnoreCase(expected);
     }
 
     public Map<String, String> getJuisteKoppels(){
