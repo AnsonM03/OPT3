@@ -1,12 +1,9 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
+import example.org.Templates.*;
+import example.org.logic.Deur;
 import example.org.opdrachten.OpenOpdracht;
-import example.org.players.Monster;
+import example.org.logic.Monster;
 import example.org.utils.Beloning;
 
 import java.util.ArrayList;
@@ -106,5 +103,10 @@ public class SprintPlanningKamer extends Kamer {
         for (Observer observer : observers) {
             observer.update(antwoordCorrect);
         }
+    }
+
+    @Override
+    public void accepteer(Joker joker) {
+        joker.useIn(this); // Alleen HintJoker heeft effect
     }
 }

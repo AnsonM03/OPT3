@@ -1,8 +1,8 @@
-package example.org;
+package example.org.logic;
 
+import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
 import example.org.kamers.*;
-import example.org.players.Monster;
 import example.org.players.Speler;
 import example.org.utils.SQLLoader;
 import example.org.utils.SQLSaver;
@@ -81,6 +81,13 @@ public class ScrumSpel {
                     SQLSaver.saveToDatabase(speler);
                     spelActief = false;
                     break;
+
+                case "joker":
+                    Kamer kamer = kamers.get(speler.getHuidigeKamer());
+                    Joker gekozenJoker = speler.kiesJoker();
+                    kamer.accepteer(gekozenJoker);
+                    break;
+
                 case "beantwoord":
                     Kamer huidigeKamer = kamers.get(speler.getHuidigeKamer());
                     boolean correct = huidigeKamer.handlePlayerAnswer();

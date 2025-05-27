@@ -25,6 +25,7 @@ public class OpenOpdracht implements Opdracht, SQLSavable {
         return this.antwoord.equalsIgnoreCase(antwoord.trim());
     }
 
+    @Override
     public String getAntwoord(){
         return this.antwoord;
     }

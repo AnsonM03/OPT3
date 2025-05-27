@@ -1,12 +1,10 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
+import example.org.Templates.*;
+import example.org.logic.Deur;
+import example.org.logic.KeyJoker;
 import example.org.opdrachten.OpenOpdracht;
-import example.org.players.Monster;
+import example.org.logic.Monster;
 import example.org.utils.Beloning;
 import example.org.utils.Kamerinfo;
 
@@ -112,4 +110,17 @@ public class SprintReviewKamer extends Kamer {
                 ), new Deur(true)
         );
     }
+
+    @Override
+    public void accepteer(Joker joker) {
+        if (joker instanceof KeyJoker) {
+            System.out.println("🔑 Je ontvangt een extra sleutel in de Review kamer!");
+        } else {
+            joker.useIn(this);
+        }
+    }
+
+//    public void geefSleutel() {
+//        System.out.println("🔑 Je ontvangt een extra sleutel in de Review kamer!");
+//    }
 }

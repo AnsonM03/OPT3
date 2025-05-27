@@ -1,12 +1,9 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
+import example.org.Templates.*;
+import example.org.logic.Deur;
 import example.org.opdrachten.OpenOpdracht;
-import example.org.players.Monster;
+import example.org.logic.Monster;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,5 +97,10 @@ public class SprintRetrospectiveKamer extends Kamer {
                         "Het team moet de sprint beter afbakenen en storingen beperken door duidelijke afspraken met stakeholders te maken."
                 ), new Deur(true)
         );
+    }
+
+    @Override
+    public void accepteer(Joker joker) {
+        joker.useIn(this);
     }
 }

@@ -1,12 +1,9 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
+import example.org.Templates.*;
+import example.org.logic.Deur;
 import example.org.opdrachten.OpenOpdracht;
-import example.org.players.Monster;
+import example.org.logic.Monster;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,5 +99,10 @@ public class ScrumBoardKamer extends Kamer {
                         "Epics bevatten user stories, user stories bevatten taken. Taken staan in kolommen zoals To Do, In Progress, Done."
                 ), new Deur(true)
         );
+    }
+
+    @Override
+    public void accepteer(Joker joker) {
+        joker.useIn(this); // Alleen HintJoker heeft effect
     }
 }

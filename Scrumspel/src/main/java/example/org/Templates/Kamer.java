@@ -1,7 +1,7 @@
 package example.org.Templates;
 
-import example.org.Deur;
-import example.org.players.Monster;
+import example.org.logic.Deur;
+import example.org.logic.Monster;
 import example.org.players.Speler;
 
 import java.util.Scanner;
@@ -30,6 +30,8 @@ public abstract class Kamer {
     public abstract void setBeantwoordCorrect(boolean beantwoord);
     public abstract String getVraag();
     public abstract boolean controleerAntwoord(String antwoord);
+    public abstract void accepteer(Joker joker);
+
 
     public boolean handlePlayerAnswer() {
         if (isBeantwoordCorrect()) {
