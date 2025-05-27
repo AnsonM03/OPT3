@@ -7,6 +7,7 @@ import example.org.Templates.Opdracht;
 import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
+import example.org.utils.Kamerinfo;
 import example.org.utils.PotionBeloning;
 import example.org.utils.SpelerInventory;
 
@@ -21,6 +22,7 @@ public class SprintReviewKamer extends Kamer {
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
+    private Kamerinfo kamerinfo;
 
 
 
@@ -31,6 +33,7 @@ public class SprintReviewKamer extends Kamer {
         this.deur = deur;
         this.beantwoordCorrect = false;
         this.beloning = new PotionBeloning(inventory);
+        this.kamerinfo = new Kamerinfo("Tijdens de Sprint Review demonstreert het team het werk dat in de sprint is voltooid aan stakeholders.");
     }
 
     @Override
@@ -67,6 +70,11 @@ public class SprintReviewKamer extends Kamer {
             observers.add(monster);
         }
         return true;
+    }
+
+    @Override
+    public void toonKamerinfo() {
+        kamerinfo.showMessage();
     }
 
     public void notifyObserver(boolean antwoordCorrect) {

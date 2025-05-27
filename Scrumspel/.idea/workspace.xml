@@ -5,21 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81a37218-2e0c-46e4-bf03-9d65438747c7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/BoogBeloning.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/MapBeloning.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/PotionBeloning.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/SchildBeloning.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/StaffBeloning.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Templates/Kamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Kamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/players/Speler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/players/Speler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/utils/Beloning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/Beloning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/utils/Kamerinfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/Kamerinfo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +29,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="Anson" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -166,6 +164,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made a new class that adds all methods to change rooms." />
     <MESSAGE value="aanpassingen" />
-    <option name="LAST_COMMIT_MESSAGE" value="aanpassingen" />
+    <MESSAGE value="heb een aantal wapen classes gemaakt." />
+    <option name="LAST_COMMIT_MESSAGE" value="heb een aantal wapen classes gemaakt." />
   </component>
 </project>

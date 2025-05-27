@@ -8,6 +8,7 @@ import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.opdrachten.PuzzelOpdracht;
 import example.org.players.Monster;
+import example.org.utils.Kamerinfo;
 import example.org.utils.SpelerInventory;
 import example.org.utils.StaffBeloning;
 
@@ -23,6 +24,7 @@ public class FinaleTIAKamer extends Kamer {
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
     private boolean beantwoordCorrect;
+    private Kamerinfo kamerinfo;
 
     public FinaleTIAKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
@@ -30,6 +32,7 @@ public class FinaleTIAKamer extends Kamer {
         this.opdracht = opdracht;
         this.deur = deur;
         this.beloning = new StaffBeloning(inventory);
+        this.kamerinfo = new Kamerinfo("In deze finale kamer pas je alles toe wat je geleerd hebt. Laat zien dat je het Scrumproces beheerst!");
     }
 
     @Override
@@ -65,6 +68,11 @@ public class FinaleTIAKamer extends Kamer {
     @Override
     public String getVraag() {
         return opdracht.getVraag();
+    }
+
+    @Override
+    public void toonKamerinfo() {
+        kamerinfo.showMessage();
     }
 
     @Override

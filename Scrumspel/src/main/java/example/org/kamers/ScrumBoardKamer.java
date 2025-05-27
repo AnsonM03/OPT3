@@ -8,6 +8,7 @@ import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.opdrachten.PuzzelOpdracht;
 import example.org.players.Monster;
+import example.org.utils.Kamerinfo;
 import example.org.utils.MapBeloning;
 import example.org.utils.SpelerInventory;
 
@@ -23,6 +24,7 @@ public class ScrumBoardKamer extends Kamer {
     private List<Observer> observers = new ArrayList<>();
     private boolean beantwoordCorrect;
     private RewardGiver beloning;
+    private Kamerinfo kamerinfo;
 
     public ScrumBoardKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
@@ -31,6 +33,7 @@ public class ScrumBoardKamer extends Kamer {
         this.deur = deur;
         this.beantwoordCorrect = false;
         this.beloning = new MapBeloning(inventory);
+        this.kamerinfo = new Kamerinfo("Het Scrum Board helpt het team visueel bijhouden welke taken 'To Do', 'In Progress' of 'Done' zijn. Zo behoudt iedereen overzicht.");
     }
 
     @Override
@@ -66,6 +69,11 @@ public class ScrumBoardKamer extends Kamer {
     @Override
     public String getVraag() {
         return opdracht.getVraag();
+    }
+
+    @Override
+    public void toonKamerinfo() {
+        kamerinfo.showMessage();
     }
 
     @Override

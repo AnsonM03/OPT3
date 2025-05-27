@@ -11,6 +11,7 @@ public abstract class Kamer {
     public final void Kamer(){
         getNummer();
         getBeschrijving();
+        toonKamerinfo();
         getOpdracht();
         getDeur();
         isBeantwoordCorrect();
@@ -22,6 +23,7 @@ public abstract class Kamer {
         notifyObserver(false);
     }
 
+    public abstract void toonKamerinfo();
     public abstract int getNummer();
     public abstract String getBeschrijving();
     public abstract Opdracht getOpdracht();

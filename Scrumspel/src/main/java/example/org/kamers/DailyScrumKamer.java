@@ -10,6 +10,7 @@ import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
 import example.org.players.Speler;
 import example.org.utils.BoogBeloning;
+import example.org.utils.Kamerinfo;
 import example.org.utils.SpelerInventory;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class DailyScrumKamer extends Kamer {
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
+    private Kamerinfo kamerinfo;
 
     public DailyScrumKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
@@ -32,6 +34,7 @@ public class DailyScrumKamer extends Kamer {
         this.deur = deur;
         this.beantwoordCorrect = false;
         this.beloning = new BoogBeloning(inventory);
+        this.kamerinfo = new Kamerinfo("De Daily Scrum is een kort, dagelijks overleg van maximaal 15 minuten. Elk teamlid beantwoordt: wat heb ik gedaan, wat ga ik doen, en loop ik ergens tegenaan?");
     }
 
     @Override
@@ -63,6 +66,11 @@ public class DailyScrumKamer extends Kamer {
         for (Observer observer : observers) {
             observer.update(antwoordCorrect);
         }
+    }
+
+    @Override
+    public void toonKamerinfo() {
+        kamerinfo.showMessage();
     }
 
     @Override

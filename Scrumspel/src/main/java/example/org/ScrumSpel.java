@@ -6,7 +6,6 @@ import example.org.players.Monster;
 import example.org.players.Speler;
 import example.org.utils.SQLLoader;
 import example.org.utils.SQLSaver;
-import example.org.utils.SpelerInventory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,6 +78,9 @@ public class ScrumSpel {
                     break;
                 case "inventory":
                     speler.getInventory().toonInventory();
+                    break;
+                case "info":
+                    kamers.get(speler.getHuidigeKamer()).toonKamerinfo();
                     break;
                 case "stop":
                     System.out.println("Spel opslaan en afsluiten...");

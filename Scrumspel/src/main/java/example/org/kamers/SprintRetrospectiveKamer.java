@@ -7,6 +7,7 @@ import example.org.Templates.Opdracht;
 import example.org.Templates.RewardGiver;
 import example.org.opdrachten.MeerkeuzeOpdracht;
 import example.org.players.Monster;
+import example.org.utils.Kamerinfo;
 import example.org.utils.SchildBeloning;
 import example.org.utils.SpelerInventory;
 
@@ -21,6 +22,7 @@ public class SprintRetrospectiveKamer extends Kamer {
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
+    private Kamerinfo kamerinfo;
 
 
     public SprintRetrospectiveKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
@@ -30,6 +32,7 @@ public class SprintRetrospectiveKamer extends Kamer {
         this.deur = deur;
         this.beantwoordCorrect = false;
         this.beloning = new SchildBeloning(inventory);
+        this.kamerinfo = new Kamerinfo("In de Sprint Retrospective reflecteert het team op de samenwerking en processen. Wat ging goed? Wat kan beter?");
     }
 
     @Override
@@ -54,6 +57,11 @@ public class SprintRetrospectiveKamer extends Kamer {
     @Override
     public boolean isBeantwoordCorrect() {
         return beantwoordCorrect;
+    }
+
+    @Override
+    public void toonKamerinfo() {
+        kamerinfo.showMessage();
     }
 
     @Override

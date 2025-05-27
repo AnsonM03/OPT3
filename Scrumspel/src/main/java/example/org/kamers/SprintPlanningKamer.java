@@ -8,6 +8,7 @@ import example.org.Templates.RewardGiver;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.players.Monster;
 import example.org.players.Speler;
+import example.org.utils.Kamerinfo;
 import example.org.utils.SpelerInventory;
 import example.org.utils.ZwaardBeloning;
 
@@ -23,6 +24,7 @@ public class SprintPlanningKamer extends Kamer {
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
+    private Kamerinfo kamerinfo;
 
 
     public SprintPlanningKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
@@ -32,6 +34,7 @@ public class SprintPlanningKamer extends Kamer {
         this.deur = deur;
         this.beantwoordCorrect  = false;
         this.beloning = new ZwaardBeloning(inventory);
+        this.kamerinfo = new Kamerinfo("Tijdens sprint planning selecteert het team werk voor de komende sprint op basis van prioriteit en capaciteit.");
     }
 
     @Override
@@ -78,6 +81,11 @@ public class SprintPlanningKamer extends Kamer {
             notifyObserver(true);
         }
         return correct;
+    }
+
+    @Override
+    public void toonKamerinfo() {
+        kamerinfo.showMessage();
     }
 
     public static SprintPlanningKamer maakKamer(SpelerInventory inventory) {
