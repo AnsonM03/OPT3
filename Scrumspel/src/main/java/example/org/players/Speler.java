@@ -5,6 +5,7 @@ import example.org.Templates.Kamer;
 import example.org.Templates.SQLSavable;
 import example.org.logic.HintJoker;
 import example.org.logic.KeyJoker;
+import example.org.utils.SpelerInventory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +15,7 @@ public class Speler implements SQLSavable {
     private String naam;
     private int huidigeKamer;
     private int hp;
+    private SpelerInventory inventory = new SpelerInventory();
 
     public Speler(String naam, int hp) {
         this.naam = naam;
@@ -26,6 +28,10 @@ public class Speler implements SQLSavable {
         System.out.println("Speler: " + naam);
         System.out.println("Huidige kamer: " + huidigeKamer);
         System.out.println("HP: " + hp);
+    }
+
+    public SpelerInventory getInventory() {
+        return inventory;
     }
 
     public int getHp() {

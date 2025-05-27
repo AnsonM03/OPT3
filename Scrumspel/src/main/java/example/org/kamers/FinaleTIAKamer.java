@@ -3,10 +3,15 @@ package example.org.kamers;
 import example.org.Templates.*;
 import example.org.logic.Deur;
 import example.org.opdrachten.OpenOpdracht;
+import example.org.opdrachten.PuzzelOpdracht;
 import example.org.logic.Monster;
+import example.org.utils.Kamerinfo;
+import example.org.utils.SpelerInventory;
+import example.org.utils.StaffBeloning;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FinaleTIAKamer extends Kamer {
     private int nummer;
@@ -15,12 +20,16 @@ public class FinaleTIAKamer extends Kamer {
     private Deur deur;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
+    private boolean beantwoordCorrect;
+    private Kamerinfo kamerinfo;
 
-    public FinaleTIAKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
+    public FinaleTIAKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
+        this.beloning = new StaffBeloning(inventory);
+        this.kamerinfo = new Kamerinfo("In deze finale kamer pas je alles toe wat je geleerd hebt. Laat zien dat je het Scrumproces beheerst!");
     }
 
     @Override
@@ -50,25 +59,29 @@ public class FinaleTIAKamer extends Kamer {
 
     @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
-
+        this.beantwoordCorrect = beantwoord;
     }
 
     @Override
     public String getVraag() {
-        return "";
+        return opdracht.getVraag();
+    }
+
+    @Override
+    public void toonKamerinfo() {
+        kamerinfo.showMessage();
     }
 
     @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
-        if (correct) {
+        if (correct && !beantwoordCorrect) {
             setBeantwoordCorrect(true);
-            deur.isOpen();
             beloning.grantReward();
+            notifyObserver(true);
         }
         return correct;
     }
-
     @Override
     public boolean addObserver(Deur deur, Monster monster) {
         if (deur != null) {
@@ -86,14 +99,23 @@ public class FinaleTIAKamer extends Kamer {
         }
     }
 
-    public static FinaleTIAKamer maakKamer() {
+    public static FinaleTIAKamer maakKamer(SpelerInventory inventory) {
         return new FinaleTIAKamer(
                 6,
                 "Finale TIA Kamer – Waarom Scrum? Dit is het eindspel! Begrijp je TIA, dan ben je een echte Scrumheld.",
-                new OpenOpdracht(
-                        "Wat betekent TIA en waarom is Scrum hier een goede aanpak voor?",
-                        "TIA betekent Things In Action. Scrum is geschikt omdat het snel feedback oplevert, wendbaar is en teamwork bevordert om iteratief tot resultaat te komen."
-                ),  new Deur(true)
+                new PuzzelOpdracht(
+                        "Koppel elke Scrum-rol aan de juiste verantwoordelijkheid:\n" +
+                                "- Beheert de product backlog\n" +
+                                "- Faciliteert Scrum-evenementen\n" +
+                                "- Levert werkende software op",
+
+                        Map.of(
+                                "Product Owner", "Beheert de product backlog",
+                                "Scrum Master", "Faciliteert Scrum-evenementen",
+                                "Ontwikkelteam", "Levert werkende software op"
+                        )
+                ), new Deur(true),
+                inventory
         );
     }
 
