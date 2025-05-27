@@ -2,7 +2,7 @@ package example.org.wapens;
 
 import example.org.Templates.Item;
 import example.org.Templates.Wapen;
-import example.org.players.Monster;
+import example.org.logic.Monster;
 
 public class Zwaard implements Wapen, Item {
     private String naam;

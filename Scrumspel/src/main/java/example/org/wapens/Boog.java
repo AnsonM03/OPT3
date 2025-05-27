@@ -1,7 +1,7 @@
 package example.org.wapens;
 
 import example.org.Templates.Item;
-import example.org.players.Monster;
+import example.org.logic.Monster;
 
 public class Boog implements Item {
 

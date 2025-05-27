@@ -2,7 +2,7 @@ package example.org.utils;
 
 import example.org.Templates.Inventory;
 import example.org.Templates.Item;
-import example.org.players.Monster;
+import example.org.logic.Monster;
 import example.org.wapens.Zwaard;
 
 import java.util.ArrayList;
