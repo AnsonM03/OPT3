@@ -51,6 +51,18 @@ public class Monster implements Observer {
         }
     }
 
+    public void neemSchade(int amount){
+        schade -= amount;
+        if (schade < 0) {
+            schade = 0;
+        }
+        System.out.println("[Monster] Het monster ontvant " + amount + " schade. Resterende hp: " + schade);
+
+        if (schade == 0) {
+            System.out.println("[Monster] Het monster is verslagen!");
+        }
+    }
+
     public int getSchade(){
         return schade;
     }
