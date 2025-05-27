@@ -2,6 +2,7 @@ package example.org.utils;
 
 import example.org.Templates.RewardGiver;
 import example.org.Templates.Inventory;
+import example.org.wapens.Potion;
 
 public class PotionBeloning implements RewardGiver {
     private Inventory inventory;
@@ -16,7 +17,7 @@ public class PotionBeloning implements RewardGiver {
             System.out.println("[Beloning] Je hebt al een Healing Potion.");
         } else {
             System.out.println("[Beloning] Je hebt een Healing Potion gevonden! Deze kan je gebruiken om 50HP terug te krijgen.");
-            inventory.voegItemtoe("HealingPotion");
+            inventory.voegItemtoe(new Potion());
         }
     }
 }

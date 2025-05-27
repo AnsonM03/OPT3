@@ -2,6 +2,7 @@ package example.org.utils;
 
 import example.org.Templates.RewardGiver;
 import example.org.Templates.Inventory;
+import example.org.wapens.Boog;
 
 public class BoogBeloning implements RewardGiver {
     private Inventory inventory;
@@ -16,7 +17,7 @@ public class BoogBeloning implements RewardGiver {
             System.out.println("[Beloning] Je hebt al een ScrumBoog.");
         } else {
             System.out.println("[Beloning] Je hebt de boog 'ScrumBoog' gevonden! Deze boog kan worden gebruikt om de Monster aan te vallen.");
-            inventory.voegItemtoe("ScrumBoog");
+            inventory.voegItemtoe(new Boog());
         }
     }
 }

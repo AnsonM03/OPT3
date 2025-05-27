@@ -5,16 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81a37218-2e0c-46e4-bf03-9d65438747c7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/wapens/Boog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/wapens/Potion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/wapens/Schild.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/wapens/ScrumMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/example/org/wapens/Zwaard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/ScrumSpel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Templates/Kamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Kamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/FinaleTIAKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/ScrumBoardKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintPlanningKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintRetrospectiveKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/SprintReviewKamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/utils/Kamerinfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/Kamerinfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Templates/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/utils/BoogBeloning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/BoogBeloning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/utils/MapBeloning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/MapBeloning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/utils/PotionBeloning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/PotionBeloning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/utils/SchildBeloning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/SchildBeloning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/utils/SpelerInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/SpelerInventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/utils/Zwaard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/utils/ZwaardBeloning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/ZwaardBeloning.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747908877417</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="een paar aanpassingen gemaakt.">
+      <option name="closed" value="true" />
+      <created>1748337916056</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1748337916057</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

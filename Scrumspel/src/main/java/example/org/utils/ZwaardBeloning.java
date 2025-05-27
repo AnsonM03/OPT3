@@ -1,6 +1,8 @@
 package example.org.utils;
 
 import example.org.Templates.RewardGiver;
+import example.org.wapens.Zwaard;
+
 import java.util.Scanner;
 
 public class ZwaardBeloning implements RewardGiver {
@@ -24,7 +26,8 @@ public class ZwaardBeloning implements RewardGiver {
             // eventueel: monster.neemSchade(30);
         } else {
             System.out.println("[Speler] Je bewaart het zwaard voor later gebruik.");
-            inventory.voegItemtoe("ScrumZwaard");
+            Zwaard scrumZwaard = new Zwaard("ScrumZwaard");
+            inventory.voegItemtoe(scrumZwaard);
         }
     }
 }
