@@ -1,7 +1,7 @@
 package example.org.utils;
 
 import example.org.Templates.Inventory;
-import example.org.players.Monster;
+import example.org.logic.Monster;
 
 import java.util.ArrayList;
 import java.util.List;
