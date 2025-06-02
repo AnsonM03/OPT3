@@ -13,7 +13,7 @@ public class Potion implements Wapen, Item {
 
     @Override
     public void attack(Monster monster) {
-        System.out.println("[Wapen] Je vuurt een Scrum-pijl af op het monster!");
-        monster.neemSchade(20);
+        System.out.println("[Wapen] Je gooit een FirePotion op het monster!");
+        monster.neemSchade(35);
     }
 }
