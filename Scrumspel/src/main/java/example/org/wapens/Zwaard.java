@@ -12,10 +12,6 @@ public class Zwaard implements Wapen, Item {
     }
 
     @Override
-    public void attack() {
-        System.out.println("Je valt aan met het zwaard: " + naam);
-    }
-
     public void attack(Monster monster) {
         System.out.println("[Zwaard] Je valt het monster aan met " + naam + "!");
         monster.neemSchade(30);

@@ -12,6 +12,8 @@ public class Monster implements Observer {
     private int schade;
     private Speler speler;
 
+    private int monsterHealth = 300;
+
     public Monster(int schade, Speler speler){
         this.schade = schade;
         this.speler = speler;
@@ -51,12 +53,12 @@ public class Monster implements Observer {
         }
     }
 
-    public void neemSchade(int amount){
-        schade -= amount;
+    public void neemSchade(int monsterHealth){
+        schade -= monsterHealth;
         if (schade < 0) {
             schade = 0;
         }
-        System.out.println("[Monster] Het monster ontvant " + amount + " schade. Resterende hp: " + schade);
+        System.out.println("[Monster] Het monster ontvant " + monsterHealth + " schade. Resterende hp: " + schade);
 
         if (schade == 0) {
             System.out.println("[Monster] Het monster is verslagen!");
