@@ -1,4 +1,4 @@
-package example.org;
+package example.org.logic;
 
 import example.org.Templates.Observer;
 

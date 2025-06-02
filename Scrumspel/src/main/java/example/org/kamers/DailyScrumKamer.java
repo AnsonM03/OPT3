@@ -1,14 +1,13 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
+import example.org.Templates.*;
+import example.org.logic.Deur;
+import example.org.logic.KeyJoker;
 import example.org.opdrachten.MeerkeuzeOpdracht;
-import example.org.opdrachten.OpenOpdracht;
-import example.org.players.Monster;
-import example.org.utils.Beloning;
+import example.org.logic.Monster;
+import example.org.utils.BoogBeloning;
+import example.org.utils.Kamerinfo;
+import example.org.utils.SpelerInventory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,14 +21,16 @@ public class DailyScrumKamer extends Kamer {
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
+    private Kamerinfo kamerinfo;
 
-    public DailyScrumKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
+    public DailyScrumKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect = false;
-        this.beloning = new Beloning();
+        this.beloning = new BoogBeloning(inventory);
+        this.kamerinfo = new Kamerinfo("De Daily Scrum is een kort, dagelijks overleg van maximaal 15 minuten. Elk teamlid beantwoordt: wat heb ik gedaan, wat ga ik doen, en loop ik ergens tegenaan?");
     }
 
     @Override
@@ -64,6 +65,11 @@ public class DailyScrumKamer extends Kamer {
     }
 
     @Override
+    public void toonKamerinfo() {
+        kamerinfo.showMessage();
+    }
+
+    @Override
     public void setBeantwoordCorrect(boolean beantwoord) {
         this.beantwoordCorrect = beantwoord;
     }
@@ -95,7 +101,7 @@ public class DailyScrumKamer extends Kamer {
         return true;
     }
 
-    public static DailyScrumKamer maakKamer() {
+    public static DailyScrumKamer maakKamer(SpelerInventory inventory) {
         return new DailyScrumKamer(
                 2,
                 "Je staat in Kamer 2 (Daily Scrum Kamer). Elke teamgenoot moet een status-update geven. Vergeet je iemand? Dan roept dat het monster 'Vertraging' op.",
@@ -113,7 +119,19 @@ public class DailyScrumKamer extends Kamer {
                                 "D) Tom"
                         ),
                         "C"
-                ), new Deur(true)
+                ),
+                new Deur(true),
+                inventory
         );
+    }
+
+    @Override
+    public void accepteer(Joker joker) {
+        if (joker instanceof KeyJoker) {
+            System.out.println("🔑 Je ontvangt een extra sleutel in de DailyScrum kamer!");
+        } else {
+            joker.useIn(this);
+
+        }
     }
 }

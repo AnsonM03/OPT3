@@ -1,5 +1,7 @@
 package example.org.Templates;
 
+import example.org.logic.Monster;
+
 public interface Wapen {
-    void attack();
+    void attack(Monster monster);
 }

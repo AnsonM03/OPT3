@@ -1,8 +1,8 @@
-package example.org.players;
+package example.org.logic;
 
-import example.org.HintFactory;
 import example.org.Templates.HintProvider;
 import example.org.Templates.Observer;
+import example.org.players.Speler;
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,6 +11,8 @@ public class Monster implements Observer {
 
     private int schade;
     private Speler speler;
+
+    private int monsterHealth = 300;
 
     public Monster(int schade, Speler speler){
         this.schade = schade;
@@ -48,6 +50,18 @@ public class Monster implements Observer {
 
         } else {
             System.out.println("✅ Het monster verdwijnt...");
+        }
+    }
+
+    public void neemSchade(int monsterHealth){
+        schade -= monsterHealth;
+        if (schade < 0) {
+            schade = 0;
+        }
+        System.out.println("[Monster] Het monster ontvant " + monsterHealth + " schade. Resterende hp: " + schade);
+
+        if (schade == 0) {
+            System.out.println("[Monster] Het monster is verslagen!");
         }
     }
 

@@ -1,8 +1,8 @@
-package example.org;
+package example.org.logic;
 
+import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
 import example.org.kamers.*;
-import example.org.players.Monster;
 import example.org.players.Speler;
 import example.org.utils.SQLLoader;
 import example.org.utils.SQLSaver;
@@ -18,16 +18,15 @@ public class ScrumSpel {
     private RoomChanger roomChanger;
 
     public ScrumSpel() {
-        initializeKamers();
     }
 
     private void initializeKamers() {
-        kamers.put(1, SprintPlanningKamer.maakKamer());
-        kamers.put(2, DailyScrumKamer.maakKamer());
-        kamers.put(3, ScrumBoardKamer.maakKamer());
-        kamers.put(4, SprintReviewKamer.maakKamer());
-        kamers.put(5, SprintRetrospectiveKamer.maakKamer());
-        kamers.put(6, FinaleTIAKamer.maakKamer());
+        kamers.put(1, SprintPlanningKamer.maakKamer(speler.getInventory()));
+        kamers.put(2, DailyScrumKamer.maakKamer(speler.getInventory()));
+        kamers.put(3, ScrumBoardKamer.maakKamer(speler.getInventory()));
+        kamers.put(4, SprintReviewKamer.maakKamer(speler.getInventory()));
+        kamers.put(5, SprintRetrospectiveKamer.maakKamer(speler.getInventory()));
+        kamers.put(6, FinaleTIAKamer.maakKamer(speler.getInventory()));
     }
 
     public void startSpel() {
@@ -36,6 +35,7 @@ public class ScrumSpel {
         String naam = scanner.nextLine();
 
         speler = new Speler(naam, 100);
+        initializeKamers();
         speler.setHuidigeKamer(1);
         SQLLoader.loadFromDatabase("speler");
 
@@ -79,11 +79,21 @@ public class ScrumSpel {
                 case "inventory":
                     speler.getInventory().toonInventory();
                     break;
+                case "info":
+                    kamers.get(speler.getHuidigeKamer()).toonKamerinfo();
+                    break;
                 case "stop":
                     System.out.println("Spel opslaan en afsluiten...");
                     SQLSaver.saveToDatabase(speler);
                     spelActief = false;
                     break;
+
+                case "joker":
+                    Kamer kamer = kamers.get(speler.getHuidigeKamer());
+                    Joker gekozenJoker = speler.kiesJoker();
+                    kamer.accepteer(gekozenJoker);
+                    break;
+
                 case "beantwoord":
                     Kamer huidigeKamer = kamers.get(speler.getHuidigeKamer());
                     boolean correct = huidigeKamer.handlePlayerAnswer();

@@ -1,14 +1,13 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
+import example.org.logic.Deur;
+import example.org.Templates.*;
+import example.org.logic.KeyJoker;
 import example.org.opdrachten.OpenOpdracht;
-import example.org.players.Monster;
-import example.org.utils.Beloning;
+import example.org.logic.Monster;
 import example.org.utils.Kamerinfo;
+import example.org.utils.PotionBeloning;
+import example.org.utils.SpelerInventory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,20 +20,18 @@ public class SprintReviewKamer extends Kamer {
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
-    private transient Kamerinfo infoBoek = new Kamerinfo("Welkom in de Sprint Review Kamer. Hier leer je omgaan met feedback van stakeholders.");
+    private Kamerinfo kamerinfo;
 
-    public void toonIntro() {
-        infoBoek.showMessage();
-    }
 
-    public SprintReviewKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
+
+    public SprintReviewKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect = false;
-        this.beloning = new Beloning();
-        toonIntro();
+        this.beloning = new PotionBeloning(inventory);
+        this.kamerinfo = new Kamerinfo("Tijdens de Sprint Review demonstreert het team het werk dat in de sprint is voltooid aan stakeholders.");
     }
 
     @Override
@@ -73,6 +70,11 @@ public class SprintReviewKamer extends Kamer {
         return true;
     }
 
+    @Override
+    public void toonKamerinfo() {
+        kamerinfo.showMessage();
+    }
+
     public void notifyObserver(boolean antwoordCorrect) {
         for (Observer observer : observers) {
             observer.update(antwoordCorrect);
@@ -100,14 +102,24 @@ public class SprintReviewKamer extends Kamer {
         return correct;
     }
 
-    public static SprintReviewKamer maakKamer() {
+    public static SprintReviewKamer maakKamer(SpelerInventory inventory) {
         return new SprintReviewKamer(
                 4,
                 "Je staat in Kamer 4 (Sprint Review Kamer): Stakeholders geven feedback. Interpreteer hun opmerkingen correct, anders verschijnt het monster 'Miscommunicatie'.",
                 new OpenOpdracht(
                         "Stakeholders geven aan dat een opgeleverd onderdeel niet voldoet aan hun verwachtingen. Wat doe je tijdens de Sprint Review?",
                         "Je bespreekt de feedback openlijk, past eventueel de Product Backlog aan, en leert voor toekomstige sprints."
-                ), new Deur(true)
+                ), new Deur(true),
+                inventory
         );
     }
+    @Override
+    public void accepteer(Joker joker) {
+        if (joker instanceof KeyJoker) {
+            System.out.println("🔑 Je ontvangt een extra sleutel in de Review kamer!");
+        } else {
+            joker.useIn(this);
+        }
+    }
 }
+

@@ -1,7 +1,7 @@
 package example.org.Templates;
 
 public interface Inventory {
-    void voegItemtoe(String item);
-    boolean heeftItem(String item);
+    void voegItemtoe(Item item);
+    boolean heeftItem(String naam);
     void toonInventory();
 }

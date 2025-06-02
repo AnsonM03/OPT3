@@ -1,14 +1,13 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
+import example.org.Templates.*;
+import example.org.logic.Deur;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.opdrachten.PuzzelOpdracht;
-import example.org.players.Monster;
-import example.org.utils.Beloning;
+import example.org.logic.Monster;
+import example.org.utils.Kamerinfo;
+import example.org.utils.SpelerInventory;
+import example.org.utils.StaffBeloning;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +21,15 @@ public class FinaleTIAKamer extends Kamer {
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
     private boolean beantwoordCorrect;
+    private Kamerinfo kamerinfo;
 
-    public FinaleTIAKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
+    public FinaleTIAKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
-        this.beloning = new Beloning();
+        this.beloning = new StaffBeloning(inventory);
+        this.kamerinfo = new Kamerinfo("In deze finale kamer pas je alles toe wat je geleerd hebt. Laat zien dat je het Scrumproces beheerst!");
     }
 
     @Override
@@ -67,6 +68,11 @@ public class FinaleTIAKamer extends Kamer {
     }
 
     @Override
+    public void toonKamerinfo() {
+        kamerinfo.showMessage();
+    }
+
+    @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
         if (correct && !beantwoordCorrect) {
@@ -93,7 +99,7 @@ public class FinaleTIAKamer extends Kamer {
         }
     }
 
-    public static FinaleTIAKamer maakKamer() {
+    public static FinaleTIAKamer maakKamer(SpelerInventory inventory) {
         return new FinaleTIAKamer(
                 6,
                 "Finale TIA Kamer – Waarom Scrum? Dit is het eindspel! Begrijp je TIA, dan ben je een echte Scrumheld.",
@@ -108,7 +114,13 @@ public class FinaleTIAKamer extends Kamer {
                                 "Scrum Master", "Faciliteert Scrum-evenementen",
                                 "Ontwikkelteam", "Levert werkende software op"
                         )
-                ), new Deur(true)
+                ), new Deur(true),
+                inventory
         );
+    }
+
+    @Override
+    public void accepteer(Joker joker) {
+        joker.useIn(this); // Alleen HintJoker heeft effect
     }
 }

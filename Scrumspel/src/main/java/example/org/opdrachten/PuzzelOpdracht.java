@@ -34,4 +34,13 @@ public class PuzzelOpdracht implements Opdracht {
     public Map<String, String> getJuisteKoppels(){
         return juisteKoppels;
     }
+
+    @Override
+    public String getAntwoord() {
+        return juisteKoppels.entrySet().stream()
+                .map(e -> e.getKey() + "=" + e.getValue())
+                .reduce((a, b) -> a + ", " + b)
+                .orElse("");
+    }
+
 }

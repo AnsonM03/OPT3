@@ -1,14 +1,13 @@
 package example.org.kamers;
 
-import example.org.Deur;
-import example.org.Templates.Kamer;
-import example.org.Templates.Observer;
-import example.org.Templates.Opdracht;
-import example.org.Templates.RewardGiver;
+import example.org.logic.Deur;
+import example.org.Templates.*;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.opdrachten.PuzzelOpdracht;
-import example.org.players.Monster;
-import example.org.utils.Beloning;
+import example.org.logic.Monster;
+import example.org.utils.Kamerinfo;
+import example.org.utils.MapBeloning;
+import example.org.utils.SpelerInventory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +21,16 @@ public class ScrumBoardKamer extends Kamer {
     private List<Observer> observers = new ArrayList<>();
     private boolean beantwoordCorrect;
     private RewardGiver beloning;
+    private Kamerinfo kamerinfo;
 
-    public ScrumBoardKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur) {
+    public ScrumBoardKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
         this.deur = deur;
         this.beantwoordCorrect = false;
-        this.beloning = new Beloning();
+        this.beloning = new MapBeloning(inventory);
+        this.kamerinfo = new Kamerinfo("Het Scrum Board helpt het team visueel bijhouden welke taken 'To Do', 'In Progress' of 'Done' zijn. Zo behoudt iedereen overzicht.");
     }
 
     @Override
@@ -68,6 +69,11 @@ public class ScrumBoardKamer extends Kamer {
     }
 
     @Override
+    public void toonKamerinfo() {
+        kamerinfo.showMessage();
+    }
+
+    @Override
     public boolean controleerAntwoord(String antwoord) {
         boolean correct = opdracht.controleerAntwoord(antwoord);
         if (correct && !beantwoordCorrect) {
@@ -95,7 +101,7 @@ public class ScrumBoardKamer extends Kamer {
         }
     }
 
-    public static ScrumBoardKamer maakKamer() {
+    public static ScrumBoardKamer maakKamer(SpelerInventory inventory) {
         return new ScrumBoardKamer(
                 3,
                 "Je staat in Kamer 3 voor het Scrum Board. Orden de epics, user stories en taken correct, anders verschijnt het monster 'Chaos'.",
@@ -109,8 +115,14 @@ public class ScrumBoardKamer extends Kamer {
                                 "Inloggen met Google", "User Story",
                                 "Bouw login-knop", "Taak"
                         )
-                ), new Deur(true)
-
+                ), new Deur(true),
+                inventory
         );
     }
+    @Override
+    public void accepteer(Joker joker) {
+        joker.useIn(this); // Alleen HintJoker heeft effect
+    }
 }
+
+

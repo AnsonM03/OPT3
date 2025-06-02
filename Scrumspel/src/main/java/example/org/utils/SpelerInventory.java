@@ -1,27 +1,38 @@
 package example.org.utils;
 
 import example.org.Templates.Inventory;
-import example.org.players.Monster;
+import example.org.Templates.Item;
+import example.org.logic.Monster;
+import example.org.wapens.Zwaard;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpelerInventory implements Inventory {
-    private List<String> items = new ArrayList<>();
+    private List<Item> items;
+
+    public SpelerInventory() {
+        this.items = new ArrayList<>();
+    }
 
     @Override
-    public void voegItemtoe(String item) {
+    public void voegItemtoe(Item item) {
         if (!items.contains(item)) {
             items.add(item);
-            System.out.println("[Inventory] '" + item + "' is toegevoegd aan je inventory.");
+            System.out.println("[Inventory] '" + item.getNaam() + "' is toegevoegd aan je inventory.");
         } else {
-            System.out.println("[Inventory] Je hebt '" + item + "' is al in je inventory.");
+            System.out.println("[Inventory] Je hebt '" + item.getNaam() + "' is al in je inventory.");
         }
     }
 
     @Override
-    public boolean heeftItem(String item) {
-        return items.contains(item);
+    public boolean heeftItem(String naam) {
+        for (Item i : items) {
+            if (i.getNaam().equalsIgnoreCase(naam)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -30,27 +41,28 @@ public class SpelerInventory implements Inventory {
             System.out.println("[Inventory] Je hebt nog geen items in je inventory.");
         } else {
             System.out.println("[Inventory] Je hebt de volgende items in je inventory:");
-            for (String item : items) {
-                System.out.println("- " + item);
+            for (Item item : items) {
+                System.out.println("- " + item.getNaam());
             }
         }
     }
 
-    public List<String> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
-    public boolean gebruikItem(String item, Monster monster) {
-        if (items.contains(item)) {
-            if (item.equalsIgnoreCase("ScrumZwaard")) {
-                System.out.println("[Actie] Je gebruikt het ScrumZwaard tegen het monster!");
-                // monster.neemSchade(30); // bijvoorbeeld 20 schade
-                return true;
+    public boolean gebruikItem(String naam, Monster monster) {
+        for (Item item : items) {
+            if (item.getNaam().equalsIgnoreCase(naam)) {
+                if (item instanceof Zwaard) {
+                    ((Zwaard) item).attack(monster);
+                    return true;
+                }
+                System.out.println("[Actie] " + item.getNaam() + " kan niet gebruikt worden.");
+                return false;
             }
-            System.out.println("[Actie] " + item + " kan niet gebruikt worden.");
-        } else {
-            System.out.println("[Fout] Je hebt dit item niet.");
         }
+        System.out.println("[Fout] Je hebt dit item niet.");
         return false;
     }
 }

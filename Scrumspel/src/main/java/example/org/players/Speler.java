@@ -1,10 +1,15 @@
 package example.org.players;
 
+import example.org.Templates.Joker;
+import example.org.Templates.Kamer;
 import example.org.Templates.SQLSavable;
+import example.org.logic.HintJoker;
+import example.org.logic.KeyJoker;
 import example.org.utils.SpelerInventory;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Speler implements SQLSavable {
     private String naam;
@@ -44,6 +49,23 @@ public class Speler implements SQLSavable {
     public void setHuidigeKamer(int kamer) {
         this.huidigeKamer = kamer;
     }
+
+    public Joker kiesJoker() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welke joker wil je gebruiken? (hint / key): ");
+        String keuze = scanner.nextLine().toLowerCase();
+
+        switch (keuze) {
+            case "hint":
+                return new HintJoker();
+            case "key":
+                return new KeyJoker();
+            default:
+                System.out.println("Ongeldige keuze, standaard HintJoker wordt gebruikt.");
+                return new HintJoker(); // Fallback
+        }
+    }
+
 
     @Override
     public String getTableName() {

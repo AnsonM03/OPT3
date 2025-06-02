@@ -3,7 +3,7 @@ package example.org.utils;
 import example.org.Templates.MessageProvider;
 
 public class Kamerinfo implements MessageProvider {
-    private String info;
+    private final String info;
 
     public Kamerinfo(String info) {
         this.info = info;
