@@ -2,7 +2,7 @@ package example.org.kamers;
 
 import example.org.Templates.*;
 import example.org.logic.Deur;
-import example.org.logic.KeyJoker;
+import example.org.items.KeyJoker;
 import example.org.opdrachten.MeerkeuzeOpdracht;
 import example.org.logic.Monster;
 import example.org.utils.BoogBeloning;

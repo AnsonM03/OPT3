@@ -1,19 +1,18 @@
-package example.org.logic;
+package example.org.items;
 
+import example.org.Templates.Item;
 import example.org.Templates.Kamer;
 import example.org.Templates.SpecialJoker;
 import example.org.kamers.DailyScrumKamer;
 import example.org.kamers.SprintReviewKamer;
 
-public class KeyJoker implements SpecialJoker {
+public class KeyJoker implements SpecialJoker, Item {
     private boolean gebruikt = false;
 
     @Override
     public void useIn(DailyScrumKamer kamer) {
         if (gebruikt) {
             System.out.println("Joker is al gebruikt!");
-//            kamer.geefSleutel();
-//            System.out.println("Key = " + kamer.getOpdracht().getAntwoord());
 
         } gebruikt = true;
     }
@@ -22,13 +21,16 @@ public class KeyJoker implements SpecialJoker {
     public void useIn(SprintReviewKamer kamer) {
         if (gebruikt) {
             System.out.println("Joker is al gebruikt!");
-//            kamer.geefSleutel();
-//            System.out.println("Key = " + kamer.getOpdracht().getAntwoord());
         } gebruikt = true;
     }
 
     @Override
     public void useIn(Kamer kamer) {
+    }
+
+    @Override
+    public String getNaam(){
+        return "KeyJoker";
     }
 
 }

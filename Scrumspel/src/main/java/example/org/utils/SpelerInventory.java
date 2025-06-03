@@ -65,4 +65,16 @@ public class SpelerInventory implements Inventory {
         System.out.println("[Fout] Je hebt dit item niet.");
         return false;
     }
+
+    public boolean verwijderItem(String naam) {
+        for (Item item : items) {
+            if (item.getNaam().equalsIgnoreCase(naam)) {
+                items.remove(item);
+                System.out.println("[Inventory] '" + naam + "' is verwijderd uit je inventory.");
+                return true;
+            }
+        }
+        System.out.println("[Fout] '" + naam + "' zit niet in je inventory.");
+        return false;
+    }
 }
