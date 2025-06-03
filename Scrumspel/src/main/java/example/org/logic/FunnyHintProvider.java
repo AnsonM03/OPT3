@@ -6,9 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-
-
-
 public class FunnyHintProvider implements HintProvider {
     private List<String> funnyHints = Arrays.asList(
             "Wist je dat een Scrum Master geen ninja is, ook al klinkt het zo?",

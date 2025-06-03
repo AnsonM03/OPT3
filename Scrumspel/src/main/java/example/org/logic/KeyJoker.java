@@ -12,9 +12,6 @@ public class KeyJoker implements SpecialJoker {
     public void useIn(DailyScrumKamer kamer) {
         if (gebruikt) {
             System.out.println("Joker is al gebruikt!");
-//            kamer.geefSleutel();
-//            System.out.println("Key = " + kamer.getOpdracht().getAntwoord());
-
         } gebruikt = true;
     }
 
@@ -22,13 +19,10 @@ public class KeyJoker implements SpecialJoker {
     public void useIn(SprintReviewKamer kamer) {
         if (gebruikt) {
             System.out.println("Joker is al gebruikt!");
-//            kamer.geefSleutel();
-//            System.out.println("Key = " + kamer.getOpdracht().getAntwoord());
         } gebruikt = true;
     }
 
     @Override
     public void useIn(Kamer kamer) {
     }
-
 }

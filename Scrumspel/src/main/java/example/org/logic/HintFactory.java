@@ -9,10 +9,8 @@ public class HintFactory {
         }
         if (hintType.equalsIgnoreCase("HELP")) {
             return new HelpHintProvider();
-
         } else if (hintType.equalsIgnoreCase("FUNNY")) {
             return new FunnyHintProvider();
-
         }
 
         return null;
