@@ -1,6 +1,5 @@
-package example.org.utils;
+package example.org.database;
 
-import example.org.DatabaseConnector;
 import example.org.Templates.SQLSavable;
 
 import java.sql.Connection;

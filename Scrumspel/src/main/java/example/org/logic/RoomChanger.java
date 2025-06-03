@@ -2,7 +2,7 @@ package example.org.logic;
 
 import example.org.Templates.Kamer;
 import example.org.players.Speler;
-import example.org.utils.SQLSaver;
+import example.org.database.SQLSaver;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,10 +1,6 @@
-package example.org.utils;
+package example.org.database;
 
-import example.org.DatabaseConnector;
-
-import java.util.*;
 import java.sql.*;
-import java.util.ArrayList;
 
 public class SQLLoader {
     public static void loadFromDatabase(String tableName) {
