@@ -1,12 +1,13 @@
-package example.org.logic;
+package example.org.items;
 
+import example.org.Templates.Item;
 import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class HintJoker implements Joker {
+public class HintJoker implements Joker, Item {
     private boolean gebruikt = false;
 
     private static final Map<Integer, String> tips = new HashMap<>();
@@ -37,5 +38,10 @@ public class HintJoker implements Joker {
             System.out.println("Geen tip beschikbaar voor deze kamer.");
         }
         gebruikt = true;
+    }
+
+    @Override
+    public String getNaam(){
+        return "HintJoker";
     }
 }

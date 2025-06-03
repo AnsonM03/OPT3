@@ -1,10 +1,9 @@
 package example.org.players;
 
 import example.org.Templates.Joker;
-import example.org.Templates.Kamer;
 import example.org.Templates.SQLSavable;
-import example.org.logic.HintJoker;
-import example.org.logic.KeyJoker;
+import example.org.items.HintJoker;
+import example.org.items.KeyJoker;
 import example.org.utils.SpelerInventory;
 
 import java.util.Arrays;

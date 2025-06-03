@@ -5,9 +5,7 @@ import example.org.logic.Deur;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.logic.Monster;
 import example.org.players.Speler;
-import example.org.utils.Kamerinfo;
-import example.org.utils.SpelerInventory;
-import example.org.utils.ZwaardBeloning;
+import example.org.utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +19,8 @@ public class SprintPlanningKamer extends Kamer {
     private boolean beantwoordCorrect;
     private List<Observer> observers = new ArrayList<>();
     private RewardGiver beloning;
+    private RewardGiver hintjokerbeloning;
+    private RewardGiver keyjokerbeloning;
     private Kamerinfo kamerinfo;
 
 
@@ -31,6 +31,8 @@ public class SprintPlanningKamer extends Kamer {
         this.deur = deur;
         this.beantwoordCorrect  = false;
         this.beloning = new ZwaardBeloning(inventory);
+        this.hintjokerbeloning = new HintJokerBeloning(inventory);
+        this.keyjokerbeloning = new KeyJokerBeloning(inventory);
         this.kamerinfo = new Kamerinfo("Tijdens sprint planning selecteert het team werk voor de komende sprint op basis van prioriteit en capaciteit.");
     }
 
@@ -75,6 +77,8 @@ public class SprintPlanningKamer extends Kamer {
         if (correct && !beantwoordCorrect) {
             setBeantwoordCorrect(true);
             beloning.grantReward();
+            hintjokerbeloning.grantReward();
+            keyjokerbeloning.grantReward();
             notifyObserver(true);
         }
         return correct;

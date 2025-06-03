@@ -1,5 +1,6 @@
 package example.org.logic;
 
+import example.org.Templates.Item;
 import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
 import example.org.kamers.*;
@@ -91,7 +92,10 @@ public class ScrumSpel {
                 case "joker":
                     Kamer kamer = kamers.get(speler.getHuidigeKamer());
                     Joker gekozenJoker = speler.kiesJoker();
-                    kamer.accepteer(gekozenJoker);
+                    if (gekozenJoker instanceof Item) {
+                        kamer.accepteer(gekozenJoker);
+                        speler.getInventory().verwijderItem(((Item) gekozenJoker).getNaam());
+                    }
                     break;
 
                 case "beantwoord":

@@ -1,7 +1,6 @@
 package example.org.utils;
 
 import example.org.DatabaseConnector;
-import example.org.Templates.Mapper;
 
 import java.util.*;
 import java.sql.*;
@@ -58,50 +57,5 @@ public class SQLLoader {
         } catch (SQLException e) {
             System.err.println("❌ SQL-fout: " + e.getMessage());
         }
-    }
-
-    public static <T> T loadById(int id, Mapper<T> mapper) {
-        String query = "SELECT * FROM " + mapper.getTableName() + " WHERE id = ?";
-
-        try (Connection conn = DatabaseConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return mapper.mapRow(rs);
-            } else {
-                System.out.println("⚠️ Geen resultaat gevonden met ID: " + id);
-                return null;
-            }
-
-        } catch (SQLException e) {
-            System.err.println("❌ SQL-fout bij loadById: " + e.getMessage());
-            return null;
-        }
-    }
-
-
-    public static <T> List<T> loadAll(String tableName, Mapper<T> mapper) {
-        List<T> result = new ArrayList<>();
-        String query = "SELECT * FROM " + tableName;
-
-        try (Connection conn = DatabaseConnector.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-
-            while (rs.next()) {
-                T item = mapper.mapRow(rs);
-                System.out.println("Gelezen item: " + item);
-                result.add(item);
-            }
-
-
-        } catch (SQLException e) {
-            System.err.println("❌ SQL-fout: " + e.getMessage());
-        }
-
-        return result;
     }
 }
