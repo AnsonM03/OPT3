@@ -5,8 +5,8 @@ import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
 import example.org.kamers.*;
 import example.org.players.Speler;
-import example.org.utils.SQLLoader;
-import example.org.utils.SQLSaver;
+import example.org.database.SQLLoader;
+import example.org.database.SQLSaver;
 
 import java.util.HashMap;
 import java.util.Map;

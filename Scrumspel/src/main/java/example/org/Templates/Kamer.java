@@ -51,7 +51,7 @@ public abstract class Kamer {
             System.out.println("✅ Goed!");
         } else {
             System.out.println("❌ Fout!");
-            notifyObserver(false); // Notify observers with failure
+            notifyObserver(false);
         }
         return correct;
     }

@@ -1,4 +1,4 @@
-package example.org;
+package example.org.database;
 
 import java.sql.*;
 

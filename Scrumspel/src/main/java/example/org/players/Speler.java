@@ -1,6 +1,5 @@
 package example.org.players;
 
-import example.org.Templates.Inventory;
 import example.org.Templates.Joker;
 import example.org.Templates.SQLSavable;
 import example.org.items.HintJoker;
