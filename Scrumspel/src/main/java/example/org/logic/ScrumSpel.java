@@ -16,6 +16,7 @@ public class ScrumSpel {
     public Map<Integer, Kamer> kamers = new HashMap<>();
     private Speler speler;
     private Monster monster;
+    private Deur deur = new Deur(false);
     private RoomChanger roomChanger;
 
     public ScrumSpel() {
@@ -121,11 +122,9 @@ public class ScrumSpel {
     }
     private void handleGameOver() {
         System.out.println("\nGame over! Je hebt geen HP meer.");
-        System.out.println("Je wordt teruggebracht naar kamer 0 met volle HP...");
-
+        System.out.println("Je wordt teruggebracht naar kamer 1 met volle HP...");
         speler.setHp(100);
-        speler.setHuidigeKamer(0);
-
-        SQLSaver.saveToDatabase(speler);
+        deur.setOpen(false);
+        speler.setHuidigeKamer(1);
     }
 }

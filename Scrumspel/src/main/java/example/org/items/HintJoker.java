@@ -28,7 +28,6 @@ public class HintJoker implements Joker, Item {
             System.out.println("Deze joker is al gebruikt!");
             return;
         }
-
         int kamerNummer = kamer.getNummer();
         String tip = tips.get(kamerNummer);
 
