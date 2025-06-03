@@ -14,6 +14,6 @@ public class Boog implements Wapen, Item {
     @Override
     public void attack(Monster monster) {
         System.out.println("[Wapen] Je vuurt een Scrum-pijl af op het monster!");
-        monster.neemSchade(20);
+        monster.neemSchade(40);
     }
 }

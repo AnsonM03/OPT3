@@ -1,5 +1,6 @@
 package example.org.players;
 
+import example.org.Templates.Inventory;
 import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
 import example.org.Templates.SQLSavable;
@@ -31,7 +32,7 @@ public class Speler implements SQLSavable {
     }
 
     public SpelerInventory getInventory() {
-        return inventory;
+        return this.inventory;
     }
 
     public int getHp() {

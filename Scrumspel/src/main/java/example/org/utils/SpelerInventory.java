@@ -2,6 +2,7 @@ package example.org.utils;
 
 import example.org.Templates.Inventory;
 import example.org.Templates.Item;
+import example.org.Templates.Wapen;
 import example.org.logic.Monster;
 import example.org.wapens.Zwaard;
 
@@ -51,11 +52,12 @@ public class SpelerInventory implements Inventory {
         return items;
     }
 
+    @Override
     public boolean gebruikItem(String naam, Monster monster) {
         for (Item item : items) {
             if (item.getNaam().equalsIgnoreCase(naam)) {
-                if (item instanceof Zwaard) {
-                    ((Zwaard) item).attack(monster);
+                if (item instanceof Wapen) {
+                    ((Wapen) item).attack(monster);
                     return true;
                 }
                 System.out.println("[Actie] " + item.getNaam() + " kan niet gebruikt worden.");
