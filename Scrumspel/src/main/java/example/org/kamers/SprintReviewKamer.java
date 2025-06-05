@@ -113,13 +113,13 @@ public class SprintReviewKamer extends Kamer {
                 inventory
         );
     }
+
     @Override
     public void accepteer(Joker joker) {
-        if (joker instanceof KeyJoker) {
-            System.out.println("🔑 Je ontvangt een extra sleutel in de Review kamer!");
-        } else {
-            joker.useIn(this);
+        if (joker instanceof SpecialJoker) {
+            ((SpecialJoker) joker).useIn(this); // Geen if op KeyJoker
         }
     }
+
 }
 

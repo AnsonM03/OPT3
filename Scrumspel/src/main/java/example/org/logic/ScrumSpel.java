@@ -16,26 +16,20 @@ public class ScrumSpel {
     private Monster monster;
     private Deur deur = new Deur(false);
     private RoomChanger roomChanger;
+    private Scanner scanner = new Scanner(System.in);
+    private boolean spelActief;
+
 
     public ScrumSpel() {
     }
 
-    private void initializeKamers() {
-        kamers.put(1, SprintPlanningKamer.maakKamer(speler.getInventory()));
-        kamers.put(2, DailyScrumKamer.maakKamer(speler.getInventory()));
-        kamers.put(3, ScrumBoardKamer.maakKamer(speler.getInventory()));
-        kamers.put(4, SprintReviewKamer.maakKamer(speler.getInventory()));
-        kamers.put(5, SprintRetrospectiveKamer.maakKamer(speler.getInventory()));
-        kamers.put(6, FinaleTIAKamer.maakKamer(speler.getInventory()));
-    }
 
     public void startSpel() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Voer je naam in: ");
         String naam = scanner.nextLine();
 
         speler = new Speler(naam, 100);
-        initializeKamers();
+        kamers = KamerFactory.maakAlleKamers(speler.getInventory());
         speler.setHuidigeKamer(1);
 
         roomChanger = new RoomChanger(speler, kamers);
@@ -56,10 +50,13 @@ public class ScrumSpel {
         hoofdSpelLoop();
         scanner.close();
     }
-    private void hoofdSpelLoop() {
-        Scanner scanner = new Scanner(System.in);
-        boolean spelActief = true;
 
+    private Kamer getHuidigeKamer() {
+        return kamers.get(speler.getHuidigeKamer());
+    }
+
+    private void hoofdSpelLoop() {
+        spelActief = true;
         while (spelActief) {
             if (speler.getHp() <= 0) {
                 handleGameOver();
@@ -71,47 +68,23 @@ public class ScrumSpel {
             System.out.print("\n> ");
             String input = scanner.nextLine().toLowerCase().trim();
 
-            switch (input) {
-                case "status":
-                    speler.toonStatus();
-                    break;
-                case "inventory":
-                    speler.getInventory().toonInventory();
-                    break;
-                case "info":
-                    kamers.get(speler.getHuidigeKamer()).toonKamerinfo();
-                    break;
-                case "stop":
-                    System.out.println("Spel opslaan en afsluiten...");
-                    spelActief = false;
-                    break;
+            CommandHandler commandHandler = new CommandHandler(speler, getHuidigeKamer(), scanner, () -> spelActief = false);
 
-                case "joker":
-                    Kamer kamer = kamers.get(speler.getHuidigeKamer());
-                    Joker gekozenJoker = speler.kiesJoker();
-                    if (gekozenJoker instanceof Item) {
-                        kamer.accepteer(gekozenJoker);
-                        speler.getInventory().verwijderItem(((Item) gekozenJoker).getNaam());
-                    }
-                    break;
 
-                case "beantwoord":
-                    Kamer huidigeKamer = kamers.get(speler.getHuidigeKamer());
-                    boolean correct = huidigeKamer.handlePlayerAnswer();
-                    if (correct) {
-                    }
-                    break;
-                default:
-                    if (input.startsWith("ga naar kamer ")) {
-                        roomChanger.verwerkKamerVerandering(input);
-                    } else {
-                        System.out.println("Onbekend commando. Beschikbare commando's:");
-                        System.out.println("- 'beantwoord' : Probeer de vraag te beantwoorden");
-                        System.out.println("- 'ga naar kamer X' : Ga naar kamer X (als unlocked)");
-                        System.out.println("- 'status' : Toon je huidige status");
-                        System.out.println("- 'stop' : Sla op en stop het spel");
-                    }
+
+            if (!commandHandler.verwerkInput(input)) {
+                if (input.startsWith("ga naar kamer ")) {
+                    roomChanger.verwerkKamerVerandering(input);
+                } else {
+                    System.out.println("Onbekend commando. Beschikbare commando's:");
+                    System.out.println("- 'beantwoord' : Probeer de vraag te beantwoorden");
+                    System.out.println("- 'ga naar kamer X' : Ga naar kamer X (als unlocked)");
+                    System.out.println("- 'status' : Toon je huidige status");
+                    System.out.println("- 'stop' : Sla op en stop het spel");
+                }
+
             }
+
         }
         scanner.close();
     }
