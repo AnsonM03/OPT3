@@ -1,12 +1,11 @@
 package example.org.opdrachten;
 
 import example.org.Templates.Opdracht;
-import example.org.Templates.SQLSavable;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class OpenOpdracht implements Opdracht, SQLSavable {
+public class OpenOpdracht implements Opdracht{
     private String vraag;
     private String antwoord;
 
@@ -28,21 +27,6 @@ public class OpenOpdracht implements Opdracht, SQLSavable {
     @Override
     public String getAntwoord(){
         return this.antwoord;
-    }
-
-    @Override
-    public String getTableName() {
-        return "open_opdrachten";
-    }
-
-    @Override
-    public List<String> getColumnNames() {
-        return Arrays.asList("vraag", "antwoord");
-    }
-
-    @Override
-    public List<Object> getValues() {
-        return Arrays.asList(vraag, antwoord);
     }
 
     @Override

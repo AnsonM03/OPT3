@@ -1,16 +1,13 @@
 package example.org.players;
 
 import example.org.Templates.Joker;
-import example.org.Templates.SQLSavable;
 import example.org.items.HintJoker;
 import example.org.items.KeyJoker;
 import example.org.utils.SpelerInventory;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
-public class Speler implements SQLSavable {
+public class Speler {
     private String naam;
     private int huidigeKamer;
     private int hp;
@@ -63,24 +60,6 @@ public class Speler implements SQLSavable {
                 System.out.println("Ongeldige keuze, standaard HintJoker wordt gebruikt.");
                 return new HintJoker(); // Fallback
         }
-    }
-
-
-
-
-    @Override
-    public String getTableName() {
-        return "speler";
-    }
-
-    @Override
-    public List<String> getColumnNames() {
-        return Arrays.asList("naam", "hp", "kamer");
-    }
-
-    @Override
-    public List<Object> getValues() {
-        return Arrays.asList(naam, hp, huidigeKamer);
     }
 
     @Override

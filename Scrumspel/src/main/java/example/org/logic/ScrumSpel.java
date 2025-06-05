@@ -5,8 +5,6 @@ import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
 import example.org.kamers.*;
 import example.org.players.Speler;
-import example.org.database.SQLLoader;
-import example.org.database.SQLSaver;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +31,6 @@ public class ScrumSpel {
         speler = new Speler(naam, 100);
         kamers = KamerFactory.maakAlleKamers(speler.getInventory());
         speler.setHuidigeKamer(1);
-        SQLLoader.loadFromDatabase("speler");
 
         roomChanger = new RoomChanger(speler, kamers);
 
@@ -85,8 +82,8 @@ public class ScrumSpel {
                     System.out.println("- 'status' : Toon je huidige status");
                     System.out.println("- 'stop' : Sla op en stop het spel");
                 }
-            }
 
+            }
 
         }
         scanner.close();
