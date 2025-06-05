@@ -2,7 +2,6 @@ package example.org.logic;
 
 import example.org.Templates.Kamer;
 import example.org.players.Speler;
-import example.org.database.SQLSaver;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +19,6 @@ public class RoomChanger {
         if (kamers.containsKey(kamerId)) {
             speler.setHuidigeKamer(kamerId);
             System.out.println("Je bent nu in kamer " + kamerId + ".");
-            SQLSaver.saveToDatabase(speler);
         } else {
             System.out.println("Kamer " + kamerId + " bestaat niet.");
         }

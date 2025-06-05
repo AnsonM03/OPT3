@@ -5,8 +5,6 @@ import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
 import example.org.kamers.*;
 import example.org.players.Speler;
-import example.org.database.SQLLoader;
-import example.org.database.SQLSaver;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +37,6 @@ public class ScrumSpel {
         speler = new Speler(naam, 100);
         initializeKamers();
         speler.setHuidigeKamer(1);
-        SQLLoader.loadFromDatabase("speler");
 
         roomChanger = new RoomChanger(speler, kamers);
 
@@ -86,7 +83,6 @@ public class ScrumSpel {
                     break;
                 case "stop":
                     System.out.println("Spel opslaan en afsluiten...");
-                    SQLSaver.saveToDatabase(speler);
                     spelActief = false;
                     break;
 
@@ -103,7 +99,6 @@ public class ScrumSpel {
                     Kamer huidigeKamer = kamers.get(speler.getHuidigeKamer());
                     boolean correct = huidigeKamer.handlePlayerAnswer();
                     if (correct) {
-                        SQLSaver.saveToDatabase(speler);
                     }
                     break;
                 default:
