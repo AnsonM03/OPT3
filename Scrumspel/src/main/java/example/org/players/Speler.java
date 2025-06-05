@@ -66,6 +66,8 @@ public class Speler implements SQLSavable {
     }
 
 
+
+
     @Override
     public String getTableName() {
         return "speler";

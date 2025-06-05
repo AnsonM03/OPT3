@@ -127,11 +127,9 @@ public class DailyScrumKamer extends Kamer {
 
     @Override
     public void accepteer(Joker joker) {
-        if (joker instanceof KeyJoker) {
-            System.out.println("🔑 Je ontvangt een extra sleutel in de DailyScrum kamer!");
-        } else {
-            joker.useIn(this);
-
+        if (joker instanceof SpecialJoker) {
+            ((SpecialJoker) joker).useIn(this); // Geen if op KeyJoker
         }
     }
+
 }
