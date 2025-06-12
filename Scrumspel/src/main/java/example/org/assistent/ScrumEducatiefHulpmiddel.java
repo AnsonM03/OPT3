@@ -1,4 +1,4 @@
-package example.org;
+package example.org.assistent;
 
 import example.org.Templates.EducatiefHulpmiddelProvider;
 import example.org.Templates.Kamer;

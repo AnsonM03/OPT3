@@ -1,8 +1,8 @@
 package example.org.logic;
 
-import example.org.Assistent;
-import example.org.ScrumEducatiefHulpmiddel;
-import example.org.ScrumMotivatieBericht;
+import example.org.assistent.Assistent;
+import example.org.assistent.ScrumEducatiefHulpmiddel;
+import example.org.assistent.ScrumMotivatieBericht;
 import example.org.Templates.*;
 import example.org.players.Speler;
 
