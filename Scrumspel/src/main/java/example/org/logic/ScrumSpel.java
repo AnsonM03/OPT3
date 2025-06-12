@@ -79,6 +79,7 @@ public class ScrumSpel {
                     System.out.println("Onbekend commando. Beschikbare commando's:");
                     System.out.println("- 'beantwoord' : Probeer de vraag te beantwoorden");
                     System.out.println("- 'ga naar kamer X' : Ga naar kamer X (als unlocked)");
+                    System.out.println("- 'gebruik assistent' : Activeer de assistent (in specifieke kamers)");
                     System.out.println("- 'status' : Toon je huidige status");
                     System.out.println("- 'stop' : Sla op en stop het spel");
                 }

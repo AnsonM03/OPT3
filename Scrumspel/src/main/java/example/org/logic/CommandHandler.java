@@ -1,10 +1,9 @@
 package example.org.logic;
 
-import example.org.Templates.Command;
-import example.org.Templates.Item;
-import example.org.Templates.Joker;
-import example.org.Templates.Kamer;
-import example.org.database.SQLSaver;
+import example.org.Assistent;
+import example.org.ScrumEducatiefHulpmiddel;
+import example.org.ScrumMotivatieBericht;
+import example.org.Templates.*;
 import example.org.players.Speler;
 
 import java.util.HashMap;
@@ -31,6 +30,23 @@ public class CommandHandler {
         commandoMap.put("inventory", () -> speler.getInventory().toonInventory());
         commandoMap.put("info", () -> huidigeKamer.toonKamerinfo());
 
+        commandoMap.put("gebruik assistent", () -> {
+            if (speler.getHuidigeKamer() == 2 || speler.getHuidigeKamer() == 4) { // Alleen in specifieke kamers
+                HintFactory hintFactory = new HintFactory();
+                HintProvider helpHint = hintFactory.getHint("HELP");
+
+                Assistent assistent = new Assistent(
+                        helpHint,
+                        new ScrumEducatiefHulpmiddel(),
+                        new ScrumMotivatieBericht()
+                );
+
+                assistent.activeer(huidigeKamer);
+            } else {
+                System.out.println("De assistent is niet beschikbaar in deze kamer.");
+            }
+        });
+
         commandoMap.put("joker", () -> {
             Joker gekozenJoker = speler.kiesJoker();
 
@@ -49,14 +65,10 @@ public class CommandHandler {
 
         commandoMap.put("beantwoord", () -> {
             boolean correct = huidigeKamer.handlePlayerAnswer();
-            if (correct) {
-                SQLSaver.saveToDatabase(speler);
-            }
         });
 
         commandoMap.put("stop", () -> {
             System.out.println("Spel opslaan en afsluiten...");
-            SQLSaver.saveToDatabase(speler);
             spelStopper.run();
         });
     }
