@@ -13,49 +13,38 @@ public class Monster implements Observer {
     private int schade;
     private Speler speler;
     private int monsterHealth = 300;
+    private HintFactory hintFactory;
 
-    public Monster(int schade, Speler speler){
+    public Monster(int schade, Speler speler, HintFactory hintFactory){
         this.schade = schade;
         this.speler = speler;
+        this.hintFactory = hintFactory;
     }
 
     @Override
     public void update(boolean antwoordCorrect) {
-        HintFactory hintFactory = new HintFactory();
-
+        // Interactieve versie
         if (!antwoordCorrect) {
-            HintProvider funnyHint = hintFactory.getHint("funny");
             System.out.println("👹 Het monster valt aan en doet " + schade + " schade!");
+
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Wil je een item gebruiken (ja/nee)");
-            String antwoord = scanner.nextLine().trim().toLowerCase();
 
-            if (antwoord.equals("ja")) {
-                System.out.println("Welke item wil je gebruiken?");
+            System.out.print("Wil je een item gebruiken (ja/nee)? ");
+            String itemAntwoord = scanner.nextLine().trim().toLowerCase();
+
+            if (itemAntwoord.equals("ja")) {
+                System.out.print("Welke item wil je gebruiken? ");
                 String itemNaam = scanner.nextLine().trim();
-
-                Inventory inventory = speler.getInventory();
-                boolean gebruikt = inventory.gebruikItem(itemNaam, this);
-
-                if (!gebruikt) {
-                    schadeToebrengenAanSpeler();
-                }
-
+                gebruikItem(itemNaam);
             } else {
                 schadeToebrengenAanSpeler();
             }
 
-            System.out.println("Wil je een hint? (ja/nee)");
-            String input = scanner.nextLine().toLowerCase().trim();
+            System.out.print("Wil je een hint? (ja/nee)? ");
+            String hintAntwoord = scanner.nextLine().trim().toLowerCase();
 
-            if (input.equals("ja")) {
-                String[] opties = {"funny", "help"};
-                int randomIndex = ThreadLocalRandom.current().nextInt(opties.length);
-                String gekozenHintType = opties[randomIndex];
-
-                HintProvider hint = hintFactory.getHint(gekozenHintType);
-                hint.geefHint();
-
+            if (hintAntwoord.equals("ja")) {
+                geefHint();
             } else {
                 System.out.println("Oke dat is ook goed!");
             }
@@ -64,6 +53,46 @@ public class Monster implements Observer {
             System.out.println("✅ Het monster verdwijnt...");
         }
     }
+
+    // Test Update
+    public void update(boolean antwoordCorrect, String confirmatieItem, String itemNaam, String confirmatieHint) {
+        if (!antwoordCorrect) {
+            System.out.println("👹 Het monster valt aan en doet " + schade + " schade!");
+
+            if (confirmatieItem.equalsIgnoreCase("ja")) {
+                gebruikItem(itemNaam);
+            } else {
+                schadeToebrengenAanSpeler();
+            }
+
+            if (confirmatieHint.equalsIgnoreCase("ja")) {
+                geefHint();
+            } else {
+                System.out.println("Oke dat is ook goed!");
+            }
+
+        } else {
+            System.out.println("✅ Het monster verdwijnt...");
+        }
+    }
+
+    private void gebruikItem(String itemNaam) {
+        Inventory inventory = speler.getInventory();
+        boolean gebruikt = inventory.gebruikItem(itemNaam, this);
+        if (!gebruikt) {
+            schadeToebrengenAanSpeler();
+        }
+    }
+
+    private void geefHint() {
+        String[] opties = {"funny", "help"};
+        int randomIndex = ThreadLocalRandom.current().nextInt(opties.length);
+        String gekozenHintType = opties[randomIndex];
+
+        HintProvider hint = hintFactory.getHint(gekozenHintType);
+        System.out.println(hint.geefHint());
+    }
+
 
     private void schadeToebrengenAanSpeler() {
         int hp = speler.getHp();
