@@ -9,20 +9,27 @@ import java.util.Map;
 public class RoomChanger {
     public Map<Integer, Kamer> kamers = new HashMap<>();
     private Speler speler;
+    private KamerManager kamerManager;
 
-    public RoomChanger(Speler speler, Map<Integer, Kamer> kamers){
+
+    public RoomChanger(Speler speler, Map<Integer, Kamer> kamers, KamerManager kamerManager){
         this.speler = speler;
         this.kamers = kamers;
+        this.kamerManager = kamerManager;
     }
+
 
     public void veranderKamer(int kamerId) {
         if (kamers.containsKey(kamerId)) {
             speler.setHuidigeKamer(kamerId);
+            kamerManager.kamerBezocht();
             System.out.println("Je bent nu in kamer " + kamerId + ".");
+            System.out.println("📌 Je hebt nu " + kamerManager.getAantalBezochteKamers() + " kamers bezocht.");
         } else {
             System.out.println("Kamer " + kamerId + " bestaat niet.");
         }
     }
+
 
     public void verwerkKamerVerandering(String input) {
         try {

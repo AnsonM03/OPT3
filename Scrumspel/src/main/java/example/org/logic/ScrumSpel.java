@@ -16,6 +16,9 @@ public class ScrumSpel {
     private Monster monster;
     private Deur deur = new Deur(false);
     private RoomChanger roomChanger;
+    private HintFactory hintFactory;
+    private HintManager hintManager;
+    private KamerManager kamerManager;
     private Scanner scanner = new Scanner(System.in);
     private boolean spelActief;
 
@@ -32,10 +35,13 @@ public class ScrumSpel {
         kamers = KamerFactory.maakAlleKamers(speler.getInventory());
         speler.setHuidigeKamer(1);
 
-        roomChanger = new RoomChanger(speler, kamers);
+        kamerManager = new KamerManager();
+        roomChanger = new RoomChanger(speler, kamers, kamerManager);
+        hintFactory = new HintFactory();
+        hintManager = new HintManager(hintFactory);
 
         // Monster is now an observer, needs speler reference
-        monster = new Monster(40, speler);
+        monster = new Monster(40, speler, hintManager);
 
         // Register observers for all rooms
         for (Kamer kamer : kamers.values()) {

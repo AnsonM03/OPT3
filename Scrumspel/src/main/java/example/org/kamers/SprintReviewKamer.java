@@ -118,7 +118,7 @@ public class SprintReviewKamer extends Kamer {
     public void accepteer(Joker joker) {
         if (joker instanceof SpecialJoker) {
             ((SpecialJoker) joker).useIn(this); // Geen if op KeyJoker
-        }
+        } else joker.useIn(this);
     }
 
 }
