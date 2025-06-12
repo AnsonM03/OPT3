@@ -13,12 +13,12 @@ public class Monster implements Observer {
     private int schade;
     private Speler speler;
     private int monsterHealth = 300;
-    private HintFactory hintFactory;
+    private HintManager hintManager;
 
-    public Monster(int schade, Speler speler, HintFactory hintFactory){
+    public Monster(int schade, Speler speler, HintManager hintManager){
         this.schade = schade;
         this.speler = speler;
-        this.hintFactory = hintFactory;
+        this.hintManager = hintManager;
     }
 
     @Override
@@ -89,9 +89,10 @@ public class Monster implements Observer {
         int randomIndex = ThreadLocalRandom.current().nextInt(opties.length);
         String gekozenHintType = opties[randomIndex];
 
-        HintProvider hint = hintFactory.getHint(gekozenHintType);
-        System.out.println(hint.geefHint());
+        String hint = hintManager.geefHint(gekozenHintType);
+        System.out.println(hint);
     }
+
 
 
     private void schadeToebrengenAanSpeler() {
