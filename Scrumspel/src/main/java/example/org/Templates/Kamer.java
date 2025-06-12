@@ -1,6 +1,7 @@
 package example.org.Templates;
 
 import example.org.logic.Deur;
+import example.org.logic.HintFactory;
 import example.org.logic.Monster;
 import example.org.players.Speler;
 
@@ -19,7 +20,7 @@ public abstract class Kamer {
         getVraag();
         controleerAntwoord("");
         handlePlayerAnswer();
-        addObserver(new Deur(false), new Monster(40, speler));
+        addObserver(new Deur(false), new Monster(40, speler, new HintFactory()));
         notifyObserver(false);
     }
 

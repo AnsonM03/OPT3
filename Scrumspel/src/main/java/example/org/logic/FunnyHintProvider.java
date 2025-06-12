@@ -26,8 +26,8 @@ public class FunnyHintProvider implements HintProvider {
     );
 
     @Override
-    public void geefHint(){
+    public String geefHint(){
         int randomGetal = ThreadLocalRandom.current().nextInt(0, funnyHints.size());
-        System.out.println(funnyHints.get(randomGetal));
+        return funnyHints.get(randomGetal);
     }
 }

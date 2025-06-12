@@ -21,9 +21,9 @@ public class HelpHintProvider implements HintProvider {
     );
 
     @Override
-    public void geefHint(){
+    public String geefHint(){
         int randomGetal = ThreadLocalRandom.current().nextInt(0, helpHints.size());
-        System.out.println(helpHints.get(randomGetal));
+        return helpHints.get(randomGetal);
     }
 
 }

@@ -4,7 +4,7 @@ import example.org.Templates.Command;
 import example.org.Templates.Item;
 import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
-import example.org.database.SQLSaver;
+//import example.org.database.SQLSaver;
 import example.org.players.Speler;
 
 import java.util.HashMap;
@@ -50,13 +50,13 @@ public class CommandHandler {
         commandoMap.put("beantwoord", () -> {
             boolean correct = huidigeKamer.handlePlayerAnswer();
             if (correct) {
-                SQLSaver.saveToDatabase(speler);
+//                SQLSaver.saveToDatabase(speler);
             }
         });
 
         commandoMap.put("stop", () -> {
             System.out.println("Spel opslaan en afsluiten...");
-            SQLSaver.saveToDatabase(speler);
+//            SQLSaver.saveToDatabase(speler);
             spelStopper.run();
         });
     }
