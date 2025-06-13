@@ -115,11 +115,10 @@ public class SprintReviewKamer extends Kamer {
     }
 
     @Override
-    public void accepteer(Joker joker) {
-        if (joker instanceof SpecialJoker) {
-            ((SpecialJoker) joker).useIn(this); // Geen if op KeyJoker
-        } else joker.useIn(this);
+    public void accepteer(JokerVisitor visitor) {
+        visitor.visit(this); // ‘this’ is een DailyScrumKamer
     }
+
 
 }
 

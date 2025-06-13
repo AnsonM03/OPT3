@@ -120,9 +120,10 @@ public class ScrumBoardKamer extends Kamer {
         );
     }
     @Override
-    public void accepteer(Joker joker) {
-        joker.useIn(this); // Alleen HintJoker heeft effect
+    public void accepteer(JokerVisitor visitor) {
+        visitor.visit(this); // ‘this’ is een DailyScrumKamer
     }
+
 }
 
 

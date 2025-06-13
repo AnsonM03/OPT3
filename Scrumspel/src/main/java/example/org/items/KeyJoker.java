@@ -1,36 +1,48 @@
 package example.org.items;
 
 import example.org.Templates.Item;
+import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
-import example.org.Templates.SpecialJoker;
 import example.org.kamers.DailyScrumKamer;
 import example.org.kamers.SprintReviewKamer;
 
-public class KeyJoker implements SpecialJoker, Item {
+public class KeyJoker implements Joker, Item {
     private boolean gebruikt = false;
 
     @Override
-    public void useIn(DailyScrumKamer kamer) {
+    public void gebruikOp(Kamer kamer) {
+        kamer.accepteer(this);
+    }
+
+    @Override
+    public void visit(DailyScrumKamer kamer) {
         if (gebruikt) {
             System.out.println("Joker is al gebruikt!");
-
-        } gebruikt = true;
+            return;
+        }
+        kamer.getDeur().isOpen();
+        System.out.println("🔓 De deur naar de volgende kamer is geopend door de KeyJoker!");
+        gebruikt = true;
     }
 
     @Override
-    public void useIn(SprintReviewKamer kamer) {
+    public void visit(SprintReviewKamer kamer) {
         if (gebruikt) {
             System.out.println("Joker is al gebruikt!");
-        } gebruikt = true;
+            return;
+        }
+        kamer.getDeur().isOpen();
+        System.out.println("🔓 De deur naar de volgende kamer is geopend door de KeyJoker!");
+        gebruikt = true;
     }
 
     @Override
-    public void useIn(Kamer kamer) {
+    public void visit(Kamer kamer) {
+//        System.out.println("KeyJoker werkt niet in deze kamer.");
     }
 
     @Override
-    public String getNaam(){
+    public String getNaam() {
         return "KeyJoker";
     }
-
 }
