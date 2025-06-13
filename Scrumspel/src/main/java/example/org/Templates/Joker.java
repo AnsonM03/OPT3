@@ -1,5 +1,5 @@
 package example.org.Templates;
 
-public interface Joker {
-    void useIn(Kamer kamer);
+public interface Joker extends JokerVisitor{
+    void gebruikOp(Kamer kamer);
 }
