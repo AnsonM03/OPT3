@@ -23,7 +23,7 @@ public class ScrumBoardKamer extends Kamer {
     private RewardGiver beloning;
     private Kamerinfo kamerinfo;
 
-    public ScrumBoardKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
+     public ScrumBoardKamer(int nummer, String beschrijving, Opdracht opdracht, Deur deur, SpelerInventory inventory) {
         this.nummer = nummer;
         this.beschrijving = beschrijving;
         this.opdracht = opdracht;
@@ -101,24 +101,6 @@ public class ScrumBoardKamer extends Kamer {
         }
     }
 
-    public static ScrumBoardKamer maakKamer(SpelerInventory inventory) {
-        return new ScrumBoardKamer(
-                3,
-                "Je staat in Kamer 3 voor het Scrum Board. Orden de epics, user stories en taken correct, anders verschijnt het monster 'Chaos'.",
-                new PuzzelOpdracht(
-                        "Koppel de items aan het juiste type:\n" +
-                                "- Inlogfunctionaliteit\n" +
-                                "- Inloggen met Google\n" +
-                                "- Bouw login-knop\n",
-                        Map.of(
-                                "Inlogfunctionaliteit", "Epic",
-                                "Inloggen met Google", "User Story",
-                                "Bouw login-knop", "Taak"
-                        )
-                ), new Deur(true),
-                inventory
-        );
-    }
     @Override
     public void accepteer(Joker joker) {
         joker.useIn(this); // Alleen HintJoker heeft effect

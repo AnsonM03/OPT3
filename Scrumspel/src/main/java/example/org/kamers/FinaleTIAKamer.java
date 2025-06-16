@@ -99,26 +99,6 @@ public class FinaleTIAKamer extends Kamer {
         }
     }
 
-    public static FinaleTIAKamer maakKamer(SpelerInventory inventory) {
-        return new FinaleTIAKamer(
-                6,
-                "Finale TIA Kamer – Waarom Scrum? Dit is het eindspel! Begrijp je TIA, dan ben je een echte Scrumheld.",
-                new PuzzelOpdracht(
-                        "Koppel elke Scrum-rol aan de juiste verantwoordelijkheid:\n" +
-                                "- Beheert de product backlog\n" +
-                                "- Faciliteert Scrum-evenementen\n" +
-                                "- Levert werkende software op",
-
-                        Map.of(
-                                "Product Owner", "Beheert de product backlog",
-                                "Scrum Master", "Faciliteert Scrum-evenementen",
-                                "Ontwikkelteam", "Levert werkende software op"
-                        )
-                ), new Deur(true),
-                inventory
-        );
-    }
-
     @Override
     public void accepteer(Joker joker) {
         joker.useIn(this); // Alleen HintJoker heeft effect

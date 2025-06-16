@@ -89,18 +89,6 @@ public class SprintPlanningKamer extends Kamer {
         kamerinfo.showMessage();
     }
 
-    public static SprintPlanningKamer maakKamer(SpelerInventory inventory) {
-        return new SprintPlanningKamer(
-                1,
-                "Je staat in Kamer 1 (Sprint Planning Kamer)",
-                new OpenOpdracht(
-                        "Welke taken neem je op in de sprint planning?",
-                        "Alleen taken die het team denkt af te krijgen binnen de sprint."
-                ), new Deur(true),
-                inventory
-        );
-    }
-
     @Override
     public boolean addObserver(Deur deur, Monster monster) {
         if (deur != null) {

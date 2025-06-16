@@ -1,5 +1,6 @@
 package example.org.logic;
 
+import example.org.Factory.KamerFactory;
 import example.org.Templates.Item;
 import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
@@ -69,7 +70,15 @@ public class ScrumSpel {
                 continue;
             }
 
+            Kamer huidigeKamer = getHuidigeKamer();
+
+            if (speler.getHuidigeKamer() == kamers.size() && kamers.get(speler.getHuidigeKamer()).isBeantwoordCorrect()) {
+                handleGameWin();
+                break;
+            }
+
             roomChanger.toonHuidigeKamer();
+            huidigeKamer.speelKamer();
 
             System.out.print("\n> ");
             String input = scanner.nextLine().toLowerCase().trim();
@@ -101,5 +110,10 @@ public class ScrumSpel {
         speler.setHp(100);
         deur.setOpen(false);
         speler.setHuidigeKamer(1);
+    }
+
+    private void handleGameWin() {
+        System.out.println("\n Gefeliciteerd! Je hebt alle kamers succesvol doorlopen!");
+        spelActief = false;
     }
 }

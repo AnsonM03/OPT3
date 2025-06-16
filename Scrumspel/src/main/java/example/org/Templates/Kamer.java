@@ -9,20 +9,20 @@ import example.org.players.Speler;
 import java.util.Scanner;
 
 public abstract class Kamer {
-    Speler speler;
-    public final void Kamer(){
-        getNummer();
-        getBeschrijving();
+    protected Speler speler;
+
+    public final void speelKamer() {
         toonKamerinfo();
-        getOpdracht();
-        getDeur();
-        isBeantwoordCorrect();
-        setBeantwoordCorrect(false);
-        getVraag();
-        controleerAntwoord("");
-        handlePlayerAnswer();
-        addObserver(new Deur(false), new Monster(40, speler, new HintManager(new HintFactory())));
-        notifyObserver(false);
+        System.out.println(getVraag());
+
+        if (!isBeantwoordCorrect()) {
+            boolean correct = handlePlayerAnswer();
+            if (!correct) {
+                notifyObserver(false);
+            }
+        } else {
+            System.out.println("Je hebt deze kamer al voltooid.");
+        }
     }
 
     public abstract void toonKamerinfo();
@@ -43,7 +43,6 @@ public abstract class Kamer {
             return true;
         }
 
-        System.out.println(getVraag());
         System.out.print("Je antwoord: ");
         Scanner scanner = new Scanner(System.in);
         String antwoord = scanner.nextLine();
@@ -57,10 +56,8 @@ public abstract class Kamer {
         }
         return correct;
     }
-    public boolean addObserver(Deur deur, Monster monster) {
-        addObserver(deur, monster);
-        return true;
-    }
+
+    public abstract boolean addObserver(Deur deur, Monster monster);
 
     public abstract void notifyObserver(boolean antwoordCorrect);
 }

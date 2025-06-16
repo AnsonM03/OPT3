@@ -99,29 +99,6 @@ public class SprintRetrospectiveKamer extends Kamer {
         return correct;
     }
 
-    public static SprintRetrospectiveKamer maakKamer(SpelerInventory inventory) {
-        return new SprintRetrospectiveKamer(
-                5,
-                "Sprint Retrospective: Reflecteer op het teamproces. Leer je niet van fouten, dan verschijnt het monster 'Herhaalfouten'.",
-                new MeerkeuzeOpdracht(
-                        "Situatie: Tijdens een sprint blijkt dat een belangrijke taak niet af is omdat twee teamleden " +
-                                "onafhankelijk van elkaar aan dezelfde feature werkten, zonder afstemming. " +
-                                "Wat kan het team hieruit leren?",
-
-                        // Opties
-                        List.of(
-                                "A) Taken moeten altijd door één persoon worden uitgevoerd",
-                                "B) Dagelijkse stand-ups zijn nutteloos en kunnen worden overgeslagen",
-                                "C) Betere communicatie tijdens stand-ups had dit kunnen voorkomen",
-                                "D) Het team moet stoppen met agile werken"
-                        ),
-
-                        // Juiste antwoord (letter only)
-                        "C"
-                ), new Deur(true),
-                inventory
-        );
-    }
     @Override
     public void accepteer(Joker joker) {
         joker.useIn(this); // Alleen HintJoker heeft effect

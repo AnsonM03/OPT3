@@ -102,18 +102,6 @@ public class SprintReviewKamer extends Kamer {
         return correct;
     }
 
-    public static SprintReviewKamer maakKamer(SpelerInventory inventory) {
-        return new SprintReviewKamer(
-                4,
-                "Je staat in Kamer 4 (Sprint Review Kamer): Stakeholders geven feedback. Interpreteer hun opmerkingen correct, anders verschijnt het monster 'Miscommunicatie'.",
-                new OpenOpdracht(
-                        "Stakeholders geven aan dat een opgeleverd onderdeel niet voldoet aan hun verwachtingen. Wat doe je tijdens de Sprint Review?",
-                        "Je bespreekt de feedback openlijk, past eventueel de Product Backlog aan, en leert voor toekomstige sprints."
-                ), new Deur(true),
-                inventory
-        );
-    }
-
     @Override
     public void accepteer(Joker joker) {
         if (joker instanceof SpecialJoker) {
