@@ -34,7 +34,7 @@ public abstract class Kamer {
     public abstract void setBeantwoordCorrect(boolean beantwoord);
     public abstract String getVraag();
     public abstract boolean controleerAntwoord(String antwoord);
-    public abstract void accepteer(Joker joker);
+    public abstract void accepteer(JokerVisitor visitor);
 
 
     public boolean handlePlayerAnswer() {
