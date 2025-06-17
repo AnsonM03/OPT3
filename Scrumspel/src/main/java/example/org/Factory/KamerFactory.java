@@ -138,7 +138,7 @@ public class KamerFactory {
         kamers.put(3, maakScrumBoardKamer(inventory));
         kamers.put(4, maakSprintReviewKamer(inventory));
         kamers.put(5, maakSprintRetrospectiveKamer(inventory));
-        kamers.put(6, maakFinaleTIAKamer(inventory));
+        //kamers.put(6, maakFinaleTIAKamer(inventory));
         return kamers;
     }
 }

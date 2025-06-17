@@ -8,11 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Factory/KamerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Factory/KamerFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/Templates/Kamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/Templates/Kamer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/kamers/DailyScrumKamer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/logic/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/logic/CommandHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/logic/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/logic/Monster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/example/org/logic/ScrumSpel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/logic/ScrumSpel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/example/org/utils/ZwaardBeloning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/example/org/utils/ZwaardBeloning.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +46,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/AnsonM03/OPT3.git&quot;,
-    &quot;accountId&quot;: &quot;7e0c9d94-03fc-42d6-a4fc-128def49e078&quot;
+    &quot;accountId&quot;: &quot;e0aaaa26-053a-4181-800c-c24d54871c49&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -94,6 +92,14 @@
       <recent name="$PROJECT_DIR$/.." />
     </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -106,6 +112,10 @@
       <workItem from="1747390845719" duration="485000" />
       <workItem from="1747391342544" duration="354000" />
       <workItem from="1748852427108" duration="905000" />
+      <workItem from="1750153532522" duration="36000" />
+      <workItem from="1750153596377" duration="611000" />
+      <workItem from="1750155265905" duration="200000" />
+      <workItem from="1750156550109" duration="3592000" />
     </task>
     <task id="LOCAL-00001" summary="Made a new class that adds all methods to change rooms.">
       <option name="closed" value="true" />

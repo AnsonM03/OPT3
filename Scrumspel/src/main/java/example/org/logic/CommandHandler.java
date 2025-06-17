@@ -16,12 +16,16 @@ public class CommandHandler {
     private Kamer huidigeKamer;
     private final Scanner scanner;
     private final Runnable spelStopper;
+    private Runnable winCallback;
+    private int totaalAantalKamers;
 
-    public CommandHandler(Speler speler, Kamer huidigeKamer, Scanner scanner, Runnable spelStopper) {
+    public CommandHandler(Speler speler, Kamer huidigeKamer, Scanner scanner, Runnable spelStopper, Runnable winCallback, int totaalAantalKamers) {
         this.speler = speler;
         this.huidigeKamer = huidigeKamer;
         this.scanner = scanner;
         this.spelStopper = spelStopper;
+        this.winCallback = winCallback;
+        this.totaalAantalKamers = totaalAantalKamers;
         registreerCommando();
     }
 
@@ -69,6 +73,10 @@ public class CommandHandler {
 
         commandoMap.put("beantwoord", () -> {
             huidigeKamer.speelKamer();
+
+            if (huidigeKamer.isBeantwoordCorrect() && speler.getHuidigeKamer() == totaalAantalKamers) {
+                winCallback.run();
+            }
         });
 
         commandoMap.put("stop", () -> {

@@ -25,7 +25,10 @@ public class Monster implements Observer {
 
     @Override
     public void update(boolean antwoordCorrect) {
-        // Interactieve versie
+        if (speler.getHp() <= 0) {
+            return;
+        }
+
         if (!antwoordCorrect) {
             System.out.println("👹 Het monster valt aan en doet " + schade + " schade!");
 
@@ -45,6 +48,8 @@ public class Monster implements Observer {
             }
 
             while (true) {
+                if (speler.getHp() <= 0) return;
+
                 System.out.print("Wil je een hint? (ja/nee)? ");
                 String hintAntwoord = scanner.nextLine().trim().toLowerCase();
 

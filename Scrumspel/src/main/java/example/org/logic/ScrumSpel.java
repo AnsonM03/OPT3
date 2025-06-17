@@ -38,7 +38,14 @@ public class ScrumSpel {
         roomChanger = new RoomChanger(speler, kamers, kamerManager);
         hintFactory = new HintFactory();
         hintManager = new HintManager(hintFactory);
-        commandHandler = new CommandHandler(speler, getHuidigeKamer(), scanner, ()-> spelActief = false);
+        commandHandler = new CommandHandler(
+                speler,
+                getHuidigeKamer(),
+                scanner,
+                ()-> spelActief = false,
+                () -> handleGameWin(),
+                kamers.size()
+        );
 
         // Monster is now an observer, needs speler reference
         monster = new Monster(40, speler, hintManager, scanner);

@@ -16,10 +16,7 @@ public abstract class Kamer {
         System.out.println("Vraag: " + getVraag());
 
         if (!isBeantwoordCorrect()) {
-            boolean correct = handlePlayerAnswer();
-            if (!correct) {
-                notifyObserver(false);
-            }
+            handlePlayerAnswer();
         } else {
             System.out.println("Je hebt deze kamer al voltooid.");
         }
