@@ -1,10 +1,7 @@
 package example.org.logic;
 
 import example.org.Factory.KamerFactory;
-import example.org.Templates.Item;
-import example.org.Templates.Joker;
 import example.org.Templates.Kamer;
-import example.org.kamers.*;
 import example.org.players.Speler;
 
 import java.util.HashMap;
@@ -22,6 +19,7 @@ public class ScrumSpel {
     private KamerManager kamerManager;
     private Scanner scanner = new Scanner(System.in);
     private boolean spelActief;
+    private CommandHandler commandHandler;
 
 
     public ScrumSpel() {
@@ -40,9 +38,10 @@ public class ScrumSpel {
         roomChanger = new RoomChanger(speler, kamers, kamerManager);
         hintFactory = new HintFactory();
         hintManager = new HintManager(hintFactory);
+        commandHandler = new CommandHandler(speler, getHuidigeKamer(), scanner, ()-> spelActief = false);
 
         // Monster is now an observer, needs speler reference
-        monster = new Monster(40, speler, hintManager);
+        monster = new Monster(40, speler, hintManager, scanner);
 
         // Register observers for all rooms
         for (Kamer kamer : kamers.values()) {
@@ -77,15 +76,23 @@ public class ScrumSpel {
                 break;
             }
 
-            roomChanger.toonHuidigeKamer();
-            huidigeKamer.speelKamer();
+            huidigeKamer.toonKamerinfo();
+
+            if (!huidigeKamer.isBeantwoordCorrect()) {
+                System.out.println("Typ 'beantwoord' om de vraag te beantwoorden.");
+            } else {
+                int volgendeKamerNummer = speler.getHuidigeKamer() + 1;
+                if (kamers.containsKey(volgendeKamerNummer)) {
+                    System.out.println("Typ 'ga naar kamer " + volgendeKamerNummer + " ' om naar de volgende kamer te gaan.");
+                } else {
+                    System.out.println("Je hebt alle kamers voltooid! Gefeliciteerd!");
+                }
+            }
 
             System.out.print("\n> ");
             String input = scanner.nextLine().toLowerCase().trim();
 
-            CommandHandler commandHandler = new CommandHandler(speler, getHuidigeKamer(), scanner, () -> spelActief = false);
-
-
+            commandHandler.setHuidigeKamer(huidigeKamer);
 
             if (!commandHandler.verwerkInput(input)) {
                 if (input.startsWith("ga naar kamer ")) {

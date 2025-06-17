@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class CommandHandler {
     private final Map<String, Command> commandoMap = new HashMap<>();
     private final Speler speler;
-    private final Kamer huidigeKamer;
+    private Kamer huidigeKamer;
     private final Scanner scanner;
     private final Runnable spelStopper;
 
@@ -23,6 +23,10 @@ public class CommandHandler {
         this.scanner = scanner;
         this.spelStopper = spelStopper;
         registreerCommando();
+    }
+
+    public void setHuidigeKamer(Kamer kamer) {
+        this.huidigeKamer = kamer;
     }
 
     private void registreerCommando() {
@@ -64,7 +68,7 @@ public class CommandHandler {
 
 
         commandoMap.put("beantwoord", () -> {
-            boolean correct = huidigeKamer.handlePlayerAnswer();
+            huidigeKamer.speelKamer();
         });
 
         commandoMap.put("stop", () -> {

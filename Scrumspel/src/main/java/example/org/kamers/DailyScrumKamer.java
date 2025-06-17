@@ -106,5 +106,4 @@ public class DailyScrumKamer extends Kamer {
         visitor.visit(this);
     }
 
-
 }

@@ -14,7 +14,7 @@ public class ZwaardBeloning implements RewardGiver {
 
     @Override
     public void grantReward() {
-        System.out.println("[Beloning] Je hebt de vraag correct beantwoord!");
+        System.out.println("[Systeem] Je hebt de vraag correct beantwoord!");
         System.out.println("[Beloning] Je hebt een ScrumZwaard gevonden. Deze kan worden gebruikt om het monster aan te vallen.");
 
         Scanner scanner = new Scanner(System.in);

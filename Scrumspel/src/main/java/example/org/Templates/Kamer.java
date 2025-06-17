@@ -13,7 +13,7 @@ public abstract class Kamer {
 
     public final void speelKamer() {
         toonKamerinfo();
-        System.out.println(getVraag());
+        System.out.println("Vraag: " + getVraag());
 
         if (!isBeantwoordCorrect()) {
             boolean correct = handlePlayerAnswer();

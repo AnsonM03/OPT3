@@ -1,13 +1,11 @@
 package example.org.Factory;
 
 import example.org.Templates.Kamer;
-import example.org.Templates.Opdracht;
 import example.org.kamers.*;
 import example.org.logic.Deur;
 import example.org.opdrachten.MeerkeuzeOpdracht;
 import example.org.opdrachten.OpenOpdracht;
 import example.org.opdrachten.PuzzelOpdracht;
-import example.org.players.Speler;
 import example.org.utils.SpelerInventory;
 
 import java.util.Arrays;

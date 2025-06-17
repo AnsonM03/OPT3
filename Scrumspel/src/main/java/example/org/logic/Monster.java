@@ -14,11 +14,13 @@ public class Monster implements Observer {
     private Speler speler;
     private int monsterHealth = 300;
     private HintManager hintManager;
+    private Scanner scanner;
 
-    public Monster(int schade, Speler speler, HintManager hintManager){
+    public Monster(int schade, Speler speler, HintManager hintManager, Scanner scanner) {
         this.schade = schade;
         this.speler = speler;
         this.hintManager = hintManager;
+        this.scanner = scanner;
     }
 
     @Override
@@ -27,26 +29,34 @@ public class Monster implements Observer {
         if (!antwoordCorrect) {
             System.out.println("👹 Het monster valt aan en doet " + schade + " schade!");
 
-            Scanner scanner = new Scanner(System.in);
+            while (true) {
+                System.out.print("Wil je een item gebruiken (ja/nee)? ");
+                String itemAntwoord = scanner.nextLine().trim().toLowerCase();
 
-            System.out.print("Wil je een item gebruiken (ja/nee)? ");
-            String itemAntwoord = scanner.nextLine().trim().toLowerCase();
-
-            if (itemAntwoord.equals("ja")) {
-                System.out.print("Welke item wil je gebruiken? ");
-                String itemNaam = scanner.nextLine().trim();
-                gebruikItem(itemNaam);
-            } else {
-                schadeToebrengenAanSpeler();
+                if (itemAntwoord.equals("ja")) {
+                    System.out.print("Welke item wil je gebruiken? ");
+                    String itemNaam = scanner.nextLine().trim();
+                    gebruikItem(itemNaam);
+                    break;
+                } else if (itemAntwoord.equals("nee")) {
+                    schadeToebrengenAanSpeler();
+                    break;
+                }
             }
 
-            System.out.print("Wil je een hint? (ja/nee)? ");
-            String hintAntwoord = scanner.nextLine().trim().toLowerCase();
+            while (true) {
+                System.out.print("Wil je een hint? (ja/nee)? ");
+                String hintAntwoord = scanner.nextLine().trim().toLowerCase();
 
-            if (hintAntwoord.equals("ja")) {
-                geefHint();
-            } else {
-                System.out.println("Oke dat is ook goed!");
+                if (hintAntwoord.equals("ja")) {
+                    geefHint();
+                    break;
+                } else if (hintAntwoord.equals("nee")) {
+                    System.out.println("Oke dat is ook goed!");
+                    break;
+                } else {
+                    System.out.println("Typ 'ja' of 'nee'.");
+                }
             }
 
         } else {
